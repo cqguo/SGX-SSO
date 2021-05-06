@@ -1,104 +1,86 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.6)  15 APR 2021 15:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.20)  6 MAY 2021 14:08
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**SGX-SSO.tex
-(./SGX-SSO.tex
-LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-03-06> (./llncs.cls
+**./SGX-SSO.tex
+(SGX-SSO.tex
+LaTeX2e <2018-12-01>
+(llncs.cls
 Document Class: llncs 2018/03/10 v2.20 
  LaTeX document class for Lecture Notes in Computer Science
-(/usr/local/texlive/2020/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-(/usr/local/texlive/2020/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cl
+s"
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo
+"
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
-\c@part=\count167
-\c@section=\count168
-\c@subsection=\count169
-\c@subsubsection=\count170
-\c@paragraph=\count171
-\c@subparagraph=\count172
-\c@figure=\count173
-\c@table=\count174
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen134
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
 )
-(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count175
-\mult@box=\box45
-\multicol@leftmargin=\dimen135
-\c@unbalance=\count176
-\c@collectmore=\count177
-\doublecol@number=\count178
-\multicoltolerance=\count179
-\multicolpretolerance=\count180
-\full@width=\dimen136
-\page@free=\dimen137
-\premulticols=\dimen138
-\postmulticols=\dimen139
-\multicolsep=\skip49
-\multicolbaselineskip=\skip50
-\partial@page=\box46
-\last@line=\box47
-\maxbalancingoverflow=\dimen140
-\mult@rightbox=\box48
-\mult@grightbox=\box49
-\mult@gfirstbox=\box50
-\mult@firstbox=\box51
-\@tempa=\box52
-\@tempa=\box53
-\@tempa=\box54
-\@tempa=\box55
-\@tempa=\box56
-\@tempa=\box57
-\@tempa=\box58
-\@tempa=\box59
-\@tempa=\box60
-\@tempa=\box61
-\@tempa=\box62
-\@tempa=\box63
-\@tempa=\box64
-\@tempa=\box65
-\@tempa=\box66
-\@tempa=\box67
-\@tempa=\box68
-\@tempa=\box69
-\@tempa=\box70
-\@tempa=\box71
-\@tempa=\box72
-\@tempa=\box73
-\@tempa=\box74
-\@tempa=\box75
-\@tempa=\box76
-\@tempa=\box77
-\@tempa=\box78
-\@tempa=\box79
-\@tempa=\box80
-\@tempa=\box81
-\@tempa=\box82
-\@tempa=\box83
-\@tempa=\box84
-\@tempa=\box85
-\@tempa=\box86
-\@tempa=\box87
-\@tempa=\box88
-\c@minrows=\count181
-\c@columnbadness=\count182
-\c@finalcolumnbadness=\count183
-\last@try=\dimen141
-\multicolovershoot=\dimen142
-\multicolundershoot=\dimen143
-\mult@nat@firstbox=\box89
-\colbreak@box=\box90
-\mc@col@check@num=\count184
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\multicol.
+sty"
+Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
+\c@tracingmulticols=\count88
+\mult@box=\box27
+\multicol@leftmargin=\dimen103
+\c@unbalance=\count89
+\c@collectmore=\count90
+\doublecol@number=\count91
+\multicoltolerance=\count92
+\multicolpretolerance=\count93
+\full@width=\dimen104
+\page@free=\dimen105
+\premulticols=\dimen106
+\postmulticols=\dimen107
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box28
+\last@line=\box29
+\maxbalancingoverflow=\dimen108
+\mult@rightbox=\box30
+\mult@grightbox=\box31
+\mult@gfirstbox=\box32
+\mult@firstbox=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\c@columnbadness=\count94
+\c@finalcolumnbadness=\count95
+\last@try=\dimen109
+\multicolovershoot=\dimen110
+\multicolundershoot=\dimen111
+\mult@nat@firstbox=\box51
+\colbreak@box=\box52
+\mc@col@check@num=\count96
 )
-(/usr/local/texlive/2020/texmf-dist/tex/latex/oberdiek/aliascnt.sty
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\aliasc
+nt.sty"
 Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
 )
-\c@chapter=\count185
+\c@chapter=\count97
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
 LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
@@ -110,397 +92,139 @@ LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
 LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
 LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
 LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
-\tocchpnum=\dimen144
-\tocsecnum=\dimen145
-\tocsectotal=\dimen146
-\tocsubsecnum=\dimen147
-\tocsubsectotal=\dimen148
-\tocsubsubsecnum=\dimen149
-\tocsubsubsectotal=\dimen150
-\tocparanum=\dimen151
-\tocparatotal=\dimen152
-\tocsubparanum=\dimen153
-\@tempcntc=\count186
-\fnindent=\dimen154
-\c@@inst=\count187
-\c@@auth=\count188
-\c@auco=\count189
-\instindent=\dimen155
-\authrun=\box91
-\authorrunning=\toks15
-\tocauthor=\toks16
-\titrun=\box92
-\titlerunning=\toks17
-\toctitle=\toks18
-\c@theorem=\count190
-\c@case=\count191
-\c@conjecture=\count192
-\c@corollary=\count193
-\c@definition=\count194
-\c@example=\count195
-\c@exercise=\count196
-\c@lemma=\count197
-\c@note=\count198
-\c@problem=\count199
-\c@property=\count266
-\c@proposition=\count267
-\c@question=\count268
-\c@solution=\count269
-\c@remark=\count270
-\headlineindent=\dimen156
+\tocchpnum=\dimen112
+\tocsecnum=\dimen113
+\tocsectotal=\dimen114
+\tocsubsecnum=\dimen115
+\tocsubsectotal=\dimen116
+\tocsubsubsecnum=\dimen117
+\tocsubsubsectotal=\dimen118
+\tocparanum=\dimen119
+\tocparatotal=\dimen120
+\tocsubparanum=\dimen121
+\@tempcntc=\count98
+\fnindent=\dimen122
+\c@@inst=\count99
+\c@@auth=\count100
+\c@auco=\count101
+\instindent=\dimen123
+\authrun=\box53
+\authorrunning=\toks14
+\tocauthor=\toks15
+\titrun=\box54
+\titlerunning=\toks16
+\toctitle=\toks17
+\c@theorem=\count102
+\c@case=\count103
+\c@conjecture=\count104
+\c@corollary=\count105
+\c@definition=\count106
+\c@example=\count107
+\c@exercise=\count108
+\c@lemma=\count109
+\c@note=\count110
+\c@problem=\count111
+\c@property=\count112
+\c@proposition=\count113
+\c@question=\count114
+\c@solution=\count115
+\c@remark=\count116
+\headlineindent=\dimen124
 )
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath
+.sty"
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip45
 
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks19
-)
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+For additional information on amsmath, use the `?' option.
 
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 105.
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext
+.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
 
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.
+sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen125
 ))
-\Gin@req@height=\dimen157
-\Gin@req@width=\dimen158
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.
+sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen126
 )
-(/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
-File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count271
-\l__pdf_internal_box=\box93
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.
+sty"
+Package: amsopn 2016/03/08 v2.02 operator names
 )
-(./SGX-SSO.aux)
-\openout1 = `SGX-SSO.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-
-(/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count272
-\scratchdimen=\dimen159
-\scratchbox=\box94
-\nofMPsegments=\count273
-\nofMParguments=\count274
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count275
-\MPscratchDim=\dimen160
-\MPnumerator=\count276
-\makeMPintoPDFobject=\count277
-\everyMPtoPDFconversion=\toks21
-) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(/usr/local/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 38.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 38.
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-38.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 38.
-
-
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 38.
-
-
-LaTeX Warning: Citation `OpenIDConnect' on page 1 undefined on input line 59.
-
-
-LaTeX Warning: Citation `rfc6749' on page 1 undefined on input line 59.
-
-
-LaTeX Warning: Citation `SAML' on page 1 undefined on input line 59.
-
-
-LaTeX Warning: Citation `Alexa' on page 1 undefined on input line 62.
-
-
-LaTeX Warning: Citation `GhasemisharifRC18' on page 1 undefined on input line 6
-2.
-
-
-LaTeX Warning: Citation `WangCW12' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `ccsSunB12' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `SomorovskyMSKJ12' on page 1 undefined on input line 82
-.
-
-
-LaTeX Warning: Citation `ArmandoCCCPS13' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `DiscoveringJCS' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `dimvaLiM16' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `WangZLG16' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `MainkaMS16' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation ` MainkaMSW17' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `YangLCZ18' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `maler2008venn' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `NIST2017draft' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `BrowserID' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Citation `SPRESSO' on page 1 undefined on input line 82.
-
-
-LaTeX Warning: Reference `fig:OpenID' on page 1 undefined on input line 83.
-
-
-LaTeX Warning: Citation `BrowserID' on page 1 undefined on input line 87.
-
-
-LaTeX Warning: Citation `SPRESSO' on page 1 undefined on input line 87.
-
-
-LaTeX Warning: Citation `Google' on page 1 undefined on input line 87.
-
-
-LaTeX Warning: Citation ` FirefoxAccount' on page 1 undefined on input line 87.
-
-
-
-LaTeX Warning: Citation `maler2008venn' on page 1 undefined on input line 87.
-
-[1
-
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Citation `googlenews' on page 2 undefined on input line 89.
-
-
-LaTeX Warning: Citation `Onavo' on page 2 undefined on input line 89.
-
-
-LaTeX Warning: Citation `agrawal2003information' on page 2 undefined on input l
-ine 89.
-
-
-LaTeX Warning: Citation `de2010practical' on page 2 undefined on input line 89.
-
-
-
-LaTeX Warning: Citation `maler2008venn' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `NIST2017draft' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `BrowserID' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `SPRESSO' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `NIST2017draft' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `OpenIDConnect' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation ` SAMLIdentifier' on page 2 undefined on input line 98.
-
-
-
-LaTeX Warning: Citation `BrowserID' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `SPRESSO' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `persona' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Citation `FirefoxAccount' on page 2 undefined on input line 98.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
-
-LaTeX Warning: Citation `MS' on page 3 undefined on input line 101.
-
-
-LaTeX Warning: Citation ` Oracle' on page 3 undefined on input line 101.
-
-
-LaTeX Warning: Citation `Nordic' on page 3 undefined on input line 101.
-
-
-LaTeX Warning: Citation ` Curity' on page 3 undefined on input line 101.
-
-
-Overfull \hbox (57.76714pt too wide) in paragraph at lines 105--113
-\OT1/cmr/m/n/10 on el-lip-tic curve cryp-tog-ra-phy. Us-ing the one-way trap-do
-or func-tion $\OMS/cmsy/m/n/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ID[]; T\OT1
-/cmr/m/n/10 )$,
- []
-
-
-Overfull \hbox (45.8982pt too wide) in paragraph at lines 105--113
-\OT1/cmr/m/n/10 nally, us-ing a spe-cial identifier-transformation func-tion $\
-OMS/cmsy/m/n/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 PID[]; PID[]; T\OT1/cmr/m/
-n/10 )$,
- []
-
-
-Underfull \vbox (badness 1102) has occurred while \output is active []
-
- [3]
-
-LaTeX Warning: Citation `OpenIDConnect' on page 4 undefined on input line 124.
-
-
-LaTeX Warning: Citation `SPRESSO' on page 4 undefined on input line 124.
-
-
-LaTeX Warning: Reference `sec:background' on page 4 undefined on input line 128
-.
-
-
-LaTeX Warning: Reference `sec:challenge' on page 4 undefined on input line 128.
-
-
-
-LaTeX Warning: Reference `sec:assumptionandthreatmodel' on page 4 undefined on 
-input line 128.
-
-
-LaTeX Warning: Reference `sec:UPPRESSO' on page 4 undefined on input line 128.
-
-
-LaTeX Warning: Reference `sec:privacy' on page 4 undefined on input line 128.
-
-
-LaTeX Warning: Reference `sec:formal' on page 4 undefined on input line 128.
-
-
-LaTeX Warning: Reference `sec:implementation' on page 4 undefined on input line
- 128.
-
-
-LaTeX Warning: Reference `sec:discussion' on page 4 undefined on input line 128
-.
-
-
-LaTeX Warning: Reference `sec:related' on page 4 undefined on input line 128.
-
-
-LaTeX Warning: Reference `sec:conclusion' on page 4 undefined on input line 128
-.
-
-Package epstopdf Info: Source file: <fig1.eps>
-(epstopdf)                    date: 2017-10-04 11:21:14
-(epstopdf)                    size: 357553 bytes
-(epstopdf)             Output file: <fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2021-04-15 15:16:07
-(epstopdf)                    size: 26507 bytes
-(epstopdf)             Command: <repstopdf --outfile=fig1-eps-converted-to.pdf 
-fig1.eps>
-(epstopdf)             \includegraphics on input line 178.
-Package epstopdf Info: Output file is already uptodate.
-<fig1-eps-converted-to.pdf, id=31, 345.29pt x 142.5325pt>
-File: fig1-eps-converted-to.pdf Graphic file (type pdf)
-<use fig1-eps-converted-to.pdf>
-Package pdftex.def Info: fig1-eps-converted-to.pdf  used on input line 178.
-(pdftex.def)             Requested size: 347.12354pt x 143.29115pt.
-[4] [5 <./fig1-eps-converted-to.pdf>] [6] (./SGX-SSO.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+\inf@bad=\count117
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count118
+\leftroot@=\count119
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count120
+\DOTSCASE@=\count121
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box55
+\strutbox@=\box56
+\big@size=\dimen127
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+\macc@depth=\count122
+\c@MaxMatrixCols=\count123
+\dotsspace@=\muskip10
+\c@parentequation=\count124
+\dspbrk@lvl=\count125
+\tag@help=\toks19
+\row@=\count126
+\column@=\count127
+\maxfields@=\count128
+\andhelp@=\toks20
+\eqnshift@=\dimen128
+\alignsep@=\dimen129
+\tagshift@=\dimen130
+\tagwidth@=\dimen131
+\totwidth@=\dimen132
+\lineht@=\dimen133
+\@envbody=\toks21
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/filecontents\fi
+lecontents.sty"
+Package: filecontents 2019/09/20 v1.5 Create an external file from within a LaT
+eX document
+)
+
+! LaTeX Error: File `titlesec.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.14 \usepackage
+                {lipsum,mwe,cuted}
+*** (cannot \read from terminal in nonstop modes)
+
+ 
 Here is how much of TeX's memory you used:
- 1640 strings out of 480608
- 22896 string characters out of 5903631
- 270843 words of memory out of 5000000
- 17543 multiletter control sequences out of 15000+600000
- 540603 words of font info for 51 fonts, out of 8000000 for 9000
+ 1240 strings out of 492895
+ 14892 string characters out of 3122334
+ 83736 words of memory out of 3000000
+ 5216 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,8n,25p,1927b,243s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
-sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></
-usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-ocal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loc
-al/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
-2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/202
-0/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2020/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2020/texmf
--dist/fonts/type1/public/cm-super/sfrm0900.pfb>
-Output written on SGX-SSO.pdf (6 pages, 248607 bytes).
-PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 29i,0n,21p,205b,36s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
