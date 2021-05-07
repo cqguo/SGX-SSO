@@ -1,1 +1,61 @@
-\section{introduction}
+\section{Introduction}
+\label{sec:intro}
+
+%SSO的特点
+%SSO的现状
+Single sign-on (SSO) systems, such as OpenID Connect~\cite{OpenIDConnect}, OAuth~\cite{rfc6749} and SAML~\cite{SAML}, have been widely deployed as the identity management and authentication infrastructure in the Internet.
+SSO enables a website, called the \emph{relying party} (RP), to delegate its user authentication to a trusted third party called the \emph{identity provider} (IdP).
+Thus, a user visits multiple RPs with only a single explicit authentication attempt at the IdP.
+With the help of SSO, a user no longer needs to remember multiple credentials for different RPs; instead, she maintains only the credential for the IdP, which will generate \emph{identity proofs} for her visits to these RPs.
+SSO has been widely integrated with many application services.
+For example, we find that 80\% of the Alexa Top-100 websites~\cite{Alexa} support SSO, and the analysis on the Alexa Top-1M websites~\cite{GhasemisharifRC18} identifies 6.30\% with the SSO support.
+Meanwhile, many email and social network providers (such as Google, Facebook, Twitter, etc.) are serving the IdP roles in the Internet. 
+
+However, the wide adoption of SSO also raises new privacy concerns. Currently, more and more companies are interested in the users' online trace for business practices, such as accurate delivery advertising. For example, large internet service providers, such as Google and Facebook, are interested in collecting users' online behavioral information for various purposes (e.g., Screenwise Meter~\cite{googlenews} and Onavo~\cite{Onavo}). Hoever, by simply serving the IdP role, these companies can easily collect a large amount of data to reconstruct users' online traces. 
+
+
+User privacy leaks in all existing SSO protocols and implementations.
+Taking a widely used SSO protocol, OpenID Connect (OIDC), as an example, we explain its login process and the risk of privacy leakage. 
+On receiving a user's login request, the RP constructs a request of identity proof with its identity and redirects it to the IdP. 
+After authenticating the user, the IdP  generates an identify proof containing the identities of the user and the RP, which is forwarded to the RP by the user. 
+Finally, the RP verifies the identity proof and allows the user to log in.
+From such login instances, any curious IdP or multiple collusive RPs could break the users' privacy as follows.
+\begin{itemize}
+\item {\em IdP-based login tracing}. The IdP knows the identities of the RP and user in each single login instance, to generate the identity proof.
+As a result, a curious IdP could discover all the RPs that the victim user attempts to visit and profile her online activities.
+\item {\em RP-based identity linkage}. The RP learns a user's identity from the identify proof.
+When the IdP generates identity proofs for a user, if the same user identifier is used in identity proofs generated for different RPs, malicious RPs could collude to not only link the user's login activities at different RPs for online tracking but also associate her attributes across multiple RPs.
+\end{itemize}
+
+Imagine that, a user concerning her privacy would avoid to leave her full sensitive information at an application. The user may use multiple web applications and only leave parts of her sensitive messages at each applications, for example, using real name on social website, the address on shopping website and the phone number on Telecom website. And she would try not to leave any linkable message to avoid applications combining her informations, for example, if she leave the email on each applications, they can combine the parts of informations through the email. However, the privacy leaks in SSO systems make her effort in vain. As long as a user employs the SSO system, such as Google Account, to log in to these applications, the applications providers and Google can combine your informations based on the SSO account.
+
+Recently more and more IdPs have been considering the user's privacy serious. For example, one of the most worldwide popular instant messaging applications, WeChat, also working as the IdP service provider, enables a user to create different  plain accounts for login on multiple RPs. Moreover, Active Directory Federation Services and Oracle Access Management support the use of PPID, the privacy protection scheme suggested in OIDC protocol~\cite{MS, Oracle}; identity service providers such as NORDIC APIS and CURITY suggest adopting PPID in SSO to protect user privacy~\cite{Nordic, Curity}.
+
+However, none of the existing techniques proposed by previous research can deal with the privacy concerns comprehensively. Here we give a brief introduction of existing solutions for privacy-preserving SSO and explain the flaws of these schemes. 
+\begin{itemize}
+\item {\em Using different user ID in each RP. }As recommended by NIST~\cite{NIST2017draft} and specified in several SSO protocols~\cite{OpenIDConnect, SAMLIdentifier}, pairwise pseudonymous identifier (PPID) is generated by the IdP to identify a user to an RP, which cannot be correlated with the user's PPID at another RP. Thus, collusive RPs cannot link a user's logins from her PPIDs. However, PPID-based approaches cannot prevent IdP-based login tracing, since the IdP needs to know which RP the user visits in order to generate the correct identify proof.
+\item {\em Simply hiding RP ID from IdP. }For example, SPRESSO~\cite{SPRESSO} were proposed to defend against IdP-based login tracing by hiding RP ID from IdP. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time ID. However, this type of solution can only provide the same user ID for each RP.
+\item {\em Proving user identity based on zero-knowledge proof. }In this type of solution, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ to RP without exposing $s$ to RP. However, it is not convenient for user login on multiple devices. The user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device. For security consideration, the $s$ must be too long for user to remember. 
+\item {\em Completely anonymous SSO system. }Anonymous SSO scheme is proposed to hide the user's identity to both the IdP and RPs with many methods. For example, in the anonymous SSO ~\cite{HanCSTW18}, it allows a user to visit the RP without exposing her identity to both IdP and RP based on zero-knowledge proof. However, it can only be applied to the anonymous services that do not identify the user.
+\end{itemize}
+
+
+As discussed above, none of the existing SSO systems defend against both IdP-based login tracing and RP-based identity linkage, and provided the convenient SSO service on multiple devices at the same time.
+And, it can not be solved by simply combining existing solutions together. The challenge is that, there is not a simple way for IdP to provide the RP-specific user ID without knowing the RP's identity.
+
+In this paper, we propose XXX, which provides the convenient SSO service with comprehensive protection against bosh IdP-based login tracing and RP-based identity linkage. The key idea of XXX is separating IdP into two parts. The first part is for user authentication and identity proof issuing, which must be completed at server for security consideration. The other part is for RP and user's ID transformation, which must be completed at the user controlled and IdP trusted part to keep RP's identity unknown to IdP. With SGX, the secure hardware supported by intel CPU, the second part can be implemented at user's PC based on the $remote attestation$, the function provided by SGX. For IdP, it can only achieve a encrypted one-time RP ID, so that the IdP-based login tracing is not impossible. Moreover, for RP, the user controlled IdP part generates the PPID, therefore, it protects user from RP-based identity linkage.
+
+We summarize our contributions as follows.
+%我们的贡献
+%提出协议
+%考虑能否根据模型进行分析
+%实现原型系统
+%The main contributions of UPPRESSO are as follows:
+\begin{itemize}
+\item We propose the comprehensive solution to hide the users' login traces from both the curious IdP and malicious collusive RPs for convenient SSO system.
+\item We formally analyze the security of XXX and show that it guarantees the security, while the users' login traces are well protected.
+\item We have implemented a prototype of XXX, and compare the performance of the XXX prototype with the state-of-the-art SSO systems (i.e., OIDC), and demonstrate its efficiency.
+\end{itemize}
+
+%文章结构
+The rest of the paper is organized as follows. We first introduce the background and preliminaries in Section~\ref{sec:background}. Then, we describe the identifier-transformation based approach, the threat model, and our UPPRESSO design in Sections~\ref{sec:challenge}, \ref{sec:assumptionandthreatmodel} and \ref{sec:UPPRESSO}, followed by a systematical analysis of security and privacy in Section~\ref{sec:analysis}. We provide the implementation specifics and experiment evaluation in Section~\ref{sec:implementation}, discuss the related works in Section~\ref{sec:related}, and conclude our work in Section~\ref{sec:conclusion}.
