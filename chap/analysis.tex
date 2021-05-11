@@ -1,0 +1,51 @@
+\section{Security Analysis}
+Our formal analysis of XXX is based on the Dolev-Yao style web model~\cite{SPRESSO}, which has been widely used in formal analysis of SSO protocol, e.g., OAuth 2.0~\cite{FettKS16} and OIDC ~\cite{FettKS17}.
+To make the description cleaner, we foucus on our communications among XXX entities, and assume DNS and HTTPS are secure, which has already been anaylzed in~\cite{SPRESSO}.
+
+
+\subsection{The Web Model}
+
+The main entities in the model are $atomic\ processes$, which represent the essential nodes in the web systems, such as browsers, web servers and attackers. The atomic processes communicate with each other through the $events$ containing the receiver atomic process's address (IP), the sender atomic process process's address (IP) and the transmitted $messages$. Moreover, there are also dependent $scripting\ processes$ which runs on the client-side environment relying on the browsers such as JavaScript. The scripting provides the server defined function to the browser.  The web system mainly consists of the set of atomic processes and scripting processes. The operation of a system is described as that the system converts its states via step of runs. The state of web system is called $configuraton$ which consists of all the states of the atomic processes in the system and all the event can be accepted by the processes.
+
+Here, we list the definitions of these notations as follows. 
+
+
+\vspace{1mm}\noindent\textbf{Message } is defined as formal terms without variables (called ground terms). The messages in the model is considered containing constants (such as ASCII strings and nonce), sequence symbols (such as n-ary sequences $\langle \rangle$, $\langle . \rangle$, $\langle . ,. \rangle$ etc.) and further function symbols (such as encryption/decryption and digital signatures). For example, an HTTP request is a common message in the web model, containing a type $\mathtt{HTTPReq}$, a nonce $n$, a method  $\mathtt{GET}$ or $\mathtt{POST}$,  a domain , a path, URL parameters, request headers, and the body  in the sequence symbol formate. Here is an example for an HTTP GET request for the domain  $\mathtt{exa.com/path?para=1}$ with the headers and body empty.
+\begin{equation*}
+    m:=\langle\mathtt{HTTPReq},n,\mathtt{GET},exa.com,/path,\langle \langle para, 1\rangle \rangle ,\langle \rangle,\langle \rangle \rangle
+\end{equation*}
+
+\vspace{1mm}\noindent\textbf{Event } is the basic communication elements in the model.  An event is the term in the formate $\langle a, f, m \rangle$. In an $event$, the $f$ is the sender's address, the $a$ represents the address receiver, and $m$ is the message transmitted. 
+
+\vspace{1mm}\noindent\textbf{Atomic Process}.  An $atomic\ Dolev-Yao (DY)\ process$ is can be displayed as the tuple $p=$ $(I^p, Z^p, R^p,s_0^p )$, which stands for the single node in the web model, such as the server and browser. $I^p$ includes the addresses owned by this process. $Z^p$ is the set of states that this process is probably in. $R^p$ is the set of relations between the pairs $\langle s, e \rangle$ and $\langle s', e' \rangle$ where $s, s' \in Z^p$.
+That is, once a process is in the sate $s$ and receives the event $e$, it would jump into the state $s'$ and wait for the event $e'$.
+%is the relation where inputting a state $s \in Z^p$ and an event $e$ and outputting a new state $s'$ and event $e'$, and $s_0 \in Z^p$ is the initial state of the process. 
+%It's worth noting that for one process in a state only a finite set of events can be accepted by the process as the state and event are defined as the input of $R^p$.
+
+\vspace{1mm}\noindent\textbf{Scripting Process}. The web model also contains the scripting process representing the client-side script loaded by browser such as JavaScript code. However, the $scripting\ process$ must rely on an $atom\ process$ such as browser and provide the relation $R$ witch is called by this $atomic\ process$. 
+
+\vspace{1mm}\noindent\textbf{Equational theory } is defined as usual in Dolev-Yao models,  but introduces the symbol $\equiv$ representing the congruence relation on terms. For instance,  $dec(enc(m,$ $ k),\ k)$ $\equiv$ $m$, where $k$ is the symmetric key.
+
+\vspace{1mm}\noindent\textbf{Web System. }
+The web system is consisted of a set of processes (including atomic processes and scripting processes). The web system can be described as the tuple ($\mathcal{W}$, $\mathcal{S}$, $\mathtt{script}$, $E^0$). $\mathcal{W}$ is consisted of the atomic processes, including honest processes and malicious processes. $\mathcal{S}$ is the set of scripting processes including honest scripts and malicious scripts. $\mathtt{script}$ is the set of concrete script code. And $E^0$ includes all the events that could be accepted by the processes in $\mathcal{W}$. 
+
+\vspace{1mm}\noindent\textbf{Configuration}. 
+In the web system, there is the set of states of all processes in $\mathcal{W}$ at one point in time, denoted as $S$. 
+And all the $event$s can be accepted by the processes at this point consist the set $E$.
+A $configuration$ of the system is defined as the tuple ($S, E, N$) where $N$ is the mentioned sequence of unused nonces. 
+
+\vspace{1mm}\noindent\textbf{Run Step}. A run step is the process, that a web system changes its configuration ($S, E, N$) into ($S', E', N'$) after accepting an event $e \in E$. 
+
+\subsection{Model Of XXX}
+The XXX model is a web system which is defined as 
+\begin{equation*}
+    \mathcal{XWS} = (\mathcal{W}, \mathcal{S}, \mathtt{script}, E^0),
+\end{equation*}
+
+$\mathcal{W}$ is the finite set of atom processes in UPPRESSO system including a single IdP server process, multiple honest RP server processes, the browser processes, the enclave application processes and the attacker processes. We assume that all the honest RPs are implemented following the same rule so that the process are considered consistent besides of the addresses they listen to. The browsers controlled by user are considered honest. That is, the browser controlled by attackers can behave as  an independent atomic process. The enclave applications are always honest.
+
+$\mathcal{S}$ is the finite set of scripting processes consists of $script\_rp$, $script\_idp$ and $script\_attacker$. The $script\_rp$ and $script\_idp$ are downloaded from honest RP and IdP processes and the $script\_attacker$ is downloaded from attacker process considered existing in all browser processes. 
+
+\subsection{Proof of Security}
+
+

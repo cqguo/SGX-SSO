@@ -9,7 +9,7 @@
 % inlined bib file
 \usepackage{filecontents}
 
-%\usepackage[compact]{titlesec}
+
 %\usepackage{lipsum,mwe,cuted}
 \usepackage{float}%%%%提供浮动体的[H]选项，进而取消浮动
 \usepackage{caption}%%提供\captionof命令
@@ -23,8 +23,12 @@
 \usepackage{caption}
 %
 
-%\usepackage{algpseudocode}
-%\usepackage{amsmath,amssymb,amsthm}
+\usepackage{algpseudocode}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{amsthm}
 
 \usepackage{graphicx}
 %\usepackage{geometry}
@@ -43,7 +47,7 @@
 %\usepackage[compatible]{algpseudocode}
 
 %\usepackage[algo2e]{algorithm2e}
-%\usepackage{algorithm}
+\usepackage{algorithm}
 %\usepackage{algorithmic}
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
@@ -51,6 +55,63 @@
 % If you use the hyperref package, please uncomment the following line
 % to display URLs in blue roman font according to Springer's eBook style:
 % \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+
+
+
+
+
+
+
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
+
+\algblockdefx{SWITCH}{ENDSWITCH}[1]{\textbf{switch} #1\ \textbf{do}}{\textbf{end switch}}
+\algblockdefx{CASE}{ENDCASE}[1]{\textbf{case} #1\textbf{:}}{\textbf{end case}}
+
+\renewcommand{\algorithmicrequire}[1]{\textbf{Input:} #1}
+\newcommand{\deflet}{\textbf{let}}
+\newcommand{\mystate}[1]{\State \textbf{let} {{}#1}}
+\newcommand{\mystop}[1]{\State \textbf{stop} \myss{\myangle{{{}#1}}, s'}}
+\newcommand{\myss}[1]{${{}#1}$}
+\newcommand{\myangle}[1]{\langle {{}#1} \rangle}
+\newcommand{\myif}[1]{\If{\myss{{{}#1}}}}
+\newcommand{\myelse}[1]{\ElsIf{\myss{{{}#1}}}}
+
+\begin{comment}
+\newcommand{\SWITCH}[1]{\State \textbf{switch} #1\ \textbf{do} \begin{ALC@g}}
+\newcommand{\ENDSWITCH}{\end{ALC@g}\State \textbf{end switch}}
+\newcommand{\CASE}[1]{\State \textbf{case} #1\textbf{:} \begin{ALC@g}}
+\newcommand{\ENDCASE}{\end{ALC@g}}
+\newcommand{\CASELINE}[1]{\State \textbf{case} #1\textbf{:} }
+\newcommand{\DEFAULT}{\State \textbf{default:} \begin{ALC@g}}
+\newcommand{\ENDDEFAULT}{\end{ALC@g}}
+\newcommand{\DEFAULTLINE}[1]{\State \textbf{default:} }
+\end{comment}
+
+
+
+
+
 
 \begin{document}
 %
@@ -92,4 +153,7 @@ The abstract should briefly summarize the contents of the paper in
 \input{chap/background.tex}
 \input{chap/threatmodel.tex}
 \input{chap/design.tex}
+\input{chap/analysis.tex}
+\input{chap/implementation.tex}
+\input{chap/appendix.tex}
 \end{document}
