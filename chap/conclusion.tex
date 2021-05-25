@@ -1,0 +1,4 @@
+\section{Conclusion}
+In this paper, we propose XXX, the XXX. To prevent the IdP from knowing a user's login trace in an SSO system, we split a IdP service into two parts. One part runs on the IdP server, which takes the responsibility of authenticating users, storing the private key, issuing the identity token and etc. The other part generates the PPID based on the user identifier retrieved by server-part service, and transforms PPID and RP's identifier into one-time encrypted ID to prevent both IdP-based user tracing and RP-based identity linkage. This part of service runs on the user's device, but protected by the Intel SGX. Even the malicious cannot control the user-part service. 
+We formally analyse the XXX protocol based on Dolev-Yao style model, and make sure its security. 
+The performance evaluation on the prototype of XXX demonstrates that the introduced is modest. 

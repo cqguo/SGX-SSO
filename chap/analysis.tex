@@ -22,9 +22,18 @@ That is, once a process is in the sate $s$ and receives the event $e$, it would 
 %is the relation where inputting a state $s \in Z^p$ and an event $e$ and outputting a new state $s'$ and event $e'$, and $s_0 \in Z^p$ is the initial state of the process. 
 %It's worth noting that for one process in a state only a finite set of events can be accepted by the process as the state and event are defined as the input of $R^p$.
 
+\noindent\textbf{Browser Process.}
+In XXX, we assume that the browsers are honest, therefore, we only need to analyze how the browsers interactive with the scripts. 
+The browser model mainly includes the windows and documents.
+\begin{itemize}
+\item \noindent\textbf{Window}. The window \myss{w} represents the  the concrete browser window in the system, which is identified by a \myss{nonce}. A window contains a set of $\mathtt{documents}$ including the current document and cached documents. 
+\item \noindent\textbf{Document}. The document is the HTML content in a window, which is identified by the document \myss{nonce}. It includes the scripting process downloaded from server.
+\end{itemize}
+
+
 \vspace{1mm}\noindent\textbf{Scripting Process}. The web model also contains the scripting process representing the client-side script loaded by browser such as JavaScript code. However, the $scripting\ process$ must rely on an $atom\ process$ such as browser and provide the relation $R$ witch is called by this $atomic\ process$. 
 
-\vspace{1mm}\noindent\textbf{Equational theory } is defined as usual in Dolev-Yao models,  but introduces the symbol $\equiv$ representing the congruence relation on terms. For instance,  $dec(enc(m,$ $ k),\ k)$ $\equiv$ $m$, where $k$ is the symmetric key.
+\vspace{1mm}\noindent\textbf{Equational Theory } is defined as usual in Dolev-Yao models,  but introduces the symbol $\equiv$ representing the congruence relation on terms. For instance,  $dec(enc(m,$ $ k),\ k)$ $\equiv$ $m$, where $k$ is the symmetric key.
 
 \vspace{1mm}\noindent\textbf{Web System. }
 The web system is consisted of a set of processes (including atomic processes and scripting processes). The web system can be described as the tuple ($\mathcal{W}$, $\mathcal{S}$, $\mathtt{script}$, $E^0$). $\mathcal{W}$ is consisted of the atomic processes, including honest processes and malicious processes. $\mathcal{S}$ is the set of scripting processes including honest scripts and malicious scripts. $\mathtt{script}$ is the set of concrete script code. And $E^0$ includes all the events that could be accepted by the processes in $\mathcal{W}$. 
@@ -42,10 +51,78 @@ The XXX model is a web system which is defined as
     \mathcal{XWS} = (\mathcal{W}, \mathcal{S}, \mathtt{script}, E^0),
 \end{equation*}
 
-$\mathcal{W}$ is the finite set of atom processes in UPPRESSO system including a single IdP server process, multiple honest RP server processes, the browser processes, the enclave application processes and the attacker processes. We assume that all the honest RPs are implemented following the same rule so that the process are considered consistent besides of the addresses they listen to. The browsers controlled by user are considered honest. That is, the browser controlled by attackers can behave as  an independent atomic process. The enclave applications are always honest.
+$\mathcal{W}$ is the finite set of atom processes in XXX system including a single IdP server process, multiple honest RP server processes, the browser processes, the enclave application processes and the attacker processes. We assume that all the honest RPs are implemented following the same rule so that the process are considered consistent besides of the addresses they listen to. The browsers controlled by user are considered honest. That is, the browser controlled by attackers can behave as  an independent atomic process. The enclave applications are always honest.
 
 $\mathcal{S}$ is the finite set of scripting processes consists of $script\_rp$, $script\_idp$ and $script\_attacker$. The $script\_rp$ and $script\_idp$ are downloaded from honest RP and IdP processes and the $script\_attacker$ is downloaded from attacker process considered existing in all browser processes. 
 
-\subsection{Proof of Security}
+\subsection{Security of XXX}
+In this section, we prove the security of XXX. Here, we give the theorem to be proved. 
+\begin{theorem}
+Let $\mathcal{XWS}$ be the XXX web system, then $\mathcal{EWS}$ is secure.
+\label{the:secure}
+\end{theorem} 
+
+The XXX is considered secure $iff$ the adversary cannot log in to an honest RP under another honest user's account. Based on the model of XXX, described in Appendix~\ref{sec:appendix}, only when the RP accepts an valid identity token and retrieves the PPID same as the honest user's from adversary, the attack is successful. Therefore, we can get the definition.
+
+\begin{definition}
+Let $\mathcal{XWS}$ be an XXX web system, $\mathcal{XWS}$ is secure \emph{iff} the adversary cannot obtain a valid identity token, whose encrypted PPID could be decrypted into the honest user's PPID.
+\label{def:secure}
+\end{definition}
+
+To prove XXX system is secure, we only need to guarantee that it satisfies the requirements described in definition~\ref{def:secure}. 
+The adversary may try to retrieve a valid identity token in following ways: (1) forging the valid identity token itself; (2) leading the honest RP treat adversary's identity token as the honest user's one; (3) stealing a valid token from an honest entity in the system. 
+Therefore, definition~\ref{def:secure} can be further classified into the following lemmas. 
+
+\begin{lemma}
+The adversary cannot forge the valid identity token.
+\label{lem:forge}
+\end{lemma}
+
+\begin{proof}
+It can be easily proved that, while an RP receives the identity token, it verifies the signature with the IdP issued public key. Only the IdP knows the corresponding private key, so that the adversary cannot forge the valid identity token itself.
+\end{proof}
+
+\begin{lemma}
+The RP would not retrieve an honest user's PPID from the adversary's identity token.
+\label{lem:trickRP}
+\end{lemma}
+
+\begin{proof}
+The adversary cannot obtain the identity proof issued for other honest user from XXX system, which is to be proved in lemma~\ref{lem:steal}. We consider in the SSO process, only the IdP server and enclave application are honest. An adversary can get a identity token including $\mathtt{PRPID}=encrypt(\mathtt{Domain})$ and $\mathtt{PRPID}=encrypt(hash(\mathtt{Domain}, \mathtt{uid}))$. The $\mathtt{Domain}$ is controlled by adversary and can be assigned as any value. The $\mathtt{uid}$ must belong to the adversary. There is no chance that an adversary can get a key, making the attack available. Because the key must satisfies that, $decrypt(\mathtt{PRPID}, key) \equiv honest\ RPDomain$ and  $decrypt(\mathtt{PPID}, key) \equiv hash(honest\ RPDomain, honest\ uid)$, which is not possible.   
+\end{proof}
+
+
+\begin{lemma}
+The adversary cannot steal an identity token from any entities in the system.
+\label{lem:steal}
+\end{lemma}
+
+\begin{proof}
+Firstly, we give the brief description of the proof. (1) For IdP, it only sends the identity token to its enclave application. (2) For enclave application, it only returns the token back to whom invoked it with the uid token. And it can be proved that only the honest user can own the uid token beside of enclave application and IdP server. (3) The IdP script only transmits the token to the script in the origin $\mathtt{RPDomain}$. As the identity token includes the $\mathtt{PRPID}$, the identity proof would be only sent to the origin that the token is issued for. (4) The RP script only sends the identity token to its server. (5) RP sever would not send identity token to any parties.
+The detailed proof is described as follows. 
+
+The identity token sent by IdP is shown in line 44, Algorithm~\ref{alg1}, as the response of path described in line 38, Algorithm~\ref{alg1}. We consider that IdP only accepts the enclave application's request to path $\mathtt{requireUID}$ and $\mathtt{requireToken}$. Therefore, the identity token would only be sent to the enclave application.
+
+We can see that the identity token is sent by enclave application shown in line 25, Algorithm~\ref{alg5} to the entity defined in line 2, ~\ref{alg5}. The receiver of identity token is the one invoking it with a uid token (line 4, Algorithm~\ref{alg5}). And the uid is exchanged with this uid token (line 9, 14, Algorithm~\ref{alg5}). 
+Then we prove that the only the honest user can own the uid token. Based on line 11-16 and line 22-28, Algorithm, we can see that IdP only sends the uid token to the authenticated user. It can be observed that the IdP script receives the uid token in line 34, Algorithm~\ref{alg3} and only sends it to enclave application in line 35, Algorithm~\ref{alg3}. Therefore, an adversary cannot obtain a user's uid token, so that it cannot retrieve the identity token from the enclave application.
+
+The IdP script only sends the identity token by postMessage shown at line 43, Algorithm~\ref{alg3}. The target is the opener of this window and restricted by the origin $mathtt{RPDomain}$. $\mathtt{RPDomain}$ is defined at line 25, Algorithm~\ref{alg3} and never rewrote. Due to the scriptstate, in Algorithm~\ref{alg3} the $\mathtt{RPDomain}$s used at line 35 (used for identity token generation) and line 43 (restricting the receiver) must be consistent with the one at line 25. Therefore, IdP would not send the identity token to any adversaries. 
+
+The model Algorithm~\ref{alg4} shows RP script receives the identity token at line 21 and send it out at line 25, while the receiver is defined at line 23. The receiver address is assigned during initiation at line 4 and never modified. It is downloaded with the script and considered honest. Therefore, the RP script would not send the identity token to adversary.
+
+Based on the model shown as Algorithm~\ref{alg2}, we can find that RP server would not send identity token to other parties. Therefore, the adversary cannot steal the identity token from RP server.
+\end{proof}
+
+It is proved that XXX system satisfies the requirements raised in definition~\ref{def:secure}. Therefore, Theorem~\ref{the:secure} is proved.
+
+
+\subsection{Privacy of XXX}
+Based on the process shown in Section~\ref{sec:design} and models shown in Appendix~\ref{sec:appendix}, we can find that a curious IdP can only obtain the $\mathtt{PRPID}$ related with the RP's identity. The $\mathtt{PRPID}$ is the transformed RP domain, which is encrypted with an one-time key. Therefore, the IdP cannot know the real RP's identity or link multiple logins on the same RP. So the IdP-based identity tracing is not possible in XXX system. 
+
+Similarly, the RP can only obtains the $\mathtt{PPID}$ from IdP. An malicious RP cannot derive the real user's uid from the $hash(\mathtt{RPDomain}, \mathtt{uid})$. The collusive RPs are also unable to link the same user because of the same reason. Although the malicious RP can control the $\mathtt{RPDomain}$ to lead the IdP generate incorrect $\mathtt{PPID}$, it still fails to accomplish the attack. Because due to the proof of lemma~\ref{lem:steal}, once the $\mathtt{RPDomain}$ is not consist with the RP's origin, the RP script would be unable to receive the identity token. Therefore, the attack is not available. 
+
+However, the attack based on user's cookie is not considered in this paper. That is, the cookie of user may be exploited by malicious RPs to link a user at different RPs. For example, a user may visit multiple RPs at the same time. The malicious RPs may redirect the user to each other through the hidden iframe, carrying the $\mathtt{PPID}$. This attack is also available in other user authentication systems beside of SSO system. Moreover, it can be easily detected through multiple methods, such as checking the iframe in the script, observing redirection flow through browser network tool, and detecting the redirection based on the browser extension.
+
+
 
 

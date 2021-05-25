@@ -5,9 +5,21 @@
 \documentclass[runningheads]{llncs}
 %
 
-\usepackage[compact]{titlesec}
+
 % inlined bib file
 \usepackage{filecontents}
+
+
+
+
+%% Save the class definition of \subparagraph
+\let\llncssubparagraph\subparagraph
+%% Provide a definition to \subparagraph to keep titlesec happy
+\let\subparagraph\paragraph
+%% Load titlesec
+\usepackage[compact]{titlesec}
+%% Revert \subparagraph to the llncs definition
+\let\subparagraph\llncssubparagraph
 
 
 %\usepackage{lipsum,mwe,cuted}
@@ -23,7 +35,7 @@
 \usepackage{caption}
 %
 
-\usepackage{algpseudocode}
+\usepackage[noend]{algpseudocode}
 
 
 \usepackage{amsmath}
@@ -61,8 +73,6 @@
 
 
 
-
-
 \makeatletter
 \newenvironment{breakablealgorithm}
   {% \begin{breakablealgorithm}
@@ -85,8 +95,22 @@
 \makeatother
 
 
-\algblockdefx{SWITCH}{ENDSWITCH}[1]{\textbf{switch} #1\ \textbf{do}}{\textbf{end switch}}
-\algblockdefx{CASE}{ENDCASE}[1]{\textbf{case} #1\textbf{:}}{\textbf{end case}}
+\algblockdefx{SWITCH}{ENDSWITCH}[1]{\textbf{switch} #1\ \textbf{do}}{\algorithmicend}
+\algblockdefx{CASE}{ENDCASE}[1]{\textbf{case} #1\textbf{:}}{\algorithmicend}
+
+\makeatletter
+\ifthenelse{\equal{\ALG@noend}{t}}%
+  {\algtext*{ENDCASE}}
+  {}%
+\makeatother
+
+\makeatletter
+\ifthenelse{\equal{\ALG@noend}{t}}%
+  {\algtext*{ENDSWITCH}}
+  {}%
+\makeatother
+
+
 
 \renewcommand{\algorithmicrequire}[1]{\textbf{Input:} #1}
 \newcommand{\deflet}{\textbf{let}}
@@ -115,12 +139,15 @@
 
 \begin{document}
 %
-\title{Contribution Title\thanks{Supported by organization x.}}
+\title{Contribution Title}%\thanks{Supported by organization x.}}
 %
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
+\author{}
+\institute{}
+\begin{comment}
 \author{First Author\inst{1}\orcidID{0000-1111-2222-3333} \and
 Second Author\inst{2,3}\orcidID{1111-2222-3333-4444} \and
 Third Author\inst{3}\orcidID{2222--3333-4444-5555}}
@@ -135,14 +162,20 @@ Springer Heidelberg, Tiergartenstr. 17, 69121 Heidelberg, Germany
 \url{http://www.springer.com/gp/computer-science/lncs} \and
 ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany\\
 \email{\{abc,lncs\}@uni-heidelberg.de}}
+\end{comment}
 %
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-The abstract should briefly summarize the contents of the paper in
-150--250 words.
+Single sign-on (SSO) services are widely provided in the Internet by identity providers (IdPs) as the identity management and authentication infrastructure.
+After authenticated by the IdP, a user is allowed to log in to relying parties (RPs) by submitting an \emph{identity proof}(i.e., id token of OpenID Connect or SAML assertion).
+However, SSO introduces the potential leakage of user privacy, as (\emph{a}) a curious IdP could track a user's all visits to any RPand (\emph{b}) collusive RPs could link the user's identities across different RPs, to learn the user's activity profile.
+Existing privacy-preserving SSO solutions protect the users' activity profiles against either the curious IdP or the collusive RPs, but never prevent both of these threats.
 
-\keywords{First keyword  \and Second keyword \and Another keyword.}
+In this paper, we propose an SSO system, called \emph{XXX}, to protect a user's activity profile of RP visits against both the curious IdP and the collusive RPs.
+It separates a IdP service into two parts, the server-part service and user-part service. The server-part service runs on the IdP server, which takes the responsibility of authenticating users, storing the private key, issuing the identity token and etc. The user-part is in the user's device to prevent RP identity from being transmitted to IdP server. It generates the PPID based on the user identifier retrieved by server-part service, and transforms PPID and RP's identifier into one-time encrypted ID to prevent both IdP-based user tracing and RP-based identity linkage. To avoid the malicious user from controlling user-part service, it is protected by the Intel SGX, the secure hardware.
+
+\keywords{SSO  \and Privacy \and Intel SGX.}
 \end{abstract}
 %
 %
@@ -155,5 +188,11 @@ The abstract should briefly summarize the contents of the paper in
 \input{chap/design.tex}
 \input{chap/analysis.tex}
 \input{chap/implementation.tex}
+\input{chap/relatedwork.tex}
+\input{chap/conclusion.tex}
+
+\bibliographystyle{splncs04}
+\bibliography{ref}
+
 \input{chap/appendix.tex}
 \end{document}

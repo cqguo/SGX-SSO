@@ -1,20 +1,9 @@
-\section{background}
+\section{Background}
 XXX is compatible with OIDC, and achieves the privacy protection based on the SGX.
 Here, we provide a brief introduction on OIDC and the SGX.
 \subsection{OpenID Connect}
 OIDC~\cite{OpenIDConnect} is an extension of OAuth 2.0 to support user authentication,
  and becomes one of the most prominent SSO authentication protocols.
-Same as other SSO protocols~\cite{SAMLIdentifier}, OIDC involves three entities, i.e., {\em users}, {\em identity provider (IdP)}, and {\em relying parties (RPs)}.
-Both users and RPs have to register at the IdP,    
-the users register at the IdP to create credentials and identifiers (i.e. $ID_U$), 
-while each RP registers at the IdP with its endpoint information to create its unique identifier (i.e., $ID_{RP}$) and the corresponding credential.
-IdP is assumed to securely maintain the attributes  of users and RPs.   
-Then, in the SSO authentication sessions, 
- each user is responsible to start a login request at an RP, redirect the messages between RP and IdP, and check the scope of user's attributes provided to the RP;
- IdP authenticates the user, sets the $PPID$ for the user $ID_U$ at the RP $ID_{RP}$,
- constructs the identity proof with  $PPID$, $ID_{RP}$ and the user's attributes consented by the user, and finally transmits the identity proof to the RP's registered endpoint (e.g., URL);
- each RP constructs an identity proof request with its identifier and the requested scope of  user's attributes, sends an identity proof request to the IdP through the user, and parses the received identity proof to authenticate and authorize the user.
-Usually, the redirection and checking at the user are handled by a user-controlled software, called {\em user agent} (e.g., browser).
 
 \noindent\textbf{Implicit flow of user login.}
 OIDC supports three processes for the SSO authentication session, known as {\em implicit flow}, {\em authorization code flow} and {\em hybrid flow} (i.e., a mix-up of the previous two). Here, we propose the OIDC implicit flow as the example to illustrate the protocol. 

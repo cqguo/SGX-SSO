@@ -1,0 +1,177 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{Nordic}
+Build gdpr compliant apis with openid connect.
+  \url{https://nordicapis.com/build-gdpr-compliant-apis-with-openid-connect/},
+  accessed August 20, 2020
+
+\bibitem{Oracle}
+Introducing identity federation in oracle access management.
+  \url{https://docs.oracle.com/cd/E40329_01/admin.1112/e27239/oif_1.htm},
+  accessed August 20, 2020
+
+\bibitem{Curity}
+Pairwise pseudonymous identifiers.
+  \url{https://curity.io/resources/architect/openid-connect/ppid-intro/},
+  accessed August 20, 2020
+
+\bibitem{MS}
+The role of claims.
+  \url{https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/the-role-of-claims},
+  accessed August 20, 2020
+
+\bibitem{Alexa}
+The top 500 sites on the web. \url{https://www.alexa.com/topsites}, accessed
+  July 30, 2019
+
+\bibitem{ArmandoCCCPS13}
+Armando, A., Carbone, R., Compagna, L., Cu{\'{e}}llar, J., Pellegrino, G.,
+  Sorniotti, A.: An authentication flaw in browser-based single sign-on
+  protocols: Impact and remediations. Computers {\&} Security  \textbf{33},
+  41--58 (2013)
+
+\bibitem{Onavo}
+Cyphers, B., Kelley, J.: What we should learn from ``facebook research''.
+  \url{https://www.eff.org/deeplinks/2019/01/what-we-should-learn-facebook-research},
+  accessed July 20, 2019
+
+\bibitem{FettKS14}
+Fett, D., K{\"{u}}sters, R., Schmitz, G.: An expressive model for the web
+  infrastructure: {Definition} and application to the {BrowserID} {SSO} system.
+  In: Proceedings of the 35th {IEEE} Symposium on Security and Privacy
+  (S{\&}P), Berkeley, CA, USA. pp. 673--688 (2014)
+
+\bibitem{BrowserID}
+Fett, D., K{\"{u}}sters, R., Schmitz, G.: Analyzing the {BrowserID} {SSO}
+  system with primary identity providers using an expressive model of the web.
+  In: Proceedings of the 20th European Symposium on Research in Computer
+  Security (ESORICS). pp. 43--65 (2015)
+
+\bibitem{SPRESSO}
+Fett, D., K{\"{u}}sters, R., Schmitz, G.: {SPRESSO:} {A} secure,
+  privacy-respecting single sign-on system for the web. In: Proceedings of the
+  22nd {ACM} {SIGSAC} Conference on Computer and Communications Security (CCS),
+  Denver, CO, USA. pp. 1358--1369 (2015)
+
+\bibitem{FettKS16}
+Fett, D., K{\"{u}}sters, R., Schmitz, G.: A comprehensive formal security
+  analysis of {OAuth} 2.0. In: Proceedings of the 2016 {ACM} {SIGSAC}
+  Conference on Computer and Communications Security (CCS), Vienna, Austria.
+  pp. 1204--1215 (2016)
+
+\bibitem{FettKS17}
+Fett, D., K{\"{u}}sters, R., Schmitz, G.: The web {SSO} standard {OpenID}
+  {Connect}: {In-depth} formal security analysis and security guidelines. In:
+  Proceedings of the 30th {IEEE} Computer Security Foundations Symposium
+  {(CSF)}, Santa Barbara, CA, USA. pp. 189--202 (2017)
+
+\bibitem{GhasemisharifRC18}
+Ghasemisharif, M., Ramesh, A., Checkoway, S., Kanich, C., Polakis, J.: O single
+  sign-off, where art thou? {An} empirical analysis of single sign-on account
+  hijacking and session management on the web. In: Proceedings of the 27th
+  {USENIX} Security Symposium, {USENIX} Security, Baltimore, MD, USA. pp.
+  1475--1492 (2018)
+
+\bibitem{NIST2017draft}
+Grassi, P.A., Garcia, M., Fenton, J.: {NIST} special publication 800-63c
+  digital identity guidelines: Federation and assertions. National Institute of
+  Standards and Technology, Los Altos, CA  (2017)
+
+\bibitem{HanCSTW18}
+Han, J., Chen, L., Schneider, S., Treharne, H., Wesemeyer, S.: Anonymous
+  single-sign-on for n designated services with traceability. In: Proceedings
+  of the 23rd European Symposium on Research in Computer Security (ESORICS),
+  Barcelona, Spain. pp. 470--490 (2018)
+
+\bibitem{SAMLIdentifier}
+Hardjono, T., Cantor, S.: {SAML} v2.0 subject identifier attributes profile
+  version 1.0. OASIS standard  (2019)
+
+\bibitem{rfc6749}
+Hardt, D.: The {OAuth} 2.0 {Authorization} {Framework}. {RFC}  \textbf{6749},
+  1--76 (2012)
+
+\bibitem{SAML}
+Hughes, J., Cantor, S., Hodges, J., Hirsch, F., Mishra, P., Philpott, R.,
+  Maler, E.: Profiles for the {OASIS} {Security} {Assertion} {Markup}
+  {Language} ({SAML}) v2.0. OASIS standard  (2005), accessed August 20, 2019
+
+\bibitem{IsaakidisHD16}
+Isaakidis, M., Halpin, H., Danezis, G.: Unlimitid: Privacy-preserving federated
+  identity management using algebraic macs. In: Weippl, E.R., Katzenbeisser,
+  S., di~Vimercati, S.D.C. (eds.) Proceedings of the 2016 {ACM} on Workshop on
+  Privacy in the Electronic Society, WPES@CCS 2016, Vienna, Austria, October 24
+  - 28, 2016. pp. 139--142. {ACM} (2016)
+
+\bibitem{googlenews}
+Li, S., Kelley, J.: Google screenwise: {An} unwise trade of all your privacy
+  for cash. \url{https://www.eff.org/deeplinks/2019/02/google- screenwise-
+  unwise- trade/-all-your- privacy- cash}, accessed July 20, 2019
+
+\bibitem{MainkaMS16}
+Mainka, C., Mladenov, V., Schwenk, J.: Do not trust me: {Using} malicious
+  {IdPs} for analyzing and attacking single sign-on. In: Proceedings of the 1st
+  {IEEE} European Symposium on Security and Privacy (EuroS{\&}P),
+  Saarbr{\"{u}}cken, Germany. pp. 321--336 (2016)
+
+\bibitem{MainkaMSW17}
+Mainka, C., Mladenov, V., Schwenk, J., Wich, T.: Sok: Single sign-on security -
+  an evaluation of {OpenID} {Connect}. In: Proceedings of the 2nd {IEEE}
+  European Symposium on Security and Privacy (EuroS{\&}P), Paris, France. pp.
+  251--266 (2017)
+
+\bibitem{OpenIDConnect}
+Sakimura, N., Bradley, J., Jones, M., de~Medeiros, B., Mortimore, C.: {OpenID}
+  {Connect} core 1.0 incorporating errata set 1. The OpenID Foundation,
+  specification  (2014)
+
+\bibitem{SomorovskyMSKJ12}
+Somorovsky, J., Mayer, A., Schwenk, J., Kampmann, M., Jensen, M.: On breaking
+  {SAML:} {Be} whoever you want to be. In: Proceedings of the 21th {USENIX}
+  Security Symposium, Bellevue, WA, USA. pp. 397--412 (2012)
+
+\bibitem{WangZLG16}
+Wang, H., Zhang, Y., Li, J., Gu, D.: The achilles heel of {OAuth}: {A}
+  multi-platform study of {OAuth-based} authentication. In: Proceedings of the
+  32nd Annual Conference on Computer Security Applications {(ACSAC)}, Los
+  Angeles, CA, USA. pp. 167--176 (2016)
+
+\bibitem{WangWS13}
+Wang, J., Wang, G., Susilo, W.: Anonymous single sign-on schemes transformed
+  from group signatures. In: Proceedings of the 5th International Conference on
+  Intelligent Networking and Collaborative Systems, Xi'an, China. pp. 560--567
+  (2013)
+
+\bibitem{WangCW12}
+Wang, R., Chen, S., Wang, X.: Signing me onto your accounts through {Facebook}
+  and {Google}: {A} traffic-guided security study of commercially deployed
+  single-sign-on web services. In: Proceedings of the 33rd {IEEE} Symposium on
+  Security and Privacy (S{\&}P), San Francisco, California, {USA}. pp. 365--379
+  (2012)
+
+\bibitem{YangLCZ18}
+Yang, R., Lau, W.C., Chen, J., Zhang, K.: Vetting single sign-on {SDK}
+  implementations via symbolic reasoning. In: Proceedings of the 27th {USENIX}
+  Security Symposium, {USENIX} Security, Baltimore, MD, USA. pp. 1459--1474
+  (2018)
+
+\bibitem{YangLLZH16}
+Yang, R., Li, G., Lau, W.C., Zhang, K., Hu, P.: Model-based security testing:
+  {An} empirical study on {OAuth} 2.0 implementations. In: Proceedings of the
+  11th {ACM} on Asia Conference on Computer and Communications Security
+  (AsiaCCS), Xi'an, China. pp. 651--662 (2016)
+
+\bibitem{ZhangKSZR21}
+Zhang, Z., Kr{\'{o}}l, M., Sonnino, A., Zhang, L., Rivi{\`{e}}re, E.: {EL}
+  {PASSO:} efficient and lightweight privacy-preserving single sign on. Proc.
+  Priv. Enhancing Technol.  \textbf{2021}(2),  70--87 (2021)
+
+\bibitem{ZhouE14}
+Zhou, Y., Evans, D.: {SSOScan}: {Automated} testing of web applications for
+  single sign-on vulnerabilities. In: Proceedings of the 23rd {USENIX} Security
+  Symposium, San Diego, CA, USA. pp. 495--510 (2014)
+
+\end{thebibliography}
