@@ -2,7 +2,7 @@
 \label{sec:design}
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.95\linewidth]{fig/sgx-sso.pdf}
+  \includegraphics[width=\linewidth]{fig/sgx-sso.pdf}
   \caption{The protocol flow of XXX.}
   \label{fig:XXX}
 \end{figure}
@@ -21,10 +21,16 @@ The SSO process is started with the user's visit to an RP at her browser, and th
 While the user is redirected to the IdP server, the IdP will retrieve the IdP script (step 5), witch is used to deal with the interaction with IdP server, RP script and enclave application.
 And the IdP authenticates the user (step 6). After the IdP script is downloaded, it sends the ready signal to its opener (i.e., the RP window) (step 7). Then it will receive the $RPdomain$ from RP script for further process (step 8). There are some types of parameters required in OIDC protocol to be carried in the SSO request, such as $response\_type$ and $scope$. In this paper, we would not focus on these attributes, and only describe the necessary parameters. 
 
-Then the user starts the SSO request to IdP (step 9). As the result, the user receives a $UID token$ from IdP (step 10), with which an enclave application can retrieve the user's real identifier UID from IdP server.
+Then the IdP script invokes the enclave application (step 9). The enclave application conducts remote attestation at its initialized execution (step 10). After the remote attestation, enclave application and IdP server shares a symmetric key $K$. 
 
-Then the IdP script invokes the enclave application with RP's domain and the $UID token$ (step 11). The enclave application requires the UID from IdP server with the UID token (step 12, 13). After receiving the UID, enclave application generates the symmetric key s, encrypts the RP's domain with key s as the transformed RP ID, and encrypts the hash of RP's domain and UID as the PPID (step 14). 
+The enclave application generates the $UID$ request (i.e., $UR$) by encrypted request information with $K$ (step 11), and return it back to IdP script (step 12). Then the user starts the $UID$ request to IdP (step 13). IdP encrypts $UID$ with $K$ (step 14) and sends it to user (step 15). 
 
-After the ID transformation, enclave application requires the IdP server to generate identity proof with $PRPID$ and $PPID$ (step 15). The IdP server signs the $token$ consisted of $PRPID$ and $PPID$ as the identity proof (step 16), and return it to enclave application (step 17). Then enclave application set the $token$ and key $s$ as the result of step 11 (step 18). The IdP script then sends the $token$ and $s$ to the origin $RPdomain$ through $postMessage$ (step 19). It guarantees that only the script running in the RP window can receive the $token$, which avoids the man-in-the-middle attack.
 
-Finally, the RP script uploads the $token$ and key $s$ to RP server (step 20). The RP server firstly verifies the signature with IdP's public key, then generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equal, RP decrypts the user's ID from $PPID$, and find out the related user information in its database (step 21). Then it returns the login result to user (step 22). 
+While IdP script receives the encrypted $UID$, it transmits it to enclave application with RP's domain (step 16). The enclave application derives the $UID$ with $K$, generates the symmetric key $s$, encrypts the RP's domain with key $s$ as the transformed RP ID (i.e., $PRPID$), encrypts the hash of RP's domain and UID as the $PPID$, and encrypts $PRPID$ and $PPID$ with $K$ (step 17). After the ID transformation, enclave application sends the encrypted IDs and $s$ to IdP script (step 18).
+
+
+Then user sends the encrypted $PRPID$ and $PPID$ to IdP for identity token (19). 
+The IdP server derives the $PRPID$ and $PPID$, signs the $token$ consisted of $PRPID$ and $PPID$ as the identity proof (step 20), and returns it to enclave application (step 21). 
+The IdP script then sends the $token$ and $s$ to the origin $RPdomain$ through $postMessage$ (step 22). It guarantees that only the script running in the RP window can receive the $token$, which avoids the man-in-the-middle attack.
+
+Finally, the RP script uploads the $token$ and key $s$ to RP server (step 23). The RP server firstly verifies the signature with IdP's public key, then generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equal, RP decrypts the user's ID from $PPID$, and find out the related user information in its database (step 24). Then it returns the login result to user (step 25). 

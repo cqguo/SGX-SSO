@@ -1,4 +1,5 @@
 \section{Security Analysis}
+\label{sec:analysis}
 Our formal analysis of XXX is based on the Dolev-Yao style web model~\cite{SPRESSO}, which has been widely used in formal analysis of SSO protocol, e.g., OAuth 2.0~\cite{FettKS16} and OIDC ~\cite{FettKS17}.
 To make the description cleaner, we foucus on our communications among XXX entities, and assume DNS and HTTPS are secure, which has already been anaylzed in~\cite{SPRESSO}.
 
@@ -62,7 +63,7 @@ Let $\mathcal{XWS}$ be the XXX web system, then $\mathcal{EWS}$ is secure.
 \label{the:secure}
 \end{theorem} 
 
-The XXX is considered secure $iff$ the adversary cannot log in to an honest RP under another honest user's account. Based on the model of XXX, described in Appendix~\ref{sec:appendix}, only when the RP accepts an valid identity token and retrieves the PPID same as the honest user's from adversary, the attack is successful. Therefore, we can get the definition.
+The XXX is considered secure  {\sl iff} the adversary cannot log in to an honest RP under another honest user's account. Based on the model of XXX, described in Appendix~\ref{sec:appendix}, only when the RP accepts an valid identity token and retrieves the PPID same as the honest user's from adversary, the attack is successful. Therefore, we can get the definition.
 
 \begin{definition}
 Let $\mathcal{XWS}$ be an XXX web system, $\mathcal{XWS}$ is secure \emph{iff} the adversary cannot obtain a valid identity token, whose encrypted PPID could be decrypted into the honest user's PPID.
@@ -79,7 +80,7 @@ The adversary cannot forge the valid identity token.
 \end{lemma}
 
 \begin{proof}
-It can be easily proved that, while an RP receives the identity token, it verifies the signature with the IdP issued public key. Only the IdP knows the corresponding private key, so that the adversary cannot forge the valid identity token itself.
+It can be easily proved that, while an RP receives the identity token, it verifies the signature with the public key of the IdP. Only the IdP knows the corresponding private key, so that the adversary cannot forge the valid identity token itself.
 \end{proof}
 
 \begin{lemma}
@@ -88,7 +89,7 @@ The RP would not retrieve an honest user's PPID from the adversary's identity to
 \end{lemma}
 
 \begin{proof}
-The adversary cannot obtain the identity proof issued for other honest user from XXX system, which is to be proved in lemma~\ref{lem:steal}. We consider in the SSO process, only the IdP server and enclave application are honest. An adversary can get a identity token including $\mathtt{PRPID}=encrypt(\mathtt{Domain})$ and $\mathtt{PRPID}=encrypt(hash(\mathtt{Domain}, \mathtt{uid}))$. The $\mathtt{Domain}$ is controlled by adversary and can be assigned as any value. The $\mathtt{uid}$ must belong to the adversary. There is no chance that an adversary can get a key, making the attack available. Because the key must satisfies that, $decrypt(\mathtt{PRPID}, key) \equiv honest\ RPDomain$ and  $decrypt(\mathtt{PPID}, key) \equiv hash(honest\ RPDomain, honest\ uid)$, which is not possible.   
+The adversary cannot obtain the identity proof issued for other honest user from XXX system, which is to be proved in lemma~\ref{lem:steal}. We consider in the SSO process, only the IdP server and enclave application are honest. An adversary can get a identity token including $\mathtt{PRPID}=encrypt(\mathtt{Domain})$ and $\mathtt{PRPID}=encrypt(hash(\mathtt{Domain}, \mathtt{uid}))$. The $\mathtt{Domain}$ is controlled by adversary and can be assigned as any value. The $\mathtt{uid}$ must belong to the adversary. There is no chance that an adversary can get a key, making the attack available. Because the key must satisfy that, $decrypt(\mathtt{PRPID}, key) \equiv honest\ RPDomain$ and  $decrypt(\mathtt{PPID}, key) \equiv hash(honest\ RPDomain, honest\ uid)$, which is not possible.   
 \end{proof}
 
 
@@ -98,7 +99,7 @@ The adversary cannot steal an identity token from any entities in the system.
 \end{lemma}
 
 \begin{proof}
-Firstly, we give the brief description of the proof. (1) For IdP, it only sends the identity token to its enclave application. (2) For enclave application, it only returns the token back to whom invoked it with the uid token. And it can be proved that only the honest user can own the uid token beside of enclave application and IdP server. (3) The IdP script only transmits the token to the script in the origin $\mathtt{RPDomain}$. As the identity token includes the $\mathtt{PRPID}$, the identity proof would be only sent to the origin that the token is issued for. (4) The RP script only sends the identity token to its server. (5) RP sever would not send identity token to any parties.
+We first give an outline of the proof. (1) For IdP, it only sends the identity token to its enclave application. (2) For enclave application, it only returns the token back to whom invoked it with the uid token. And it can be proved that only the honest user can own the uid token beside of enclave application and IdP server. (3) The IdP script only transmits the token to the script in the origin $\mathtt{RPDomain}$. As the identity token includes the $\mathtt{PRPID}$, the identity proof would be only sent to the origin that the token is issued for. (4) The RP script only sends the identity token to its server. (5) RP sever would not send identity token to any parties.
 The detailed proof is described as follows. 
 
 The identity token sent by IdP is shown in line 44, Algorithm~\ref{alg1}, as the response of path described in line 38, Algorithm~\ref{alg1}. We consider that IdP only accepts the enclave application's request to path $\mathtt{requireUID}$ and $\mathtt{requireToken}$. Therefore, the identity token would only be sent to the enclave application.
