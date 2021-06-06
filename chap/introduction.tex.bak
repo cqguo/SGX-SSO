@@ -44,12 +44,11 @@ We remark that the problems cannot be solved, such as simply combining existing 
 In this paper, we propose Enhancing the User Privacy of SSO by Integrating PPID and SGX (named UP-SSO), the enhanced PPID SSO system with comprehensive protection against bosh IdP-based login tracing and RP-based identity linkage.
 The key idea of UP-SSO is shifting part of IdP service, PPID generation, from server to user client. 
 %Therefore, IdP server can issue the identity token containing PPID, only requiring an one-time transformed RP ID (e.g., encrypted RP ID). 
-The user-side IdP service takes the responsibility for transforming RP ID (as an identity token must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17, YangLCZ18} ) and generating PPID. 
-For IdP, it can only achieve a encrypted one-time RP ID, so that the IdP-based login tracing is not impossible.
-To be noticed is that the user-side service must be deployed at the user controlled and IdP trusted environment, i.e., Intel SGX. With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and it can be verified by IdP through $remote attestation$, the function provided by SGX.
+The user-side IdP service takes the responsibility for transforming RP ID (as an identity ) and generating PPID. For IdP, it can only achieve a encrypted one-time RP ID, so that the IdP-based login tracing is not impossible.
+To be noticed is that the user-side service must be deployed at the user controlled and IdP trusted environmentm, i.e., Intel SGX. With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and it can be verified by IdP through $remote attestation$, the function provided by SGX.
 Moreover, other essential IdP services, such as user authentication and identity proof issuing,  must be completed at server side for security consideration. 
 
-The overview of UP-SSO is that 
+
 
 
 We summarize our contributions as follows.
