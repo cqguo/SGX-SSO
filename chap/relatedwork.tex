@@ -1,5 +1,6 @@
 \section{Related Works}
 \label{sec:relatedwork}
+\subsection{Security and Privacy of SSO system}
 Recently, SSO systems have been the essential infrastructure of internet service. Various SSO protocols, such as OAuth, OIDC and SAML are  widely adopted by Google, Facebook and other companies. There are also troubles about the security and privacy are introduced with the SSO systems. 
 
 Various attackers were found able to access the honest user's account at RP by multiple methods. 
@@ -17,4 +18,12 @@ Anonymous SSO schemes enable the users to access a service (i.e. RP) with the pe
 The anonymous SSO systems are designed based on multiple methods. For example, various cryptographic primitives, such as group signature, zero-knowledge proof, etc., were used to design anonymous SSO schemes~\cite{WangWS13,HanCSTW18}. 
 The anonymous SSO schemes allow a user to obtain a unidentified token anonymously, and access RP's service with this token. However, the RP cannot classify a user's multiple logins, as the user is completely anonymous in this system. Therefore, they are not available in current personalized internet service.
 
+\subsection{Intel SGX and Remote Attestation}
+Intel SGX and remote attestation have been already used in many fields, particularly in authentication and building trusted environment. 
 
+Intel SGX have been used in enhancing the security and privacy of authentication systems. Rafael et al.~\cite{CondeMW18} offers the credential protection approach based on SGX, which prevent an adversary from stealing a user's credential at server side. P2A~\cite{SongWLOWL20} is proposed to protect user's privacy. It enables a user to generate an identity proof locally while the registration, update, freeze/thaw, and deletion of identities are managed in a blockchain. Therefore, a user can visit an service without exposing her real identity. 
+
+Remote attestation is wisely adopted on building the trusted environment. Jaehwan et al.~\cite{AhnLK20} proposes a method
+of building a safe smart home environment for IoT by pre-blocking devices based on remote attestation. 
+Uzair et al.~\cite{JavaidAS20} establishes the trust between IoT devices based on the blockchain and remote attestation, while the blockchain offers a secure framework for device registration. Moreover, there is work on how to conduct the remote attestation without an assigned key or secure memory (required in Intel SGX). Ilia et al.~\cite{LebedevHD18} proposed the design of an attested execution processor based on RISC-V Rocket chip architecture. It does not 
+require secure non-volatile memory, nor a private key explicitly assigned by the manufacturer.

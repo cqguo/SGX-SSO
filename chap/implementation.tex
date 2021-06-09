@@ -1,24 +1,35 @@
-%记得讲一下如何用js调用dll
 \section{Implementation and Evaluation}
 \label{sec:implementation}
+We have implemented  a prototype of UP-SSO, containing an IdP server, an RP server and the user client (including the enclave application and chrome extension).  In this section, we describe the details of implementation and compare it with the open-source OIDC project to show its practical value.
 \subsection{Implementation}
-We have implemented  a prototype of XXX, containing an IdP server, an RP server and the enclave application. 
-We adopt SHA-256 for digest generation, RSA-2048 for signature generation, and 128-bit AES/GCM algorithm for symmetrical encryption. 
+\vspace{3mm}\noindent\textbf{Settings.}We adopt SHA-256 for digest generation, RSA-2048 for signature generation, and 128-bit AES/GCM algorithm for symmetrical encryption. 
 
-\noindent\textbf{IdP server and RP server.}
-IdP and RP servers are implemented based on Spring Boot, a popular web framework for the Java platform. We also use the open-source auth0/java-jwt library to generate and verify the identity token (in the form of Json Web Token). The encryption, decryption and other cryptographic computations are implemented using API provided by Java SDK. Moreover, the servers offer user interfaces to download JavaScript codes.
+\vspace{3mm}\noindent\textbf{IdP server and RP server.}
+IdP and RP servers are implemented based on Spring Boot, a popular web framework for Java platform. 
+We also use the open-source auth0/java-jwt library~\cite{jwt} to generate and verify the identity token (in the form of Json Web Token). 
+The encryption, decryption and other cryptographic computations are implemented using API provided by Java SDK. 
+Moreover, the servers offer user interfaces to download JavaScript codes.
 
-\noindent\textbf{Native Messaging.}
-Beside of parties required in XXX system, we adopt chrome extension to enable the JavaScript code to invoke the enclave application. The chrome extension invokes a native application through the Native Messaging mechanism. It requires a user to update her Windows Registry by running a .reg profile. The profile defines the location of native application and which extension can invoke the application (identified by chrome-extension ID). 
+\vspace{3mm}\noindent\textbf{Native messaging.}
+Native messaging~\cite{NativeMessaging} enables the extension of an browser to invoke the native application installed on user's device. 
+Many popular browsers have already supported native messaging, such as chrome and firefox. 
+For Windows users, native messaging requires a user to update her Windows Registry by running IdP provided .reg profile. The profile defines the location of native application and which extension can invoke the application (e.g., identified by chrome-extension ID). 
 
-\noindent\textbf{Enclave application.}
-Intel provides the enclave SDK for developers to develop enclave applications for C++ platform. Enclave SDK includes the APIs for cryptographic computations, under hardware-level protection. An enclave application contains two parts, the inside and outside SGX parts. In our implementation, the outside part only takes responsibility of transmitting data between JavaScript code and inside-SGX-part enclave application.  
+
+\vspace{3mm}\noindent\textbf{Chrome extension.}
+To enable the JavaScript code to invoke the enclave application through native messaging, we implement the chrome extension as part of user client. 
+Once the user downloads the script from IdP server, the extension is invoked and inject the content script into windows. The content script provides IdP script the interface to interact with enclave application. 
+
+
+
+\vspace{3mm}\noindent\textbf{Enclave application.}
+Intel provides the enclave SDK for developers to develop enclave applications for C platform. Enclave SDK offers the APIs for cryptographic computations, under hardware-level protection. An enclave application contains two parts, the inside and outside SGX parts. In our implementation, the outside part only takes responsibility of transmitting data between chrome extension and inside-SGX-part enclave application.  
 
 \subsection{Evaluation}
-\noindent\textbf{Environment.}
+\vspace{3mm}\noindent\textbf{Environment.}
 In the evaluation, we deploy the RP and IdP servers on the device with Intel i7-8700 CPU and 32GB RAM memory, running Windows 10 x64 system. The browser is Chrome v90.0.4430.212, deployed on the same device.   
 
 
 
-\noindent\textbf{Result.}
+\vspace{3mm}\noindent\textbf{Result.}
 We have run SSO process on our prototype system 100 times, and the average time is 154 ms (excluding the overhead of remote attestation). For comparison, we run MITREid Connect, a popular open-source OpenID Connect implementation in Java. The time cost of  MITREid Connect is 113 ms. The overhead is modest.

@@ -1,22 +1,26 @@
 \section{Threat Model and Assumptions}
 \label{sec:threatmodel}
-XXX is compatible with OIDC, consisted of a number of RPs, user agents(i.e., the browser and enclave application) and an IdP. In this section, we describe the threat model and assumptions of these entities in XXX.
+UP-SSO is compatible with OIDC, consisted of a number of RPs, user agents(including browser and enclave application) and an IdP. In this section, we describe the threat model and assumptions of these entities in UP-SSO.
 \subsection{Threat Model}
-\noindent\textbf{Adversaries' Goal: } (1) The adversaries can impersonate an honest user to log in to the honest RP.
+\noindent\textbf{Adversaries' Goal: } 
+\begin{itemize}
+\item \noindent\textbf{Breaking the security. }The adversaries can impersonate an honest user to log in to the honest RP.
+\item \noindent\textbf{Breaking the privacy. }The adversaries can track a user's login trace on each RP.
+\end{itemize} 
 
 \noindent\textbf{Adversaries' Capacities: }
 \begin{itemize}
-\item An adversary can act as the malicious user. The adversary can control all the software running outside the enclave, for example, capturing and tempering the message transmission among enclave application, browser and IdP server, decrypting and tempering the https flow outside the enclave, tempering the script code running on the browser.
-\item An adversary can act as the malicious RP. The adversary can lead the user to log in to the malicious RP. In this situation, the adversary can manipulate or all the message transmitted through RP, and collect all the flows received from user to link the user identity.
-\item An adversary can act as the curious but honest IdP. The curious IdP can store and analyze the received messages, and perform the timing attacks, attempting to achieve the IdP-based linkage. However, the honest IdP must process the requests of RP registration and identity proof correctly, and never colludes with others (e.g., malicious RPs and users).
-\item Moreover, an adversary can collect all the network flow transmitted through a user. The adversary can also lead the user download the malicious script on her browser.
+\item \noindent\textbf{Malicious user. }An adversary can act as the malicious user. The adversary can control all the software running outside the enclave, such as capturing and tempering the message transmission among enclave application and other entities, decrypting and tempering the https flow outside the enclave, tempering the script code running on the browser. For example, a malicious user may try to temper the PPID sent to IdP to achieve an identity token representing an honest user. 
+\item \noindent\textbf{Malicious RP. }An adversary can act as the malicious RP. The adversary can lead the user to log in to the malicious RP. In this situation, the adversary can manipulate or all the message transmitted through RP, and collect all the flows received from user to link the user identity. 
+\item \noindent\textbf{Curious but honest IdP. }An adversary can act as the curious but honest IdP. The curious IdP can store and analyze the received messages, and perform the timing attacks, attempting to achieve the IdP-based linkage. However, the honest IdP must process the requests of RP registration and identity proof correctly, provide honest script, and never collude with others (e.g., malicious RPs and users).
+\item \noindent\textbf{External attackers. }Moreover, an adversary can collect all the network flow transmitted through a user. The adversary can also lead the user download the malicious script on her browser.
 \end{itemize}
 
 \subsection{Assumptions}
 We assume the honest user's device is secure, for example, the user would not install any malicious application on her device. The application and data inside the enclave are never tempered or leaked, even in the malicious user's device.
 
 The TLS is also adopted and correctly implemented at the system, so that the communications among entities ensure the confidentiality and integrity.
-The cryptographic algorithms and building blocks used in XXX are assumed to be secure and correctly implemented. 
+The cryptographic algorithms and building blocks used in UP-SSO are assumed to be secure and correctly implemented. 
 
 Phishing attack is not considered in this paper.
 

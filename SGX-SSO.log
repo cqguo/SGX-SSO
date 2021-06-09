@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.20)  7 JUN 2021 00:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.20)  9 JUN 2021 22:01
 entering extended mode
 **./SGX-SSO.tex
 (SGX-SSO.tex
@@ -135,26 +135,15 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 lecontents.sty"
 Package: filecontents 2019/09/20 v1.5 Create an external file from within a LaT
 eX document
-) (titlesec.sty
-Package: titlesec 2019/10/16 v2.13 Sectioning titles
-\ttl@box=\box55
-\beforetitleunit=\skip45
-\aftertitleunit=\skip46
-\ttl@plus=\dimen125
-\ttl@minus=\dimen126
-\ttl@toksa=\toks18
-\titlewidth=\dimen127
-\titlewidthlast=\dimen128
-\titlewidthfirst=\dimen129
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty
 "
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count117
-\float@exts=\toks19
-\float@box=\box56
-\@float@everytoks=\toks20
-\@floatcapt=\box57
+\float@exts=\toks18
+\float@box=\box55
+\@float@everytoks=\toks19
+\@floatcapt=\box56
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption
 .sty"
@@ -168,15 +157,15 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval
 .sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks21
+\KV@toks@=\toks20
 )
-\captionmargin=\dimen130
-\captionmargin@=\dimen131
-\captionwidth=\dimen132
-\caption@tempdima=\dimen133
-\caption@indent=\dimen134
-\caption@parindent=\dimen135
-\caption@hangindent=\dimen136
+\captionmargin=\dimen125
+\captionmargin@=\dimen126
+\captionwidth=\dimen127
+\caption@tempdima=\dimen128
+\caption@indent=\dimen129
+\caption@parindent=\dimen130
+\caption@hangindent=\dimen131
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 )
@@ -215,14 +204,14 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 ftex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen137
-\Gin@req@width=\dimen138
+\Gin@req@height=\dimen132
+\Gin@req@width=\dimen133
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.
 sty"
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks22
-\verbatim@line=\toks23
+\every@verbatim=\toks21
+\verbatim@line=\toks22
 \verbatim@in@stream=\read1
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithmicx\al
@@ -241,20 +230,20 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \c@ALG@line=\count120
 \c@ALG@rem=\count121
 \c@ALG@nested=\count122
-\ALG@tlm=\skip47
-\ALG@thistlm=\skip48
+\ALG@tlm=\skip45
+\ALG@thistlm=\skip46
 \c@ALG@Lnr=\count123
 \c@ALG@blocknr=\count124
 \c@ALG@storecount=\count125
 \c@ALG@tmpcounter=\count126
-\ALG@tmplength=\skip49
+\ALG@tmplength=\skip47
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath
 .sty"
 Package: amsmath 2018/12/01 v2.17b AMS math features
-\@mathmargin=\skip50
+\@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
 
@@ -265,13 +254,13 @@ Package: amstext 2000/06/29 v2.01 AMS text
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.
 sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks24
-\ex@=\dimen139
+\@emptytoks=\toks23
+\ex@=\dimen134
 ))
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.
 sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen140
+\pmbraise@=\dimen135
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.
 sty"
@@ -287,9 +276,9 @@ LaTeX Info: Redefining \overline on input line 385.
 LaTeX Info: Redefining \ldots on input line 482.
 LaTeX Info: Redefining \dots on input line 485.
 LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box58
-\strutbox@=\box59
-\big@size=\dimen141
+\Mathstrutbox@=\box57
+\strutbox@=\box58
+\big@size=\dimen136
 LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 
@@ -301,21 +290,21 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 \dotsspace@=\muskip10
 \c@parentequation=\count134
 \dspbrk@lvl=\count135
-\tag@help=\toks25
+\tag@help=\toks24
 \row@=\count136
 \column@=\count137
 \maxfields@=\count138
-\andhelp@=\toks26
-\eqnshift@=\dimen142
-\alignsep@=\dimen143
-\tagshift@=\dimen144
-\tagwidth@=\dimen145
-\totwidth@=\dimen146
-\lineht@=\dimen147
-\@envbody=\toks27
-\multlinegap=\skip51
-\multlinetaggap=\skip52
-\mathdisplay@stack=\toks28
+\andhelp@=\toks25
+\eqnshift@=\dimen137
+\alignsep@=\dimen138
+\tagshift@=\dimen139
+\tagwidth@=\dimen140
+\totwidth@=\dimen141
+\lineht@=\dimen142
+\@envbody=\toks26
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks27
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
@@ -338,32 +327,32 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/multirow\multir
 ow.sty"
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip53
+\multirow@colwidth=\skip51
 \multirow@cntb=\count139
-\multirow@dima=\skip54
-\bigstrutjot=\dimen148
+\multirow@dima=\skip52
+\bigstrutjot=\dimen143
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listin
 gs.sty"
 \lst@mode=\count140
-\lst@gtempboxa=\box60
-\lst@token=\toks29
+\lst@gtempboxa=\box59
+\lst@token=\toks28
 \lst@length=\count141
-\lst@currlwidth=\dimen149
+\lst@currlwidth=\dimen144
 \lst@column=\count142
 \lst@pos=\count143
-\lst@lostspace=\dimen150
-\lst@width=\dimen151
+\lst@lostspace=\dimen145
+\lst@width=\dimen146
 \lst@newlines=\count144
 \lst@lineno=\count145
-\lst@maxwidth=\dimen152
+\lst@maxwidth=\dimen147
 
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmis
 c.sty"
 File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
 \c@lstnumber=\count146
 \lst@skipnumbers=\count147
-\lst@framebox=\box61
+\lst@framebox=\box60
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listin
 gs.cfg"
@@ -378,39 +367,39 @@ Package: cite 2015/02/27  v 5.5
 ) ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.s
 ty"
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen153
-\ar@mcellbox=\box62
-\extrarowheight=\dimen154
-\NC@list=\toks30
-\extratabsurround=\skip55
-\backup@length=\skip56
-\ar@cellbox=\box63
+\col@sep=\dimen148
+\ar@mcellbox=\box61
+\extrarowheight=\dimen149
+\NC@list=\toks29
+\extratabsurround=\skip53
+\backup@length=\skip54
+\ar@cellbox=\box62
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\enumerate
 .sty"
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
-\@enLab=\toks31
+\@enLab=\toks30
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/booktabs\bookta
 bs.sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen155
-\lightrulewidth=\dimen156
-\cmidrulewidth=\dimen157
-\belowrulesep=\dimen158
-\belowbottomsep=\dimen159
-\aboverulesep=\dimen160
-\abovetopsep=\dimen161
-\cmidrulesep=\dimen162
-\cmidrulekern=\dimen163
-\defaultaddspace=\dimen164
+\heavyrulewidth=\dimen150
+\lightrulewidth=\dimen151
+\cmidrulewidth=\dimen152
+\belowrulesep=\dimen153
+\belowbottomsep=\dimen154
+\aboverulesep=\dimen155
+\abovetopsep=\dimen156
+\cmidrulesep=\dimen157
+\cmidrulekern=\dimen158
+\defaultaddspace=\dimen159
 \@cmidla=\count148
 \@cmidlb=\count149
-\@aboverulesep=\dimen165
-\@belowrulesep=\dimen166
+\@aboverulesep=\dimen160
+\@belowrulesep=\dimen161
 \@thisruleclass=\count150
 \@lastruleclass=\count151
-\@thisrulewidth=\dimen167
+\@thisrulewidth=\dimen162
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\color.
 sty"
@@ -424,21 +413,21 @@ Package color Info: Driver file: pdftex.def on input line 147.
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/soul\soul.sty"
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
-\SOUL@word=\toks32
-\SOUL@lasttoken=\toks33
-\SOUL@cmds=\toks34
-\SOUL@buffer=\toks35
-\SOUL@token=\toks36
-\SOUL@spaceskip=\skip57
-\SOUL@ttwidth=\dimen168
-\SOUL@uldp=\dimen169
-\SOUL@ulht=\dimen170
+\SOUL@word=\toks31
+\SOUL@lasttoken=\toks32
+\SOUL@cmds=\toks33
+\SOUL@buffer=\toks34
+\SOUL@token=\toks35
+\SOUL@spaceskip=\skip55
+\SOUL@ttwidth=\dimen163
+\SOUL@uldp=\dimen164
+\SOUL@ulht=\dimen165
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algo
 rithm.sty"
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
-\@float@every@algorithm=\toks37
+\@float@every@algorithm=\toks36
 \c@algorithm=\count152
 ) (SGX-SSO.aux)
 \openout1 = `SGX-SSO.aux'.
@@ -475,16 +464,16 @@ Package caption Info: End \AtBeginDocument code.
 p-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count153
-\scratchdimen=\dimen171
-\scratchbox=\box64
+\scratchdimen=\dimen166
+\scratchbox=\box63
 \nofMPsegments=\count154
 \nofMParguments=\count155
-\everyMPshowfont=\toks38
+\everyMPshowfont=\toks37
 \MPscratchCnt=\count156
-\MPscratchDim=\dimen172
+\MPscratchDim=\dimen167
 \MPnumerator=\count157
 \makeMPintoPDFobject=\count158
-\everyMPtoPDFconversion=\toks39
+\everyMPtoPDFconversion=\toks38
 )
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstop
 df-base.sty"
@@ -557,156 +546,184 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 168.
 d"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 182.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 183.
 
 
 ("C:\Users\guocqian\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 182.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 183.
  (chap/introduction.tex [1
 
-{C:/Users/guocqian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (2.65367pt too wide) in paragraph at lines 10--14
-[]\OT1/cmr/m/n/10 However, the wide adop-tion of SSO also raises new pri-vacy c
-on-cerns. NIST [14]
- []
+{C:/Users/guocqian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3])
+ (chap/background.tex [4]
 
-
-LaTeX Warning: Citation `' on page 2 undefined on input line 26.
-
-[2] [3]
-
-LaTeX Warning: Reference `sec:background' on page 4 undefined on input line 68.
-
-
-
-LaTeX Warning: Reference `sec:threatmodel' on page 4 undefined on input line 68
-.
-
-
-LaTeX Warning: Reference `sec:analysis' on page 4 undefined on input line 68.
-
-
-LaTeX Warning: Reference `sec:implementation' on page 4 undefined on input line
- 68.
-
-
-LaTeX Warning: Reference `sec:relatedwork' on page 4 undefined on input line 68
-.
-
-
-LaTeX Warning: Reference `sec:conclusion' on page 4 undefined on input line 68.
-
-
-) (chap/background.tex
-<fig/OIDC1.pdf, id=20, 510.40688pt x 187.45032pt>
+pdfTeX warning: pdflatex (file ./fig/OIDC1.pdf): PDF inclusion: found PDF versi
+on <1.7>, but at most version <1.5> allowed
+<fig/OIDC1.pdf, id=23, 516.12827pt x 350.5095pt>
 File: fig/OIDC1.pdf Graphic file (type pdf)
 <use fig/OIDC1.pdf>
-Package pdftex.def Info: fig/OIDC1.pdf  used on input line 14.
-(pdftex.def)             Requested size: 347.12354pt x 127.49025pt.
- [4 <./fig/OIDC1.pdf>]) (chap/threatmodel.tex [5])
-(chap/design.tex
+Package pdftex.def Info: fig/OIDC1.pdf  used on input line 17.
+(pdftex.def)             Requested size: 347.12354pt x 235.73332pt.
+[5 <./fig/OIDC1.pdf>]) (chap/threatmodel.tex
+Overfull \hbox (22.9871pt too wide) in paragraph at lines 3--4
+\OT1/cmr/m/n/10 UP-SSO is com-pat-i-ble with OIDC, con-sisted of a num-ber of R
+Ps, user agents(including
+ []
+
+[6]) (chap/design.tex
 
 pdfTeX warning: pdflatex (file ./fig/sgx-sso.pdf): PDF inclusion: found PDF ver
 sion <1.7>, but at most version <1.5> allowed
-<fig/sgx-sso.pdf, id=38, 381.82649pt x 354.12299pt>
+<fig/sgx-sso.pdf, id=45, 369.7815pt x 482.40225pt>
 File: fig/sgx-sso.pdf Graphic file (type pdf)
 <use fig/sgx-sso.pdf>
 Package pdftex.def Info: fig/sgx-sso.pdf  used on input line 5.
-(pdftex.def)             Requested size: 347.12354pt x 321.9444pt.
-[6 <./fig/sgx-sso.pdf>] [7]) (chap/analysis.tex [8]
-Underfull \vbox (badness 2005) has occurred while \output is active []
+(pdftex.def)             Requested size: 347.12354pt x 452.87666pt.
+[7]
+Underfull \vbox (badness 3428) has occurred while \output is active []
 
- [9]
-[10] [11]) (chap/implementation.tex [12]) (chap/relatedwork.tex [13])
+ [8 <./fig/sgx-sso.pdf>] [9]) (chap/analysis.tex [10]
+Overfull \hbox (3.19344pt too wide) in paragraph at lines 36--39
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Domain; key\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 
+; key[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10  \OML/cmm/m/it/10 honest RPDomain$ \
+OT1/cmr/m/n/10 and $\OML/cmm/m/it/10 decrypt\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e
+ncrypt\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 hash\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 D
+omain; [] 
+ []
+
+[11] [12]) (chap/implementation.tex [13]) (chap/relatedwork.tex [14] [15])
 (chap/conclusion.tex) (SGX-SSO.bbl
-Underfull \hbox (badness 1297) in paragraph at lines 7--10
+Underfull \hbox (badness 1297) in paragraph at lines 10--13
 []\OT1/cmr/m/n/9 Build gdpr com-pli-ant apis with openid con-nect. $\OT1/cmtt/m
 /n/9 https : / / nordicapis . com /
  []
 
-[14]
-Underfull \hbox (badness 5924) in paragraph at lines 22--25
+
+Underfull \hbox (badness 7064) in paragraph at lines 20--23
+[]\OT1/cmr/m/n/9 MITREid con-nect /openid-connect-java-spring-server. $\OT1/cmt
+t/m/n/9 https : / / github . com /
+ []
+
+
+Underfull \hbox (badness 1024) in paragraph at lines 20--23
+\OT1/cmtt/m/n/9 mitreid-[]connect / OpenID-[]Connect-[]Java-[]Spring-[]Server$\
+OT1/cmr/m/n/9 , ac-cessed Au-gust 20,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--28
+[]\OT1/cmr/m/n/9 Native mes-sag-ing. $\OT1/cmtt/m/n/9 https : / / developer . m
+ozilla . org / en-[]US / docs / Mozilla /
+ []
+
+
+Underfull \hbox (badness 5924) in paragraph at lines 35--38
 []\OT1/cmr/m/n/9 The role of claims. $\OT1/cmtt/m/n/9 https : / / docs . micros
 oft . com / en-[]us / windows-[]server /
  []
 
+[16]
+Underfull \hbox (badness 4144) in paragraph at lines 50--55
+[]\OT1/cmr/m/n/9 Armando, A., Car-bone, R., Com-pagna, L., Cuellar, J., Pel-le
+-grino, G.,
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--40
+
+Underfull \hbox (badness 7832) in paragraph at lines 50--55
+\OT1/cmr/m/n/9 Sorniotti, A.: An au-then-ti-ca-tion flaw in browser-based sin-g
+le sign-on
+ []
+
+
+Underfull \hbox (badness 5862) in paragraph at lines 50--55
+\OT1/cmr/m/n/9 pro-to-cols: Im-pact and re-me-di-a-tions. Com-put-ers & Se-cu-r
+ity \OT1/cmr/bx/n/9 33\OT1/cmr/m/n/9 , 41--58
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--79
 \OT1/cmtt/m/n/9 www . eff . org / deeplinks / 2019 / 01 / what-[]we-[]should-[]
 learn-[]facebook-[]research$\OT1/cmr/m/n/9 ,
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 110--113
+
+Underfull \hbox (badness 2237) in paragraph at lines 101--106
+\OT1/cmr/m/n/9 y-sis of OAuth 2.0. In: Pro-ceed-ings of the 2016 ACM SIGSAC Con
+-fer-
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 165--168
 \OT1/cmtt/m/n/9 https : / / www . eff . org / deeplinks / 2019 / 02 / google-[]
 screenwise-[]unwise-[]trade /
  []
 
-) (chap/appendix.tex [16]
-Overfull \hbox (1.48055pt too wide) in paragraph at lines 58--60
-[]\OT1/cmr/bx/n/10 Dictionary Data \OT1/cmr/m/n/10 is the data in the form $[]$
-,
+
+Underfull \hbox (badness 5133) in paragraph at lines 170--174
+[]\OT1/cmr/m/n/9 Machani, S., Philpott, R., Srini-vas, S., Kemp, J., Hodges, J.
+: FIDO
  []
 
-[17]
-Overfull \hbox (0.68245pt too wide) in paragraph at lines 89--90
-\OT1/cmr/m/n/10 iden-ti-fies the ses-sion and ses-sion stores the mes-sages up-
-loaded by the browser. 
+[18]
+Underfull \hbox (badness 4441) in paragraph at lines 209--213
+[]\OT1/cmr/m/n/9 Somorovsky, J., Mayer, A., Schwenk, J., Kamp-mann, M., Jensen,
+ M.:
  []
 
 
-Overfull \hbox (3.23615pt too wide) in paragraph at lines 90--91
-[]\OT1/cmr/bx/n/10 Users \OT1/cmr/m/n/10 is the set of all users' in-for-ma-tio
-n, con-tain-ing the $\OML/cmm/m/it/10 username$\OT1/cmr/m/n/10 , $\OML/cmm/m/it
-/10 password$\OT1/cmr/m/n/10 ,
+Underfull \hbox (badness 3525) in paragraph at lines 209--213
+\OT1/cmr/m/n/9 On break-ing SAML: Be who-ever you want to be. In: Pro-ceed-ings
+ of
  []
 
-[18] [19] [20]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21]
-[22]) [23] (SGX-SSO.aux)
-
-LaTeX Warning: There were undefined references.
+Underfull \hbox (badness 3713) in paragraph at lines 209--213
+\OT1/cmr/m/n/9 the 21th USENIX Se-cu-rity Sym-po-sium, Belle-vue, WA, USA. pp. 
+397--
+ []
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Underfull \hbox (badness 10000) in paragraph at lines 209--213
+\OT1/cmr/m/n/9 412 (2012), $\OT1/cmtt/m/n/9 https : / / www . usenix . org / co
+nference / usenixsecurity12 /
+ []
 
- ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--228
+\OT1/cmr/m/n/9 overview. $\OT1/cmtt/m/n/9 https : / / fidoalliance . org / spec
+s / fido-[]u2f-[]v1 . 2-[]ps-[]20170411 /
+ []
+
+[19]) [20] (SGX-SSO.aux) ) 
 Here is how much of TeX's memory you used:
- 6824 strings out of 492895
- 99530 string characters out of 3122334
- 179516 words of memory out of 3000000
- 10590 multiletter control sequences out of 15000+200000
- 13082 words of font info for 51 fonts, out of 3000000 for 9000
+ 6496 strings out of 492895
+ 95454 string characters out of 3122334
+ 166448 words of memory out of 3000000
+ 10272 multiletter control sequences out of 15000+200000
+ 11438 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,38p,1164b,348s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmbx12.pfb><C:/Users/guocqian/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/guocqian/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/guoc
-qian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr7.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/guocqian/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/guocqian/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
-/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmsy9.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/guocqian/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/guocqian/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/U
-sers/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmtt9.pfb>
-Output written on SGX-SSO.pdf (23 pages, 407330 bytes).
+ 41i,6n,38p,973b,341s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/guocqian/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/guocqian/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Us
+ers/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/guocqian/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/guocqian/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users
+/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
+7.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy9.pfb><C:/Users/guocqian/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/guocqian/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/guocqian/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on SGX-SSO.pdf (20 pages, 424812 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
+ 158 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

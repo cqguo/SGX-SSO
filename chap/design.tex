@@ -1,36 +1,61 @@
-\section{Design of XXX}
+\section{Design of UP-SSO}
 \label{sec:design}
-\begin{figure}[t]
+\begin{figure}[t!]
   \centering
   \includegraphics[width=\linewidth]{fig/sgx-sso.pdf}
-  \caption{The protocol flow of XXX.}
-  \label{fig:XXX}
+  \caption{The protocol flow of UP-SSO.}
+  \label{fig:UP-SSO}
 \end{figure}
-The XXX is compatible with OIDC, besides that the IdP service is separated into user agent part and server part. 
-The server part IdP service takes the responsibility of authenticating the user, retrieves the UID for each user, and issues the signed identity proof consisted the privacy-preserving RP and user identifier generated at user agent part IdP service.
-The user agent part IdP service would obtain the UID from server part service, transform UID into the PPID, and encrypt the RPID and PPID with an one-time symmetric key to avoid IdP server digging out the RP's identity. As the enclave application is protected by SGX, it must not conduct any malicious behaviour. 
-
-\subsection{XXX process}
-In this section, we provide the detail protocol of XXX.
-
-The process of XXX is depicted in detail in Figure~\ref{fig:XXX}.
-The SSO process is started with the user's visit to an RP at her browser, and the browser downloads the RP script (step 1), which is used to conduct the behaviour defined by RP at user side. Then the RP script opens the new window with the RP login endpoint (step 2, 3). Then the user is redirected to the IdP server (step 4). It must be noticed that, the user cannot visit IdP at step 2,3 directly because of the $Referer$ attribute in HTTP header. While the script in origin A opens a new window with origin B, the HTTP request to B will carry the key value $Referer: A$. Therefore, the RP's domain is exposed to IdP. With HTML5, a special attribute for links in HTML was introduced, that the $ref="noreferrer"$ can be used to make $Referer$ header be suppressed. However, when such a link is used to open a new window, the new window does not have a handle on the opening window (opener) anymore. The handle is necessary for XXX to transmit messages between RP and IdP.
+The UP-SSO is compatible with OIDC, besides that the IdP service is separated into user part and server part. 
+The user agent (i.e., user-side IdP service) would obtain the UID from server part service, transform UID into the PPID, and encrypt the RPID and PPID with an one-time symmetric key to avoid IdP server digging out the RP's identity. As the enclave application is protected by SGX, it must not conduct any malicious behaviour. 
+The server-side IdP service takes the responsibility of authenticating the user, retrieving the UID for each user, and issuing the identity proof consisted the privacy-preserving RP and user identifier.
 
 
+\subsection{UP-SSO procedures}
+Following, we provide the detailed protocol of UP-SSO.
+The procedures of UP-SSO are depicted in detail in Figure~\ref{fig:UP-SSO}. It can be split into three phases, scripts downloading, PPID generation and identity token issuing. Here, we describe the details. 
 
-While the user is redirected to the IdP server, the IdP will retrieve the IdP script (step 5), witch is used to deal with the interaction with IdP server, RP script and enclave application.
-And the IdP authenticates the user (step 6). After the IdP script is downloaded, it sends the ready signal to its opener (i.e., the RP window) (step 7). Then it will receive the $RPdomain$ from RP script for further process (step 8). There are some types of parameters required in OIDC protocol to be carried in the SSO request, such as $response\_type$ and $scope$. In this paper, we would not focus on these attributes, and only describe the necessary parameters. 
+\vspace{3mm}\noindent\textbf{Scripts downloading.} The scripts downloading phase is for the user’s browser to download the scripts from the RP and IdP servers. The scripts work as part of the user agent role.
+\begin{itemize}
+\item[1]The SSO process is started with the user's visit to an RP at her browser, and the browser downloads the RP script. The script is used to conduct the behaviour defined by RP at user side.
+\item[2]The RP script opens the new window. 
+\item[3]The newly opened window visits RP login endpoint.
+\item[4]The user is redirected to the IdP server from RP login endpoint.
+\item[5]The user retrieves the IdP script, which is used to deal with the interaction with IdP server, RP script and enclave application.
+\end{itemize}
+It must be noticed that, the user cannot visit IdP at step 2,3 directly because of the $Referer$ attribute in HTTP header. While the script in origin A opens a new window with origin B, the HTTP request to B's server will carry the key value $Referer: A$. Therefore, the RP's domain is exposed to IdP. With HTML5, a special attribute for links in HTML was introduced, that the $ref="noreferrer"$ can be used to make $Referer$ header be suppressed. However, when such a link is used to open a new window, the new window does not have a handle on the opening window (opener) any more. The handle is necessary for UP-SSO to transmit messages between RP and IdP scripts. So the redirection is adopted to avoid the HTTP header $Referer$ and make handle of the opening window available. 
 
-Then the IdP script invokes the enclave application (step 9). The enclave application conducts remote attestation at its initialized execution (step 10). After the remote attestation, enclave application and IdP server shares a symmetric key $K$. 
 
-The enclave application generates the $UID$ request (i.e., $UR$) by encrypted request information with $K$ (step 11), and return it back to IdP script (step 12). Then the user starts the $UID$ request to IdP (step 13). IdP encrypts $UID$ with $K$ (step 14) and sends it to user (step 15). 
+\vspace{3mm}\noindent\textbf{PPID Generation.} In this phase, IdP script invokes the the enclave application to generate the PPID. 
+\begin{itemize}
+\item[6]At first, the IdP authenticates the user.
+\item[7]After the IdP script is downloaded, it sends the ready signal to its opener (i.e., the RP window).
+\item[8]RP script sends the RP's domain back to IdP script. 
+\item[9]Then the IdP script invokes the enclave application.
+\item[10]The enclave application conducts remote attestation at its initialized execution. After the remote attestation, enclave application and IdP server shares a symmetric key $K$.
+\item[11]The enclave application generates the UID request (i.e., $UR$) by encrypting request information with $K$.
+\item[12]$UR$ is sent to IdP script.
+\item[13]Then the user starts the UID request to IdP.
+\item[14]IdP encrypts $UID$ with $K$.
+\item[15]IdP script receives encrypted $UID$ from IdP.
+\item[16]IdP script transmits encrypted $UID$ and RP's domain to enclave application.
+\item[17]The enclave application derives the $UID$ with $K$, generates the symmetric key $s$, encrypts the RP's domain with key $s$ as the transformed RP ID (i.e., $PRPID$), encrypts the hash of RP's domain and UID as the $PPID$, and encrypts $PRPID$ and $PPID$ with $K$.
+\item[18]Enclave application sends the encrypted IDs and $s$ to IdP script. 
+\end{itemize} 
+The PPID must be the encrypted hash of RP's domain and UID, instead of the plain digest. It avoids the IdP to find out multiple logins targeting the same RP or not, as the hash of same RP's domain would be always same. 
 
+Moreover, there are some types of parameters required in OIDC protocol to be carried in the SSO request, such as $response\_type$ and $scope$. In this paper, we would not mention these attributes, and only focus on the necessary parameters. 
 
-While IdP script receives the encrypted $UID$, it transmits it to enclave application with RP's domain (step 16). The enclave application derives the $UID$ with $K$, generates the symmetric key $s$, encrypts the RP's domain with key $s$ as the transformed RP ID (i.e., $PRPID$), encrypts the hash of RP's domain and UID as the $PPID$, and encrypts $PRPID$ and $PPID$ with $K$ (step 17). After the ID transformation, enclave application sends the encrypted IDs and $s$ to IdP script (step 18).
+\vspace{3mm}\noindent\textbf{Identity token issuing.} In this phase, IdP issues an identity token containing the encrypted $PPID$ and $PRPID$. And the RP verifies the token.
+\begin{itemize}
+\item[19]User sends the encrypted $PRPID$ and $PPID$ to IdP for identity token.
+\item[20]The IdP server derives the $PRPID$ and $PPID$, signs the $token$ consisted of $PRPID$ and $PPID$ as the identity proof.
+\item[21]IdP sends identity token to enclave application.
+\item[22]The IdP script then sends the $token$ and $s$ to the origin $RPdomain$ through $postMessage$.
+\item[23]The RP script uploads the $token$ and key $s$ to RP server.
+\item[24]The RP server firstly verifies the signature with IdP's public key, then generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equalled, RP decrypts the user's account from $PPID$, and find out the related user information in its database.
+\item[25]RP returns the login result back to user.
+\end{itemize} 
+The origin in step 22 is essential for secure identity token transmitting.
+It guarantees that only the script running in the RP window can receive the $token$, that avoids the man-in-the-middle attack.
 
-
-Then user sends the encrypted $PRPID$ and $PPID$ to IdP for identity token (19). 
-The IdP server derives the $PRPID$ and $PPID$, signs the $token$ consisted of $PRPID$ and $PPID$ as the identity proof (step 20), and returns it to enclave application (step 21). 
-The IdP script then sends the $token$ and $s$ to the origin $RPdomain$ through $postMessage$ (step 22). It guarantees that only the script running in the RP window can receive the $token$, which avoids the man-in-the-middle attack.
-
-Finally, the RP script uploads the $token$ and key $s$ to RP server (step 23). The RP server firstly verifies the signature with IdP's public key, then generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equal, RP decrypts the user's ID from $PPID$, and find out the related user information in its database (step 24). Then it returns the login result to user (step 25). 
