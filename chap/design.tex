@@ -51,7 +51,7 @@ Moreover, there are some types of parameters required in OIDC protocol to be car
 \item[19]User sends the encrypted $PRPID$ and $PPID$ to IdP for identity token.
 \item[20]The IdP server derives the $PRPID$ and $PPID$, signs the $token$ consisted of $PRPID$ and $PPID$ as the identity proof.
 \item[21]IdP sends identity token to enclave application.
-\item[22]The IdP script then sends the $token$ and $s$ to the origin $RPdomain$ through $postMessage$.
+\item[22]The IdP script then sends the $token$ and $s$ to the origin RP's $Domain$ through $postMessage$.
 \item[23]The RP script uploads the $token$ and key $s$ to RP server.
 \item[24]The RP server firstly verifies the signature with IdP's public key, then generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equaled, RP decrypts the user's account from $PPID$, and finds out the related user information in its database.
 \item[25]RP returns the login result back to user.

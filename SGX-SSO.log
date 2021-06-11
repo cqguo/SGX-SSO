@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.6)  10 JUN 2021 16:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.6)  11 JUN 2021 11:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -500,13 +500,13 @@ Ps, user agents(including
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./fig/sgx-sso.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig/sgx-sso.pdf, id=46, 369.7815pt x 482.40225pt>
+<fig/sgx-sso.pdf, id=46, 369.63094pt x 482.55281pt>
 File: fig/sgx-sso.pdf Graphic file (type pdf)
 <use fig/sgx-sso.pdf>
 Package pdftex.def Info: fig/sgx-sso.pdf  used on input line 5.
-(pdftex.def)             Requested size: 347.12354pt x 452.87666pt.
+(pdftex.def)             Requested size: 347.12354pt x 453.17264pt.
 [7]
-Underfull \vbox (badness 2073) has occurred while \output is active []
+Underfull \vbox (badness 1755) has occurred while \output is active []
 
  [8 <./fig/sgx-sso.pdf>] [9]) (./chap/analysis.tex [10]
 Overfull \hbox (3.19344pt too wide) in paragraph at lines 36--39
@@ -644,7 +644,7 @@ cmti10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm0900
 .pfb>
-Output written on SGX-SSO.pdf (20 pages, 401665 bytes).
+Output written on SGX-SSO.pdf (20 pages, 401370 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  112 compressed objects within 2 object streams
