@@ -1,7 +1,10 @@
 \section{Conclusion}
 \label{sec:conclusion}
-In this paper, we propose UP-SSO, Enhancing the User Privacy of SSO by Integrating PPID and SGX, the extension of PPID SSO system with comprehensive protection against bosh IdP-based login tracing and RP-based identity linkage. To prevent the IdP from knowing a user's login trace in an SSO system, we split the IdP service into two parts, and shift the PPID generation from server to user-controlled environment.
-This part of service runs on the user's device protected by the Intel SGX. The integrity is guaranteed through the remote attestation, even the malicious user cannot control the user-side service. The server-side service takes the responsibility of authenticating users, storing the private key, issuing the identity token and etc. 
+In this paper, we propose UP-SSO, 
+%Enhancing the User Privacy of SSO by Integrating PPID and SGX, 
+the extension of PPID SSO system with comprehensive protection against both IdP-based login tracing and RP-based identity linkage. To prevent the IdP from knowing a user's login trace in an SSO system, we split the IdP service into two parts, and shift the PPID generation from server to user-controlled environment.
+This part of service runs on the user's device protected by the Intel SGX. The integrity is guaranteed through the remote attestation, even the malicious user cannot control the user-side service. 
+%The server-side service takes the responsibility of authenticating users, storing the private key, issuing the identity token and etc. 
 %The other part generates the PPID based on the user identifier retrieved by server-part service, and transforms PPID and RP's identifier into one-time encrypted ID to prevent both IdP-based user tracing and RP-based identity linkage. 
 We systemically analyze the UP-SSO protocol and guarantee its security. 
 We have implemented the prototype of UP-SSO system, and the performance evaluation on the prototype demonstrates the introduced overhead is modest. 

@@ -1,0 +1,396 @@
+%\newpage
+\appendix
+\section{Appendix: Web Model}
+\label{sec:appendix}
+%\begin{appendices}
+\subsection{Elements of Model}
+Here we provide the details of the format of the messages we use to construct the XXX model.
+
+\vspace{1mm}\noindent\textbf{HTTP Messages}.
+An HTTP request message is the term of the form
+\begin{equation*}
+\setlength{\abovedisplayskip}{1pt}
+\setlength{\belowdisplayskip}{1pt}
+\langle \mathtt{HTTPReq}, nonce, method, host, path, parameters, headers, body\rangle
+\end{equation*}
+
+An HTTP response message is the term of the form
+\begin{equation*}
+\setlength{\abovedisplayskip}{1pt}
+\setlength{\belowdisplayskip}{1pt}
+    \myangle{\mathtt{HTTPResp}, nonce, status, headers, body}
+\end{equation*}
+ The details are defined as follows:
+ \vspace{-3mm}
+ \begin{itemize}
+ \item \myss{\mathtt{HTTPReq}} and \myss{\mathtt{HTTPResp}} denote the types of messages.
+ \item \myss{nonce} is a random number mapping response to corresponding request.
+ \item \myss{method} is the HTTP methods, such as \myss{\mathtt{GET}} and \myss{\mathtt{POST}}.
+ \item \myss{host} is the constant string domain of visited server.
+ \item \myss{path} is the constant string representing the concrete resource of the server.
+ \item \myss{parameters} contains the parameters carried by the url as the form \\ \myss{\myangle{\myangle{name, value}, \myangle{name, value}, \dotsc}}, for example, the \myss{parameters} in the url \myss{http://www.example.com?type=confirm}  is \myss{\myangle{\myangle{type, confirm}}}.
+ \item \myss{headers} is the header content of each HTTP messages as the form \\ \myss{\myangle{\myangle{name, value}}}, such as \myss{\langle\myangle{Referer, http://example.com},} \myss{\myangle{Cookies, c}\rangle}.
+ \item \myss{body} is the body content carried by HTTP \myss{\mathtt{POST}} request or HTTP response in the form \myss{\myangle{\myangle{name, value}, \myangle{name, value}, \dotsc}}.
+  \item \myss{status} is the HTTP status code defined by HTTP standard.
+ \end{itemize}
+\vspace{-2mm}
+\noindent\textbf{URL}.
+URL is a term \myss{\myangle{\mathtt{URL}, protocol,host,path,parameters}}, where \myss{\mathtt{URL}} is the type, \myss{protocol} is chosen in \myss{\{\mathtt{S}}, \myss{\mathtt{P}\}} as \myss{\mathtt{S}} stands for HTTPS and \myss{\mathtt{P}} stands for HTTP. The \myss{host, path}, and \myss{parameters} are the same as in HTTP messages.
+
+\vspace{1mm}\noindent\textbf{Origin}.
+An Origin is a term \myss{\myangle{host, protocol}} that stands for the specific domain used by the HTTP CORS policy.
+
+\vspace{1mm}\noindent\textbf{POSTMESSAGE}.
+PostMessage is used in the browser for transmitting messages between scripts from different origins. We define the sent postMessage as the form \myss{\myangle{\mathtt{POSTMESSAGE}, target, Content, Origin}}, where \myss{\mathtt{POSTMESSAGE}} is the type, \myss{target} is the constant nonce which stands for the receiver, \myss{Content} is the message transmitted and \myss{Origin} restricts the receiver's origin. However, the received postMessage is defined as \myss{\myangle{\mathtt{POSTMESSAGE}, sender, Content, Origin}}. The $\mathtt{sender}$ is the origin of the postMessage of sender.
+
+\vspace{1mm}\noindent\textbf{XMLHTTPREQUEST}.
+XMLHTTPRequest is the HTTP message transmitted  by scripts in the browser. The XMLHTTPRequest in the form \\ \myss{\myangle{\mathtt{XMLHTTPREQUEST}, URL, methods, Body, nonce}} can be converted into HTTP request message by the browser, and \myss{\myangle{\mathtt{XMLHTTPREQUEST}, Body, nonce}}  is converted from HTTP response message.
+
+\vspace{1mm}\noindent\textbf{ENCLAVEMESSAGE}.
+EnclaveMessage is the message transmitted between Script Process and Enclave Application. It is defined as the term \\ \myss{\myangle{\mathtt{ENCLAVEMESSAGE}, Content}}.
+
+
+\noindent\textbf{Data Operation}.
+The data used in ExtraF are defined in the following forms:
+\vspace{-2mm}
+\begin{itemize}
+\item \textbf{Standardized Data} is the data in the fixed format, for instance, the HTTP request is the standardized data in the form \myss{\langle\mathtt{HTTPReq}}, \myss{nonce}, \myss{method}, \myss{host}, \myss{path}, \myss{parameters}, \myss{headers}, \myss{body\rangle}.  We assume there is an HTTP request \myss{r :=}  \myss{\langle\mathtt{HTTPReq}},  \myss{n},  \myss{\mathtt{GET}},  \myss{example.com},  \myss{/path},  \myss{\myangle{}},  \myss{\myangle{}},  \myss{\myangle{}\rangle}, here we define the operation on the $r$. That is, the elements in $r$ can be accessed in the form \myss{r.name}, such that \myss{r.method \equiv \mathtt{GET}},  \myss{r.path \equiv /path} and \myss{r.body \equiv \myangle{}}.
+\item \textbf{Dictionary Data} is the data in the form \myss{\myangle{\myangle{name, value}, \myangle{name, value}, \dotsc}}, for instance the \myss{body} in HTTP request is dictionary data. We assume there is a \myss{body := \myangle{\myangle{username, alice}, \myangle{password, 123}}}, here we define the operation on the $body$. That is, we can access the elements in \myss{body} in the form \myss{body[name]}, such that \myss{body[username] \equiv alice} and \myss{body[password] \equiv 123}.
+%We can also add the new attributes to the dictionary, for example after we set \myss{body[age] := 18}, the \myss{body} are changed into\myss{ \myangle{\myangle{username, alice}, \myangle{password, 123}, \myangle{age, 18}}}.
+\end{itemize}
+\vspace{-2mm}
+
+\noindent\textbf{Scripting Process.}
+A scripting process is the dependent process relying on the browser, which can be considered as a relation \myss{R} mapping a message input and a message output. And finally the browser will conduct the command in the output message. Here we give the description of the form of input and output.
+\vspace{-2mm}
+\begin{itemize}
+\item \textbf{Scripting Message Input. } The input is the term in the form
+\vspace{-3mm}
+\begin{multline*}
+\langle tree, docnonce, scriptstate, stateinputs,cookies,\\
+localStorage, sessionStorage, ids, secret \rangle
+\end{multline*}
+\item \textbf{Scripting Message Output. }The output is the term in the form
+\begin{equation*}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{1pt}
+\langle scriptstate, cookies, localStorage,sessionStorage, command \rangle
+\end{equation*}
+\end{itemize}
+\vspace{-2mm}
+The \myss{tree} is the relations of the opened windows and documents, which are visible to this script. \myss{Docnonce} is the document nonce. The  \myss{Scriptstate} is a term of the form defined by each script. \myss{Scriptinputs} is the message transmitted to script. However, the \myss{scriptinputs} is defined as standardized forms, for example, postMessage is one of the forms of \myss{scriptinputs}. \myss{Cookies} is the set of cookies that belong to the document's origin. \myss{LocalStorage} is the storage space for browser and \myss{sessionStorage} is the space for each HTTP sessions.  \myss{Ids} is the set of user IDs while \myss{secret} is the password to corresponding user ID. The \myss{command} is the operation which is to be conducted by the browser. Here we only introduce the form of commands used in XXX system. We have defined the postMessage and XMLHTTPRequest (for HTTP request) message which are the \myss{commands}. Moreover, a term in the form \myss{\myangle{\mathtt{IFRAME}, URL, WindowNonce}} asks the browser to create this document's subwindow and it visits the server with the URL.
+
+\subsection{XXX Model}
+
+\noindent\textbf{IdP server}.
+The state of IdP server is a term in the form \\ \myss{\myangle{sessions, Users, Tokens, SignKey}}. Other data stored at IdP but not used during SSO process is not mentioned here. Moreover, we consider the communications between enclave application and server, such as remote attestation, key exchange and trustful channel, are well implemented. So they are not displayed in the model.
+\vspace{-3mm}
+\begin{itemize}
+\item \textbf{sessions} is the term in the form of \myss{\myangle{\myangle{Cookie, session}}}, the Cookie uniquely identifies the session and session stores the messages uploaded by the browser.
+\item \textbf{Users} is the set of all users' information, containing the $username$, $password$, $uid$, and so on.
+\item \textbf{Tokens} contains mappings between the issued uid token and uid.
+\item \textbf{SignKey} is IdP's private used for generating identity token.
+\end{itemize}
+\begin{breakablealgorithm}
+  \caption{$R^i$}
+  \label{alg1}
+  \begin{algorithmic}[1]
+  \Require{\myss{\myangle{a, f, m}, s}}
+  \mystate{\myss{s':=s}}
+  \mystate{\myss{n, method, path, parameters, headers, body} \textbf{such that}}
+ \Statex \ \ \myss{\myangle{\mathtt{HTTPReq},n,method,path,parameters,headers,body} \equiv m}
+  \Statex \ \ \textbf{if}  possible; \textbf{otherwise} stop \myss{\myangle{}, s'}
+  \myif{path \equiv /script}
+  \mystate{\myss{m':=\myangle{\mathtt{HTTPResp},n,200, \myangle{}, \mathtt{IdPScript}}}}
+  \mystop{f, a, m'}
+  
+  \myelse{path \equiv /login}
+  \mystate{\myss{cookie := headers[Cookie]}}
+  \mystate{\myss{session := s'.sessions[cookie]}}
+  \mystate{\myss{username:=body[username]}}
+  \mystate{\myss{password:=body[password]}}
+  \myif{password \not\equiv \mathtt{SecretOfID}(username)}
+  \mystate{\myss{m' :=\myangle{\mathtt{HTTPResp},n,200,\myangle{},\mathtt{LoginFailure}}}}
+  \mystop{f,a,m'}
+  \EndIf
+  \mystate{\myss{session[uid] := \mathtt{UIDOfUser}(username)}}
+  \mystate{\myss{m' :=\myangle{\mathtt{HTTPResp},n,200,\myangle{},\mathtt{LoginSucess}}}}
+  \mystop{f,a,m'}
+  
+  
+  \myelse{path \equiv /requireUID}
+  \mystate{\myss{cookie := headers[Cookie]}}
+  \mystate{\myss{request := body[request]}}
+  \mystate{\myss{session := s'.sessions[cookie]}}
+  \mystate{\myss{uid := session[uid]}}
+  \mystate{\myss{key := session[key]}}
+  \myif{uid \not \equiv \mathtt{null} \& \mathtt{Decrypt}(request) \equiv \mathtt{UIDRequest}}
+  \mystate{\myss{UID_{enc} := \mathtt{Encrypt}(uid,key)}}
+  \mystate{\myss{m' := \myangle{\mathtt{HTTPResp},n,200,\myangle{},\myangle{\mathtt{UID}, UID_{enc}}}}}
+  \mystop{f,a,m'}
+  \EndIf
+  
+  
+  
+  \myelse{path \equiv /requireToken}
+  \mystate{\myss{cookie := headers[Cookie]}}
+  \mystate{\myss{IDs := body[IDs]}}
+  \mystate{\myss{session := s'.sessions[cookie]}}
+  \mystate{\myss{key := session[key]}}
+  \mystate{\myss{decIDs := \mathtt{Decrypt}(IDs,key)}}
+  \mystate{\myss{PRPID := decIDs.PRPID}}
+  \mystate{\myss{PPID := decIDs.PPID}}
+  \mystate{\myss{Content := \myangle{PRPID,PPID}}}
+  \mystate{\myss{token := Content+Sign(Content,s'.SignKey)}}
+  \mystate{\myss{m' := \myangle{\mathtt{HTTPResp}, n, 200, \myangle{}, \myangle{\mathtt{Token},token}}}}
+  \mystop{f,a,m'}
+  \EndIf
+  \end{algorithmic}
+\end{breakablealgorithm}
+
+
+
+
+
+
+
+
+\noindent\textbf{RP server}.
+The state of RP server is a term in the form \\ \myss{\myangle{sessions, IdP, Users, RPDomain}}.
+\vspace{-2mm}
+\begin{itemize}
+\item \textbf{IdP} is the set the information of IdP server, including the public key, domain, and so on.
+\item \textbf{Users} is the set of all users' information, containing the $PPID$ and other necessary attributes.
+\item \textbf{RPDomain} is RP's address.
+\end{itemize}
+\vspace{-2mm}
+\begin{breakablealgorithm}
+  \caption{$R^r$}
+  \label{alg2}
+  \begin{algorithmic}[1]
+  \Require {\myss{\myangle{a, f, m}, s}}
+  \mystate{\myss{s':=s}}
+  \mystate{\myss{n, method, path, parameters, headers, body} \textbf{such that}}
+  \Statex\ \ \myss{\myangle{\mathtt{HTTPReq},n,method,path,parameters,headers,body} \equiv m}
+  \Statex \ \ \textbf{if} \myss{possible}; \textbf{otherwise} stop \myss{\myangle{}, s'}
+  \myif{path \equiv /script}
+\mystate{\myss{m':=\myangle{\mathtt{HTTPResp},n,200, \myangle{}, \mathtt{RPScript}}}}
+  \mystop{f, a, m'}
+  
+  \myelse{path \equiv /uploadToken}
+  \mystate{\myss{cookie := headers[Cookie]}}
+  \mystate{\myss{session := s'.sessions[cookie]}}
+  \mystate{\myss{token := body[Token]}}
+  \mystate{\myss{key := body[Key]}}
+  \myif{\mathtt{CheckSig}(Token.Content, Token.Sig, s'.IdP.PubKey)}
+  \myif{\mathtt{Encrypt}(s'.RPDomain,key) \equiv token.Content.PRPID}
+  \mystate{\myss{PPID := \mathtt{Decrypt}(token.Content.PPID,key)}}
+  \myif{PPID \in \mathtt{ListOfUser}()}
+  \mystate{\myss{session[user] := PPID}}
+  \mystate{\myss{m' := \myangle{\mathtt{HTTPResp}, n, 200, \myangle{}, \mathtt{LoginSuccess}}}}
+  \mystop{f, a, m'}
+  \EndIf
+  \EndIf
+  \EndIf
+  \EndIf
+  %\mystop{}
+  \end{algorithmic}
+\end{breakablealgorithm}
+
+
+
+
+
+
+\noindent\textbf{IdP script}.
+The state of IdP script is a term in the form \\ \myss{\myangle{IdPDomain, Parameters, q, refXHR}}.
+\vspace{-3mm}
+\begin{itemize}
+\setlength\itemsep{-2pt}
+\item \myss{IdPDomain} is the IdP's host.
+\item \myss{Parameters} is used to store the parameters received from other processes.
+\item \myss{q} is used to label the procedure point in the login.
+\item \myss{refXHR} is the nonce to map HTTP request and response.
+\end{itemize}
+\vspace{-3mm}
+\begin{breakablealgorithm}
+  \caption{$script\_idp$}
+  \label{alg3}
+  \begin{algorithmic}[1]
+  \Require{\myss{\langle tree, docnonce, scriptstate, scriptinputs, cookies, localStorage,}}
+  \Statex {\myss{ sessionStorage, ids, secret \rangle}}  
+  \mystate{\myss{ s' := scriptstate}}
+  \mystate{\myss{target := \mathtt{PARENTWINDOW}(tree,docnonce)}}
+  \mystate{\myss{IdPDomain := s'.IdPDomain}}
+  \SWITCH{\myss{s'.q}}
+    \CASE{\myss{startLogin}}
+    \mystate{\myss{username \in ids}}
+    \mystate{\myss{Url := \myangle{\mathtt{URL}, \mathtt{S}, IdPDomain, /login, \myangle{}}}}
+%    \mystate{\myss{s'.refXHR :=  \mathtt{Random}()}}
+    \mystate{\myss{command : = \langle \mathtt{XMLHTTPREQUEST}, Url, \mathtt{POST},}}  
+    \Statex \myss{\ \ \ \ \ \ \ \ \ \ \myangle{\myangle{username, username}, \myangle{password, secret}}, s'.refXHR \rangle}
+    \mystate{\myss{s'.q := expectLoginResult}}
+    \ENDCASE
+    
+    \CASE{expectLoginResult}
+      \mystate{\myss{pattern := \myangle{\mathtt{XMLHTTPREQUEST},Body,s'.refXHR}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern) }}
+      \myif{input \not\equiv \mathtt{null} \& input.Body \equiv \mathtt{LoginSuccess}}
+      \mystate{\myss{command := \myangle{\mathtt{POSTMESSAGE}, target, \mathtt{Ready}, \mathtt{null}}}}
+      \mystate{\myss{s'.q := expectRPDomain}}
+      \EndIf
+      \ENDCASE
+    
+    \CASE{\myss{expectRPDomain}}
+      \mystate{\myss{pattern := \myangle{\mathtt{POSTMESSAGE}, *, Content, *}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern)}}
+      \myif{input \not\equiv \mathtt{null}}
+      \mystate{\myss{s'.Parameters[RPDomain] := input.Content[RPDomain]}}
+      \mystate{\myss{Url := \myangle{\mathtt{URL}, \mathtt{S}, IdPDomain, /requireUIDToken,\myangle{} }}}
+      \mystate{\myss{command := \langle \mathtt{ENCLAVEMESSAGE}, \myangle{ \myangle{\mathtt{Type}, \mathtt{UIDRequest}}} \rangle}}
+      \mystate{\myss{s'.q := expectUIDRequest}}
+       \EndIf
+      \ENDCASE
+      
+	\CASE{expectUIDRequest}
+      \mystate{\myss{pattern := \myangle{\mathtt{ENCLAVEMESSAGE},Content}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern) }}
+      \myif{input \not\equiv \mathtt{null} \& input.Content[Type] \equiv \mathtt{UIDRequest}}
+      \mystate{\myss{UIDRequest:=input.Content[UIDRequest]}}
+      \mystate{\myss{command : = \langle \mathtt{XMLHTTPREQUEST}, Url, \mathtt{POST},}}  
+    \Statex \myss{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \myangle{\myangle{UIDRequest, UIDRequest}}, s'.refXHR \rangle}
+      \mystate{\myss{s'.q := expectUID}}
+      \EndIf
+      \ENDCASE       
+      
+      \CASE{expectUID}
+      \mystate{\myss{pattern := \myangle{\mathtt{XMLHTTPREQUEST},Body,s'.refXHR}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern) }}
+      \myif{input \not\equiv \mathtt{null}}
+      \mystate{\myss{UID := input.Body[UID_{enc}]}}
+      \mystate{\myss{command : = \langle \mathtt{ENCLAVEMESSAGE}, \langle \myangle{\mathtt{Type}, \mathtt{UID}}}}  
+    \Statex \myss{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \   \myangle{\mathtt{UID}, UID}, \myangle{\mathtt{Domain}, s'.Parameters[RPDomain]}\rangle}
+      \mystate{\myss{s'.q := expectIDs}}
+      \EndIf
+      \ENDCASE
+      
+      
+	\CASE{expectIDs}
+      \mystate{\myss{pattern := \myangle{\mathtt{ENCLAVEMESSAGE},Content}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern) }}
+      \myif{input \not\equiv \mathtt{null} \& input.Content[Type] \equiv \mathtt{IDs}}
+      \mystate{\myss{IDs:=input.Content[IDs]}}
+      \mystate{\myss{s'.Parameters[Key]:=input.Content[Key]}}
+      \mystate{\myss{command : = \langle \mathtt{XMLHTTPREQUEST}, Url, \mathtt{POST},}}  
+    \Statex \myss{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \myangle{\myangle{IDs,IDs}}, s'.refXHR \rangle}
+      \mystate{\myss{s'.q := expectIdentityToken}}
+      \EndIf
+      \ENDCASE      
+      
+    
+    \CASE{expectIdentityToken}
+      \mystate{\myss{pattern := \myangle{\mathtt{XMLHTTPREQUEST},Body,s'.refXHR}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern) }}
+      \myif{input \not\equiv \mathtt{null}}
+      \mystate{\myss{token:=Body[Token]}}
+      \mystate{\myss{command := \langle\mathtt{POSTMESSAGE}, target, \langle\myangle{\mathtt{IdentityToken}, token},}}
+      \Statex \myss{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \myangle{\mathtt{Key},s'.Parameters[key]} \rangle ,\mathtt{s'.Parameters[RPDomain]}\rangle}
+      \mystate{\myss{s'.q := stop}}
+      \EndIf
+      \ENDCASE 
+  \ENDSWITCH
+\State \myss{\textbf{stop}\ \myangle{s',cookies,localStorage,sessionStorage,command}}
+    \end{algorithmic}
+\end{breakablealgorithm}
+
+
+
+
+
+
+
+\noindent\textbf{RP script}.
+The state of RP scripting process \myss{scriptstate} is a term in the form \myss{\langle IdPDomain}, \myss{RPDomain}, \myss{Parameters}, \myss{q}, \myss{refXHR\rangle}. The \myss{RPDomain} is the host string of the corresponding RP server, and other terms are defined in the same way as in IdP scripting process.
+\begin{breakablealgorithm}
+  \caption{$script\_rp$}
+  \label{alg4}
+  \begin{algorithmic}[1]
+\Require {\myss{\langle tree, docnonce, scriptstate, scriptinputs, cookies, localStorage,}} 
+\Statex \myss{sessionStorage, ids, secret\rangle}
+\mystate{\myss{ s' := scriptstate}}
+  \mystate{\myss{IdPWindow := \mathtt{SUBWINDOW}(tree,docnonce).nonce}}
+  \mystate{\myss{RPDomain := s'.RPDomain}}
+  \SWITCH{\myss{s'.q}}
+    \CASE{\myss{start}}
+    \mystate{\myss{Url := \myangle{\mathtt{URL}, \mathtt{S}, RPDomain, /login, \myangle{}}}}
+    \mystate{\myss{command := \myangle{\mathtt{IFRAME}, Url, \_SELF}}}
+    \mystate{\myss{s'.q := expectReady}}
+    \ENDCASE
+    \CASE{\myss{expectReady}}
+    \mystate{\myss{pattern := \myangle{\mathtt{POSTMESSAGE}, s'.IdPDomain, Content, *}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern)}}
+      \myif{input \not\equiv \mathtt{null} \land input.Content \equiv \mathtt{Ready}}
+      \mystate{\myss{Content := \myangle{\mathtt{\mathtt{RPDomain}},RPDomain}}}
+      \mystate{\myss{command := \myangle{\mathtt{POSTMESSAGE}, target, Content, \mathtt{null}}}}
+      \mystate{\myss{s'.q := expectToken}}
+      \EndIf
+      \ENDCASE
+      \CASE{\myss{expectToken}}
+      \mystate{\myss{pattern := \myangle{\mathtt{POSTMESSAGE}, s'.IdPDomain, Content, *}}}
+      \mystate{\myss{input := \mathtt{CHOOSEINPUT}(scriptinputs,pattern) }}
+      \myif{input \not\equiv \mathtt{null}}
+      \mystate{\myss{token := input.Content[Token]}}
+      \mystate{\myss{key := input.Content[Token]}}
+      \mystate{\myss{Url := \myangle{\mathtt{URL}, \mathtt{S}, RPDomain, /uploadToken, \myangle{}}}}
+      %\mystate{\myss{s'.refXHR :=  \mathtt{Random}()}}
+      \mystate{\myss{command : = \langle \mathtt{XMLHTTPREQUEST}, Url, \mathtt{POST},}}
+      \Statex \myss{\ \ \ \ \ \ \ \ \ \ \ \ \ \  \myangle{\myangle{\mathtt{Token}, token},\myangle{\mathtt{Key},key}}, s'.refXHR\rangle}
+      \mystate{\myss{s'.q := stop}}
+      \EndIf
+      \ENDCASE
+     \ENDSWITCH
+     \State \myss{\textbf{stop}\ \myangle{s',cookies,localStorage,sessionStorage,command}}
+\end{algorithmic}
+\end{breakablealgorithm}
+
+
+
+
+
+
+
+\noindent\textbf{Enclave application}.
+The state of enclave application is a term in the form \\ \myss{\myangle{Parameters, Key}}.
+\vspace{-3mm}
+\begin{itemize}
+\setlength\itemsep{-2pt}
+\item \myss{Parameters} is used to store the parameters received from other processes.
+\item \myss{Key} is the key shared with IdP.
+\end{itemize}
+\vspace{-3mm}
+\begin{breakablealgorithm}
+  \caption{$R^e$}
+  \label{alg5}
+  \begin{algorithmic}[1]
+  \Require {\myss{\myangle{a, f, m}, s}}
+  \mystate{\myss{s':=s}}
+  \myif{m.Content[type] \equiv \mathtt{UIDRequest}}
+  \mystate{\myss{UIDRequest := \mathtt{Encrypt(\mathtt{UIDRequest}, s'.Key)}}}
+  \mystate{\myss{m' := \myangle{\myangle{Type, UIDRequest}, \myangle{UIDRequest, UIDRequest}}}}
+  \mystop{f, a, m'}
+  \myelse{m.Content[type] \equiv \mathtt{UID}}
+  \mystate{\myss{Domain} := m.Content[Domain]}
+  \mystate{\myss{UID_{enc}} := m.Content[UID]}
+  \mystate{\myss{{UID} := \mathtt{Decrypt}(UID_{enc},s'.Key)}}
+  \mystate{\myss{Key' := \mathtt{GenerateKey()}}}	
+  \mystate{\myss{PRPID := \mathtt{Encrypt}(Domain,Key')}}
+  \mystate{\myss{PPID:=\mathtt{Encrypt}(\mathtt{Hash}(Domain,UID),Key')}}
+  \mystate{\myss{IDs := \mathtt{Encrypt}(PRPID+PPID,s'.Key)}}
+  \mystate{\myss{m' := \myangle{\myangle{Type, IDs}, \myangle{IDs, IDs}, \myangle{Key, Key'}}}}
+  \mystop{f, a, m'}
+  \EndIf
+  
+  %\mystop{}
+  \end{algorithmic}
+\end{breakablealgorithm}
+

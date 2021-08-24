@@ -1,0 +1,17 @@
+\section{Discussion}
+\label{sec:discussion}
+\vspace{3mm}\noindent\textbf{Compatibility with OIDC. }
+UP-SSO does not introduce any new role  nor change the security assumptions for each role. It follows a similar logic flow as OIDC in SSO login and only requires small modifications, shifting part of IdP service to user side, which requires the extra communications between IdP and user.
+So, we require minimal modifications to the IdP and RP servers providing scripts and new network interfaces (i.e., the new URLs for downloading scripts).
+Moreover, the IdP developer also needs to offer the chrome extension and enclave application.
+
+
+
+
+\vspace{3mm}\noindent\textbf{User Efforts. }
+The client of the UP-SSO system must be deployed on a device supporting Intel SGX. It can be found that Intel offer the support of SGX since its 4th consumer-grade CPUs.
+To visit an RP in UP-SSO system, a user must use the chrome browser and download the extension from chrome web store. And the user also needs to install the enclave application, and run the script to update the Windows Registry on her device. 
+
+
+\vspace{3mm}\noindent\textbf{UP-SSO on ARM-based Devices. }
+Currently, many people are used to visit internet service on mobile devices, e.g., the smartphones. Almost all smartphones are built with the ARM processors instead of Intel processors. That is, Intel SGX are not available on these devices. However, UP-SSO can be easily shifted to the new platform which supports \textbf{Remote Attestation}. Although remote attestation is not supported by ARM processor provider (there are no secure keys embedded in the hardware), there have already been the works on offering remote attestation on ARM-based devices\cite{WangZY20}. Therefore, UP-SSO is also available on ARM-based devices with minimal modification.
