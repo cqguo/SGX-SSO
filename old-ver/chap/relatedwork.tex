@@ -1,0 +1,29 @@
+\section{Related Works}
+\label{sec:relatedwork}
+\subsection{Security and Privacy of SSO system}
+Recently, SSO systems have been the essential infrastructure of internet service. Various SSO protocols, such as OAuth, OIDC and SAML are  widely adopted by Google, Facebook and other companies. There are also troubles about the security and privacy that are introduced with the SSO systems. 
+
+Various attackers were found able to access the honest user's account at RP by multiple methods. 
+Some attackers use the stolen user's identity proof (or cookie) to impersonate a user, while the attacks are based on the vulnerabilities of user's platforms~\cite{WangCW12,ArmandoCCCPS13}.
+Some other attackers try to temper the identity token to impersonate an honest user, such as  XML Signature wrapping (XSW)~\cite{SomorovskyMSKJ12}, RP's incomplete verification~\cite{WangCW12,WangZLG16,MainkaMSW17}, IdP spoofing~\cite{MainkaMS16,MainkaMSW17} and etc. 
+Some IdP services did not bind the issued identity token with a corresponding RP (or the honest RP did not verify the binding), so that a malicious RP can leverage the received identity token to log in to another RP~\cite{YangLCZ18,WangZLG16,MainkaMS16,MainkaMSW17,YangLCZ18}. 
+Moreover, automatical tools, such as SSOScan~\cite{ZhouE14}, OAuthTester~\cite{YangLLZH16} and S3KVetter~\cite{YangLCZ18}, are also designed to detect vulnerabilities in SSO systems.
+
+Besides the analysis of the implemented SSO systems, the formal analysis is also used to guarantee the security of SSO protocols. Fett et al.~\cite{FettKS16, FettKS17} analyze the OAuth 2.0 and OIDC protocols based on the expressive Dolev-Yao style model~\cite{FettKS14}. The vulnerabilities found in these analyses enable the adversary steals the identity token form SSO systems. The analysis also shows that OAuth 2.0 and OIDC are secure once these two vulnerabilities are prevented. 
+
+NIST~\cite{NIST2017draft} suggests that the SSO should protect user from both RP-based identity linkage and IdP-based login tracing. The pairwise user identifier (e.g., PPID) is used in some SSO protocols, such as SAML~\cite{SAML} and OIDC~\cite{OpenIDConnect}. Some protocols simply hide the RP's identity from IdP, such as SPRESSO~\cite{SPRESSO} (using encrypted RP identifier) and BrowserID~\cite{BrowserID} (RP identifier is added by user). However, the pairwise user identifier cannot prevent IdP-based login tracing, and simply hiding RP identifier is not defensive to RP-based identity linkage. Moreover, an analysis on Persona found IdP-based login tracing could still succeed~\cite{FettKS14, BrowserID}.
+There is also another method that prevents both IdP and RP from knowing user's trace based on zero-knowledge algorithm, such as EL PASSO~\cite{ZhangKSZR21} and UnlimitID~\cite{IsaakidisHD16}. However, this type of solution requires that the user must remember a secret representing her identity, which is not convenient for login on multiple devices.
+
+Anonymous SSO schemes enable the users to access a service (i.e. RP) with permission from a verifier (i.e., IdP) without revealing their identities.
+The anonymous SSO systems are designed based on multiple methods. For example, various cryptographic primitives, such as group signature, zero-knowledge proof, etc., were used to design anonymous SSO schemes~\cite{WangWS13,HanCSTW18}. 
+The anonymous SSO schemes allow a user to obtain an unidentified token anonymously, and access RP's service with this token. However, the RP cannot classify a user's multiple logins, as the user is completely anonymous in this system. Therefore, they are not available in current personalized internet service.
+
+\subsection{Intel SGX and Remote Attestation}
+Intel SGX and remote attestation have been already used in many fields, particularly in authentication and building a trusted environment. 
+
+Intel SGX has been used in enhancing the security and privacy of authentication systems. Rafael et al.~\cite{CondeMW18} offer the credential protection approach based on SGX, which prevents an adversary from stealing a user's credential at server side. P2A~\cite{SongWLOWL20} is proposed to protect user's privacy. It enables a user to generate an identity proof locally while the registration, update, freeze/thaw, and deletion of identities are managed in a blockchain. Therefore, a user can visit a service without exposing her real identity. 
+
+Remote attestation is wisely adopted on building the trusted environment. Jaehwan et al.~\cite{AhnLK20} propose a method
+of building a safe smart home environment for IoT by pre-blocking devices based on remote attestation. 
+Uzair et al.~\cite{JavaidAS20} establish the trust between IoT devices based on the blockchain and remote attestation, while the blockchain offers a secure framework for device registration. Moreover, there is work on how to conduct the remote attestation without an assigned key or secure memory (required in Intel SGX). Ilia et al.~\cite{LebedevHD18} propose the design of an attested execution processor based on RISC-V Rocket chip architecture. It does not 
+require secure non-volatile memory, nor a private key explicitly assigned by the manufacturer.
