@@ -8,7 +8,7 @@ We adopt SHA-256 for digest generation, RSA-2048 for signature generation, and 1
 
 
 IdP and RP servers are implemented based on Spring Boot, a popular web framework. 
-We use the open-source auth0/java-jwt library to generate and verify the identity token. 
+We use the open-source auth0/java-jwt library to generate and verify the identity proof. 
 The cryptographic computations of servers are implemented using API provided by JDK. 
 Native messaging~\cite{NativeMessaging} (enables communication between chrome extension and native application) and chrome extension are  adopted to enable the JavaScript code to invoke the native application installed on user's device. 
 %Native messaging offers the channel for chrome extension to communicate with native application. And chrome extension can communicate with the JavaScript code in the browser. 

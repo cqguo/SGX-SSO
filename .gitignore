@@ -7,3 +7,5 @@
 *.gz
 .DS_Store
 .DS_Store
+*.bak
+chap/.DS_Store
