@@ -22,13 +22,13 @@ OIDC supports three processes for the SSO authentication session, known as {\em 
 \end{figure}
 
 As shown in Figure~\ref{fig:OpenID}, 
-At the beginning, user attempts to log in to an RP (step 1). Then RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes (step 2). If the user has not been authenticated yet, the IdP performs an authentication process (step 3). Following, IdP signs the $ID_{RP}$ and PPID as the identity token (step 4), and sends it back to the RP (step 5). Finally, the RP verifies the id token, extracts user identifier (step 6), and returns the authentication result to the user (step 7).
+At the beginning, user attempts to log in to an RP (step 1). Then RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes (step 2). If the user has not been authenticated yet, the IdP performs an authentication process (step 3). Following, IdP signs the $ID_{RP}$ and PPID as the identity proof (step 4), and sends it back to the RP (step 5). Finally, the RP verifies the id token, extracts user identifier (step 6), and returns the authentication result to the user (step 7).
 \begin{comment}
 \item[1] At the beginning, user attempts to log in to an RP.
 \item[2] RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes.
 \item[3] If the user has not been authenticated yet, the IdP performs an authentication process.
-\item[4] IdP signs the $ID_{RP}$ and PPID as the identity token.%If the RP's endpoint in the request matches the one registered at the IdP, it generates an identity token. Otherwise, IdP generates a warning to notify the user about potential identity proof leakage.
-\item[5] IdP sends the identity token back to the RP.
+\item[4] IdP signs the $ID_{RP}$ and PPID as the identity proof.%If the RP's endpoint in the request matches the one registered at the IdP, it generates an identity token. Otherwise, IdP generates a warning to notify the user about potential identity proof leakage.
+\item[5] IdP sends the identity proof back to the RP.
 \item[6] The RP verifies the id token, and extracts user identifier.
 \item[7] Finally, RP returns the authentication result to the user.
 \end{comment}
@@ -49,7 +49,7 @@ Intel Software Guard Extensions (Intel SGX)~\cite{costan2016intel} is the hardwa
 \vspace{1mm}\noindent\textbf{Enclave.}
 The enclave’s code and data is stored in Processor Reserved Memory (PRM). 
 PRM cannot be directly accessed by other software, including system software and System Management Module code (Ring 2).
-The Direct Memory Access (DMA) of PRM is also unavailable, as enclave is protected from other peripherals.
+The Direct Memory Access (DMA) of PRM is also unavailable, as enclave is protected from other peripherals. That is, while the application is running inside the enclave, even the device owner cannot break its security, such as accessing or tempering the application's data.
 
 
 

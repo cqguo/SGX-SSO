@@ -58,14 +58,14 @@ In this paper, we propose UP-SSO,
 %Enhancing the User Privacy of SSO by Integrating PPID and SGX, 
 the comprehensive protection against both IdP-based login tracing and RP-based identity linkage.
 The key idea of UP-SSO is shifting PPID generation from server to user client. 
-%Therefore, IdP server can issue the identity token containing PPID, only requiring an one-time transformed RP ID (e.g., encrypted RP ID). 
-The user client takes the responsibility for generating PPID and transforming RP ID into an encrypted one-time ID,
+Thus, IdP server can issue the identity proof containing PPID, only requiring an one-time transformed RP ID (e.g., encrypted RP ID). 
+In UP-SSO system, the user client takes the responsibility for generating PPID and transforming RP ID into an encrypted one-time ID,
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}). 
 %For IdP, 
 %it can only obtain an encrypted one-time RP ID, 
 so that the IdP-based login tracing is not impossible as IdP no longer receives plain RP ID.
 To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment (Intel SGX). 
-%With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and it can be verified by IdP through \emph{Remote Attestation}, the function provided by SGX.
+With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and its integrity is guaranteed by \emph{Remote Attestation}, the mechanism provided by SGX.
 %Moreover, other essential IdP services, such as user authentication and identity proof issuing,  must be deployed at server side for security consideration. 
 
 %The overview of UP-SSO is shown in Figure~\ref{}. At the very beginning, user starts the visit to an RP (step 1). Then RP redirects user to IdP and the user is authenticated by IdP (step 2). After that, user invokes the user client (application protected by SGX) for PPID generation. To be noticed is that remote attestation must be conducted while the user client launches. After remote attestation, the user client and server are considered built a trust channel through a exchanged symmetric key. User client next retrieves the user ID (i.e., UID) from IdP server and RP (step 3). Then it generates the encrypted RP ID and PPID and sends them to IdP server to generate identity token (step 5). Following IdP issues the token with encrypted IDs and return it back to user ().   
@@ -90,7 +90,7 @@ We summarize our contributions as follows.
 \end{itemize}
 \end{comment}
 
-\vspace{1mm}\noindent\textbf{Our contribution. }The main contribution of UP-SSO is that, it provides the PPID-included identity token without exposing RP ID to IdP, by shifting the PPID generation from IdP server to user controlled device, and protecting it with the Intel SGX.
+\vspace{1mm}\noindent\textbf{Our contribution. }The main contribution of UP-SSO is that, it provides the PPID-included identity proof without exposing RP ID to IdP, by shifting the PPID generation from IdP server to user controlled device, and protecting it with the Intel SGX.
 %we shift the PPID generation from IdP server to user controlled device, and protect it with the Intel SGX. It enables the IdP to provide the PPID-included identity token without exposing RP ID to IdP, while the user-side service is verified by IdP through remote attestation to guarantee its integrity.  
 Therefore, UP-SSO offers the comprehensive solution to hide the users' login traces from both the curious IdP and malicious collusive RPs. 
 Moreover, it provides a new way of using secure hardware (i.e., Intel SGX) for SSO systems.
