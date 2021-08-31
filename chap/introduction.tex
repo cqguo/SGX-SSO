@@ -25,7 +25,7 @@ NIST~\cite{NIST2017draft} indicates that curious IdP or multiple collusive RPs c
 %However, the privacy leaks in SSO systems make her effort in vain. As long as a user employs the SSO system, such as Google Account, to log in to these applications, the applications providers and Google can combine her information based on the SSO account.
 
 
-To protect user privacy, the Pairwise Pseudonymous Identifier (PPID) is suggested by NIST~\cite{NIST2017draft} , OIDC~\cite{OpenIDConnect} and SAML~\cite{SAMLIdentifier}.
+To protect user privacy, the Pairwise Pseudonymous Identifier (PPID) is suggested by NIST~\cite{NIST2017draft}, OIDC~\cite{OpenIDConnect} and SAML~\cite{SAMLIdentifier}.
 %and popular SSO protocols, such as OpenID Connect (OIDC)~\cite{OpenIDConnect} and SAML~\cite{SAMLIdentifier}. 
 That is, IdP should offer a user multiple individual IDs for different RPs. 
 Thus, an RP cannot  correlate the  PPID  with user's PPID at another RP. 
@@ -42,10 +42,10 @@ Here we give a brief introduction of existing solutions
 % for privacy-preserving SSO 
 and explain the flaws of these schemes. 
 \begin{itemize}
-\item {\noindent\textbf{ Simply hiding RP ID from IdP. }}For example, SPRESSO~\cite{SPRESSO} were proposed to defend against IdP-based login tracing by hiding RP ID from IdP. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID. 
+\item {\noindent\textbf{Simply hiding RP ID from IdP. }}For example, SPRESSO~\cite{SPRESSO} were proposed to defend against IdP-based login tracing by hiding RP ID from IdP. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID. 
 However, PPID is not available in this type of solution, as IdP cannot offer an RP a constant PPID with one-time irrelevant RP ID.
-\item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ to RP without exposing $s$ to RP. 
-However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus it is not convenient for user's login on multiple devices. 
+\item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP. 
+However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices. 
 %However, it is not convenient for user's login on multiple devices. For security consideration, the $s$ must be too long for user to remember.  And the user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device. 
 %\item {\em Completely anonymous SSO system. }Anonymous SSO scheme is proposed to hide the user's identity to both the IdP and RPs in many manners. For example, the anonymous SSO~\cite{HanCSTW18} allows a user to visit the RP without exposing her identity to both IdP and RP based on zero-knowledge proof. However, it can only be applied to the anonymous services that do not identify the user, but not available in current personalized internet service.
 \end{itemize}
@@ -57,14 +57,14 @@ However, whenever a user tries to visit RP at a new device, she must import  $s$
 In this paper, we propose UP-SSO, 
 %Enhancing the User Privacy of SSO by Integrating PPID and SGX, 
 the comprehensive protection against both IdP-based login tracing and RP-based identity linkage.
-The key idea of UP-SSO is shifting PPID generation from server to user client. 
-Thus, IdP server can issue the identity proof containing PPID, only requiring an one-time transformed RP ID (e.g., encrypted RP ID). 
+The key idea of UP-SSO is shifting PPID generation from server to user client,
+so that IdP server can issue the identity proof containing PPID, by only requiring an one-time transformed RP ID (e.g., encrypted RP ID). 
 In UP-SSO system, the user client takes the responsibility for generating PPID and transforming RP ID into an encrypted one-time ID,
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}). 
 %For IdP, 
 %it can only obtain an encrypted one-time RP ID, 
 so that the IdP-based login tracing is not impossible as IdP no longer receives plain RP ID.
-To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment (Intel SGX). 
+To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment, e.g. Intel SGX. 
 With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and its integrity is guaranteed by \emph{Remote Attestation}, the mechanism provided by SGX.
 %Moreover, other essential IdP services, such as user authentication and identity proof issuing,  must be deployed at server side for security consideration. 
 
