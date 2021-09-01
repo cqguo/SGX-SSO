@@ -64,7 +64,7 @@ In UP-SSO system, the user client takes the responsibility for generating PPID a
 %For IdP, 
 %it can only obtain an encrypted one-time RP ID, 
 so that the IdP-based login tracing is not impossible as IdP no longer receives plain RP ID.
-To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment, e.g. Intel SGX. 
+To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment, i.e., Intel SGX. 
 With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and its integrity is guaranteed by \emph{Remote Attestation}, the mechanism provided by SGX.
 %Moreover, other essential IdP services, such as user authentication and identity proof issuing,  must be deployed at server side for security consideration. 
 
