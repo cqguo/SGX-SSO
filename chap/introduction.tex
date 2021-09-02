@@ -1,17 +1,17 @@
 \section{Introduction}
 \label{sec:intro}
-Single sign-on (SSO) systems, such as OAuth, OpenID Connect (OIDC) and SAML, have been widely deployed for web authentication.
-%nowadays as a convenient web authentication mechanism. 
-SSO delegates user authentication on websites from online services (Relying Party, RP) to a third party (Identity Provider, IdP).
-%, via a single authentication process. 
-Using SSO, a user no longer needs to maintain multiple credentials for different RPs.
+Single sign-on (SSO) systems, such as OAuth, OpenID Connect (OIDC) and SAML, have been widely deployed.
+%nowadays as a convenient web authentication mechanism.
+SSO delegates the user authentication from online services, called \emph{relying parties} (RPs) to a third party, called the identity provider (IdP).
+%, via a single authentication process.
+With the help of SSO, a user no longer needs to maintain multiple credentials for different RPs.
 %, instead, she only maintains the credential for the IdP, which further provides identity proofs to RPs.
 %For RPs, SSO shifts the burden of user authentication to IdPs and therefore reduces their security risks and costs. As a result, SSO has been widely integrated with modern web systems.
 According to Alexa, the popular web traffic analysis site, 80 websites among the top-100 websites integrate SSO services~\cite{Alexa}.
 %Meanwhile, many email and social networking providers such as Google, Facebook, Twitter, etc. have been actively serving as social identity providers to support social login.
 
-However, the wide adoption of SSO also raises new privacy concerns. 
-%Currently, more and more companies are interested in the users' online trace for business practices, such as accurate delivery advertising. For example, large internet service providers, such as Google, are interested in collecting users' online behavioral information for various purposes (e.g., Screenwise Meter~\cite{googlenews}). Now, by simply serving the IdP role, these companies can easily collect a large amount of data to reconstruct users' online traces. 
+However, the wide adoption of SSO also raises new privacy concerns.
+%Currently, more and more companies are interested in the users' online trace for business practices, such as accurate delivery advertising. For example, large internet service providers, such as Google, are interested in collecting users' online behavioral information for various purposes (e.g., Screenwise Meter~\cite{googlenews}). Now, by simply serving the IdP role, these companies can easily collect a large amount of data to reconstruct users' online traces.
 NIST~\cite{NIST2017draft} indicates that curious IdP or multiple collusive RPs could break the users' privacy in such ways. (1) \textbf{IdP-based login tracing}. The IdP knows the identities of the RP and user in each single login instance; (2) \textbf{RP-based identity linkage}. The RP learns a user's identity from the identity proof, so that malicious RPs could collude to link the user's login activities.
 \begin{comment}
 \item {\em IdP-based login tracing}. The IdP knows the identities of the RP and user in each single login instance.
@@ -26,12 +26,12 @@ NIST~\cite{NIST2017draft} indicates that curious IdP or multiple collusive RPs c
 
 
 To protect user privacy, the Pairwise Pseudonymous Identifier (PPID) is suggested by NIST~\cite{NIST2017draft}, OIDC~\cite{OpenIDConnect} and SAML~\cite{SAMLIdentifier}.
-%and popular SSO protocols, such as OpenID Connect (OIDC)~\cite{OpenIDConnect} and SAML~\cite{SAMLIdentifier}. 
-That is, IdP should offer a user multiple individual IDs for different RPs. 
-Thus, an RP cannot  correlate the  PPID  with user's PPID at another RP. 
-%Thus, collusive RPs cannot link a user's logins targeting different RPs. 
+%and popular SSO protocols, such as OpenID Connect (OIDC)~\cite{OpenIDConnect} and SAML~\cite{SAMLIdentifier}.
+That is, IdP should offer a user multiple individual IDs for different RPs.
+Thus, an RP cannot  correlate the  PPID  with user's PPID at another RP.
+%Thus, collusive RPs cannot link a user's logins targeting different RPs.
 More and more IdPs have adopted PPID to protect user privacy, such as Active Directory Federation Services and Oracle Access Management.
-%~\cite{MS, Oracle}. 
+%~\cite{MS, Oracle}.
 And NORDIC APIS and CURITY also suggest adopting PPID in SSO to protect user privacy.
 %~\cite{Nordic, Curity}.
 
@@ -39,14 +39,14 @@ Although PPID mechanism can protect user from RP-based identity linkage, the IdP
 There have been many works on protecting user privacy in SSO systems, however, to the best of our knowledge, none of the existing techniques~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} can offer the comprehensive protection of privacy or achieve it by integrating PPID. 
 %Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems. 
 Here we give a brief introduction of existing solutions
-% for privacy-preserving SSO 
-and explain the flaws of these schemes. 
+% for privacy-preserving SSO
+and explain the flaws of these schemes.
 \begin{itemize}
-\item {\noindent\textbf{Simply hiding RP ID from IdP. }}For example, SPRESSO~\cite{SPRESSO} were proposed to defend against IdP-based login tracing by hiding RP ID from IdP. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID. 
+\item {\noindent\textbf{Simply hiding RP ID from IdP. }}For example, SPRESSO~\cite{SPRESSO} were proposed to defend against IdP-based login tracing by hiding RP ID from IdP. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID.
 However, PPID is not available in this type of solution, as IdP cannot offer an RP a constant PPID with one-time irrelevant RP ID.
-\item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP. 
-However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices. 
-%However, it is not convenient for user's login on multiple devices. For security consideration, the $s$ must be too long for user to remember.  And the user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device. 
+\item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP.
+However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
+%However, it is not convenient for user's login on multiple devices. For security consideration, the $s$ must be too long for user to remember.  And the user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device.
 %\item {\em Completely anonymous SSO system. }Anonymous SSO scheme is proposed to hide the user's identity to both the IdP and RPs in many manners. For example, the anonymous SSO~\cite{HanCSTW18} allows a user to visit the RP without exposing her identity to both IdP and RP based on zero-knowledge proof. However, it can only be applied to the anonymous services that do not identify the user, but not available in current personalized internet service.
 \end{itemize}
 
@@ -54,8 +54,8 @@ However, whenever a user tries to visit RP at a new device, she must import  $s$
 %As discussed above, none of the existing SSO systems defend against both IdP-based login tracing and RP-based identity linkage, and provide the convenient SSO service on multiple devices at the same time.
 %We remark that the problems cannot be solved, such as simply combining existing solutions together. The challenge is that, there is not a simple way for IdP to provide PPID without knowing the RP's identity.
 
-In this paper, we propose UP-SSO, 
-%Enhancing the User Privacy of SSO by Integrating PPID and SGX, 
+In this paper, we propose UP-SSO,
+%Enhancing the User Privacy of SSO by Integrating PPID and SGX,
 the comprehensive protection against both IdP-based login tracing and RP-based identity linkage.
 The key idea of UP-SSO is shifting PPID generation from server to user client,
 so that IdP server can issue the identity proof containing user's PPID (denoted as $PPID_U$), by only requiring an one-time transformed RP ID (e.g., encrypted RP ID, denoted as $PPID_{RP}$). 
@@ -63,25 +63,26 @@ In UP-SSO system, the user client takes the responsibility for generating $PPID_
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}). 
 %For IdP, 
 %it can only obtain an encrypted one-time RP ID, 
+
 so that the IdP-based login tracing is not impossible as IdP no longer receives plain RP ID.
-To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment, i.e., Intel SGX. 
+To be noticed is that the user-side service must be deployed at the user-controlled and IdP trusted environment, i.e., Intel SGX in this paper.
 With SGX, the secure hardware supported by intel CPU, the user-side service can be deployed at user's PC, and its integrity is guaranteed by \emph{Remote Attestation}, the mechanism provided by SGX.
-%Moreover, other essential IdP services, such as user authentication and identity proof issuing,  must be deployed at server side for security consideration. 
+%Moreover, other essential IdP services, such as user authentication and identity proof issuing,  must be deployed at server side for security consideration.
 
-%The overview of UP-SSO is shown in Figure~\ref{}. At the very beginning, user starts the visit to an RP (step 1). Then RP redirects user to IdP and the user is authenticated by IdP (step 2). After that, user invokes the user client (application protected by SGX) for PPID generation. To be noticed is that remote attestation must be conducted while the user client launches. After remote attestation, the user client and server are considered built a trust channel through a exchanged symmetric key. User client next retrieves the user ID (i.e., UID) from IdP server and RP (step 3). Then it generates the encrypted RP ID and PPID and sends them to IdP server to generate identity token (step 5). Following IdP issues the token with encrypted IDs and return it back to user ().   
+%The overview of UP-SSO is shown in Figure~\ref{}. At the very beginning, user starts the visit to an RP (step 1). Then RP redirects user to IdP and the user is authenticated by IdP (step 2). After that, user invokes the user client (application protected by SGX) for PPID generation. To be noticed is that remote attestation must be conducted while the user client launches. After remote attestation, the user client and server are considered built a trust channel through a exchanged symmetric key. User client next retrieves the user ID (i.e., UID) from IdP server and RP (step 3). Then it generates the encrypted RP ID and PPID and sends them to IdP server to generate identity token (step 5). Following IdP issues the token with encrypted IDs and return it back to user ().
 
-%There have already been efforts on implementing authentication with security hardware, such as FIDO~\cite{fidouaf} UAF mode. It enables secure hardware (e.g., a smartphone) to store user's private key while the RP server stores the public key. Therefore, a user can be authenticated by the RP through a signed login challenge. However, compared with UP-SSO (as well as traditional SSO), FIDO does not provide an authority center, such as IdP. It brings about the problem that, the FIDO service cannot set accessibility limits without additional user information. For example, an RP requires that all the visitors must be adults. 
-%In UP-SSO, the user only needs to be verified at IdP and the result can be included in an identity token. However, in FIDO system, the verification is not available except that user uploads specific information, which would link the user's accounts in different RPs. 
+%There have already been efforts on implementing authentication with security hardware, such as FIDO~\cite{fidouaf} UAF mode. It enables secure hardware (e.g., a smartphone) to store user's private key while the RP server stores the public key. Therefore, a user can be authenticated by the RP through a signed login challenge. However, compared with UP-SSO (as well as traditional SSO), FIDO does not provide an authority center, such as IdP. It brings about the problem that, the FIDO service cannot set accessibility limits without additional user information. For example, an RP requires that all the visitors must be adults.
+%In UP-SSO, the user only needs to be verified at IdP and the result can be included in an identity token. However, in FIDO system, the verification is not available except that user uploads specific information, which would link the user's accounts in different RPs.
 
 %To guarantee the security of UP-SSO, we provide the description of threat model and detailed systemic analysis, that shows UP-SSO prevents all the known attackers. Moreover, we have implemented a prototype of UP-SSO, including the servers, user client and user-side JavaScript codes. And we compare the performance of the UP-SSO prototype with a state-of-the-art SSO system (e.g., OpenID Connect). The time cost of UP-SSO and OpenID Connect is, respectively, about 154 and 113 ms. The overhead is modest.
 
 
 \begin{comment}
 We summarize our contributions as follows.
-%Êàë‰ª¨ÁöÑË¥°ÁåÆ
-%ÊèêÂá∫ÂçèËÆÆ
-%ËÄÉËôëËÉΩÂê¶Ê†πÊçÆÊ®°ÂûãËøõË°åÂàÜÊûê
-%ÂÆûÁé∞ÂéüÂûãÁ≥ªÁªü
+%Œ“√«µƒπ±œ◊
+%Ã·≥ˆ–≠“È
+%øº¬«ƒ‹∑Ò∏˘æ›ƒ£–ÕΩ¯––∑÷Œˆ
+% µœ÷‘≠–ÕœµÕ≥
 %The main contributions of UPPRESSO are as follows:
 \begin{itemize}
 \item We propose the comprehensive solution to hide the users' login traces from both the curious IdP and malicious collusive RPs for convenient SSO system.
@@ -90,10 +91,12 @@ We summarize our contributions as follows.
 \end{itemize}
 \end{comment}
 
+
 \vspace{1mm}\noindent\textbf{Our contribution. }The main contribution of UP-SSO is that, it provides the PPID-included (containing $PPID_{RP}$ and $PPID_U$ ) identity proof without exposing RP ID to IdP, by shifting the $PPID_U$ generation from IdP server to user controlled device, and protecting it with the Intel SGX.
 %we shift the PPID generation from IdP server to user controlled device, and protect it with the Intel SGX. It enables the IdP to provide the PPID-included identity token without exposing RP ID to IdP, while the user-side service is verified by IdP through remote attestation to guarantee its integrity.  
 Therefore, UP-SSO offers the comprehensive solution to hide the users' login traces from both the curious IdP and malicious collusive RPs. 
 %Moreover, it provides a new way of using secure hardware (i.e., Intel SGX) for SSO systems.
 
-%ÊñáÁ´†ÁªìÊûÑ
+
+%Œƒ’¬Ω·ππ
 The rest of the paper is organized as follows. We first introduce the background in Section~\ref{sec:background}. Then, we describe the threat model, and our UP-SSO design in Sections~\ref{sec:threatmodel} and \ref{sec:design}, followed by a systemic analysis of security and privacy in Section~\ref{sec:analysis}. We provide the implementation specifics and experiment evaluation in Section~\ref{sec:implementation},  discuss the related work in Section~\ref{sec:relatedwork}, and conclude our work in Section~\ref{sec:conclusion}.
