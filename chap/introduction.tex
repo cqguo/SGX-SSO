@@ -7,7 +7,7 @@ SSO delegates user authentication on websites from online services (Relying Part
 Using SSO, a user no longer needs to maintain multiple credentials for different RPs.
 %, instead, she only maintains the credential for the IdP, which further provides identity proofs to RPs.
 %For RPs, SSO shifts the burden of user authentication to IdPs and therefore reduces their security risks and costs. As a result, SSO has been widely integrated with modern web systems.
-According to Alexa, the popular web traffic analysis site, 80 websites among the top-100 websites integrate SSO services.
+According to Alexa, the popular web traffic analysis site, 80 websites among the top-100 websites integrate SSO services~\cite{Alexa}.
 %Meanwhile, many email and social networking providers such as Google, Facebook, Twitter, etc. have been actively serving as social identity providers to support social login.
 
 However, the wide adoption of SSO also raises new privacy concerns. 
@@ -34,10 +34,10 @@ More and more IdPs have adopted PPID to protect user privacy, such as Active Dir
 %~\cite{MS, Oracle}. 
 And NORDIC APIS and CURITY also suggest adopting PPID in SSO to protect user privacy.
 %~\cite{Nordic, Curity}.
-However, PPID mechanism cannot protect user from IdP-based login tracing, as the PPID generation requires the participation of RP identity.
 
-Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems. 
-However, to the best of our knowledge, none of the existing techniques can offer the comprehensive protection of privacy or achieve it by integrating PPID. 
+Although PPID mechanism can protect user from RP-based identity linkage, the IdP-based identity linkage is not well prevented in SSO systems.
+There have been many works on protecting user privacy in SSO systems, however, to the best of our knowledge, none of the existing techniques~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} can offer the comprehensive protection of privacy or achieve it by integrating PPID. 
+%Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems. 
 Here we give a brief introduction of existing solutions
 % for privacy-preserving SSO 
 and explain the flaws of these schemes. 
@@ -58,8 +58,8 @@ In this paper, we propose UP-SSO,
 %Enhancing the User Privacy of SSO by Integrating PPID and SGX, 
 the comprehensive protection against both IdP-based login tracing and RP-based identity linkage.
 The key idea of UP-SSO is shifting PPID generation from server to user client,
-so that IdP server can issue the identity proof containing PPID, by only requiring an one-time transformed RP ID (e.g., encrypted RP ID). 
-In UP-SSO system, the user client takes the responsibility for generating PPID and transforming RP ID into an encrypted one-time ID,
+so that IdP server can issue the identity proof containing user's PPID (denoted as $PPID_U$), by only requiring an one-time transformed RP ID (e.g., encrypted RP ID, denoted as $PPID_{RP}$). 
+In UP-SSO system, the user client takes the responsibility for generating $PPID_U$ and transforming RP ID into $PPID_{RP}$,
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}). 
 %For IdP, 
 %it can only obtain an encrypted one-time RP ID, 
@@ -90,10 +90,10 @@ We summarize our contributions as follows.
 \end{itemize}
 \end{comment}
 
-\vspace{1mm}\noindent\textbf{Our contribution. }The main contribution of UP-SSO is that, it provides the PPID-included identity proof without exposing RP ID to IdP, by shifting the PPID generation from IdP server to user controlled device, and protecting it with the Intel SGX.
+\vspace{1mm}\noindent\textbf{Our contribution. }The main contribution of UP-SSO is that, it provides the PPID-included (containing $PPID_{RP}$ and $PPID_U$ ) identity proof without exposing RP ID to IdP, by shifting the $PPID_U$ generation from IdP server to user controlled device, and protecting it with the Intel SGX.
 %we shift the PPID generation from IdP server to user controlled device, and protect it with the Intel SGX. It enables the IdP to provide the PPID-included identity token without exposing RP ID to IdP, while the user-side service is verified by IdP through remote attestation to guarantee its integrity.  
 Therefore, UP-SSO offers the comprehensive solution to hide the users' login traces from both the curious IdP and malicious collusive RPs. 
-Moreover, it provides a new way of using secure hardware (i.e., Intel SGX) for SSO systems.
+%Moreover, it provides a new way of using secure hardware (i.e., Intel SGX) for SSO systems.
 
 %文章结构
 The rest of the paper is organized as follows. We first introduce the background in Section~\ref{sec:background}. Then, we describe the threat model, and our UP-SSO design in Sections~\ref{sec:threatmodel} and \ref{sec:design}, followed by a systemic analysis of security and privacy in Section~\ref{sec:analysis}. We provide the implementation specifics and experiment evaluation in Section~\ref{sec:implementation},  discuss the related work in Section~\ref{sec:relatedwork}, and conclude our work in Section~\ref{sec:conclusion}.

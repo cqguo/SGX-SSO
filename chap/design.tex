@@ -11,7 +11,7 @@
 %The user agent (i.e., user-side IdP service) would obtain the UID from server part service, transform UID into the PPID, and encrypt the RPID and PPID with a one-time symmetric key to avoid IdP server digging out the RP's identity. As the enclave application is protected by SGX, it must not conduct any malicious behaviour. 
 %The server-side IdP service takes the responsibility of authenticating the user, retrieving the UID for each user, and issuing the identity token (i.e., the identity proof) consisted the privacy-preserving RP and user identifier.
 
-In this section, we will provide the detailed protocol shown as Figure~\ref{fig:UP-SSO}.
+In this section, we will provide the detailed protocol.
 
 %\subsection{UP-SSO procedures}
 \subsection{Initialization}
@@ -22,9 +22,9 @@ At the very beginning, RP needs to register its domain, RP name and other essent
 Moreover, user should install the enclave application on her device before the visit targeting an RP. 
 
 \subsection{Login Process}
-Following, we provide the detailed process of each authentication flow.
+Following, we provide the detailed process of each authentication flow shown as Figure~\ref{fig:UP-SSO}.
 %The procedures of UP-SSO are depicted in detail in Figure~\ref{fig:UP-SSO}. 
-It can be split into three phases, scripts downloading, PPID generation and identity proof issuing. 
+It can be split into three phases, scripts downloading, PPIDs generation and identity proof issuing. To be noticed that, all the communication flows among user, RP server and IdP server are protected by TLS.
 
 \vspace{0.5mm}\noindent\textbf{Scripts downloading.} This phase is for the user’s browser to download the scripts from the RP and IdP. The SSO process is started with the user's visit to an RP at her browser, and the browser downloads the RP script (step 1). Then the RP script opens a new window targeting RP login endpoint (step 2, 3). After that the user is redirected to the IdP server (step 4). Finally, the user retrieves the IdP script (step 5).
 
@@ -43,10 +43,18 @@ It must be noticed that, the user cannot visit IdP at step 2,3 directly. While t
 %So the redirection is adopted to avoid the HTTP header $Referer$. %and make the handle of the opening window available. 
 
 
-\vspace{0.5mm}\noindent\textbf{PPID Generation.} In this phase, IdP script invokes the enclave application to generate the PPID. 
-At first, the IdP authenticates the user (step 6). After that, IdP script sends the ready signal to RP window (step 7), and RP script sends its Cert to IdP script (step 8).  Then IdP script asks for user's consent to log in to targeting RP, and then it invokes the enclave application (step 9). The enclave application conducts remote attestation at its initialized execution, and negotiates a symmetric key $K$ with IdP server (step 10). Following the enclave application generates the UID request (i.e., $UR$) by encrypting request information with $K$ (step 11). $UR$ is sent to IdP script (step 12) and transmitted to IdP server (step 13). IdP encrypts $UID$ with $K$ (step 14), and transmits it to enclave application through IdP script (step 15, 16).  While receiving the encrypted $UID$, the enclave application derives the $UID$ with $K$, verifies the Cert, achieves RP's domain from Cert, generates the symmetric key $s$, encrypts the RP's domain as the transformed RP ID (i.e., $PRPID$), encrypts the hash of RP's domain and UID as the $PPID$, and encrypts $PRPID$ and $PPID$ with $K$ (step 17). Finally enclave application sends the encrypted IDs and $s$ to IdP script (step 18). 
+\vspace{0.5mm}\noindent\textbf{PPIDs Generation.} In this phase, IdP script invokes the enclave application to generate the PPID. 
+At first, the IdP authenticates the user (step 6). 
+After that, IdP script informs RP window (step 7), and RP script sends its Cert to IdP script (step 8).  
+Then IdP script asks for user's consent to visit targeting RP, and it invokes the enclave application (step 9). 
+The enclave application conducts remote attestation at its initialized execution, and negotiates a symmetric key $K$ with IdP server (step 10).
+Following the enclave application generates the UID request by encrypting request information with $K$ (step 11). 
+The request is sent to IdP script (step 12) and transmitted to IdP server (step 13). 
+IdP encrypts $UID$ with $K$ (step 14), and transmits it to enclave application through IdP script (step 15, 16).  
+While receiving the encrypted $UID$, the enclave application derives the $UID$, verifies the Cert and achieves RP's domain from it, generates the symmetric key $S$, encrypts the RP's domain as the  $PPID_{RP}$, encrypts the hash of RP's domain and UID as the $PPID_U$, and encrypts $PPID_{RP}$ and $PPID_U$ with $K$ (step 17). 
+Finally the encrypted IDs and $S$ are sent to IdP script (step 18). 
 
-The PPID must be the encrypted hash of RP's domain and UID, instead of the plain digest. It avoids the IdP to find out multiple logins targeting the same RP or not, as the hash of same RP's domain would be always the same. 
+The $PPID_U$ must be the encrypted hash of RP's domain and UID, instead of the plain digest. It avoids the IdP to find out multiple logins targeting the same RP or not, as the hash of same RP's domain would be always the same. 
 
 %Moreover, there are some types of parameters required in OIDC protocol to be carried in the SSO request, such as $response\_type$ and $scope$. In this paper, we would not mention these attributes, and only focus on the necessary parameters. 
 \begin{comment}
@@ -68,11 +76,11 @@ The PPID must be the encrypted hash of RP's domain and UID, instead of the plain
 
 %Moreover, there are some types of parameters required in OIDC protocol to be carried in the SSO request, such as $response\_type$ and $scope$. In this paper, we would not mention these attributes, and only focus on the necessary parameters. 
 
-\vspace{0.5mm}\noindent\textbf{Identity proof issuing.} In this phase, IdP issues an identity proof containing the encrypted $PPID$ and $PRPID$. And the RP verifies the token.
-At the beginning user sends the encrypted $PRPID$ and $PPID$ to IdP for identity proof (step 19). 
-Then the IdP server derives the $PRPID$ and $PPID$, signs the $token$ consisted of $PRPID$ and $PPID$ as the identity proof (step 20), and sends it to IdP script (step 21). 
+\vspace{0.5mm}\noindent\textbf{Identity proof issuing.} In this phase, IdP issues an identity proof containing the encrypted $PPID_{RP}$ and $PPID_U$. And the RP verifies the token.
+At the beginning user sends the encrypted $PPID_{RP}$ and $PPID_U$ to IdP for identity proof (step 19). 
+Then the IdP server derives the $PPID_{RP}$ and $PPID_U$, signs the $Token$ consisted of $PPID_{RP}$ and $PPID_U$ as the identity proof (step 20), and sends it to IdP script (step 21). 
 The IdP script then sends the $token$ and $s$ to the origin RP's $Domain$ through $postMessage$ (step 22), and  RP script uploads them to RP server (step 23). 
-The RP server verifies the signature with IdP's public key, compares the $PRPID$ carried with identity proof with self-generated one, and derives the constant user account from $PPID$ (step 24). 
+The RP server verifies the signature with IdP's public key, compares the $PPID_{RP}$ carried with identity proof with self-generated one, and derives the constant user account from $PPID_U$ (step 24). 
 %generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equaled, RP decrypts the user's account from $PPID$, and finds out the related user information in its database (step 24). 
 At the end, RP returns the login result back to user (step 25).
 

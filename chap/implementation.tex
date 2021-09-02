@@ -23,4 +23,4 @@ In the evaluation, we deploy the RP and IdP servers on the device with Intel i7-
 
 
 \vspace{1mm}\noindent\textbf{Result.}
-We have run SSO process on our prototype system 100 times, and the average time is 154 ms (excluding the overhead of remote attestation). For comparison, we run MITREid Connect, a popular open-source OpenID Connect implementation in Java. The time cost of  MITREid Connect is 113 ms. The overhead is modest.
+We have run SSO process on our prototype system 100 times, and the average time is 154 ms (from user visiting an RP to RP returning the authentication result). As the remote attestation overhead is only counted once the enclave application is initiated, the overhead is not included in the result (about xx ms). For comparison, we run MITREid Connect, a popular open-source OpenID Connect project. The time cost of  MITREid Connect is 113 ms. The overhead is modest.
