@@ -22,7 +22,7 @@ OIDC supports three processes for the SSO authentication session, known as {\em 
 \end{figure}
 
 As shown in Figure~\ref{fig:OpenID}, 
-At the beginning, user attempts to log in to an RP (step 1). Then RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes (step 2). If the user has not been authenticated yet, the IdP performs an authentication process (step 3). Following, IdP signs the $ID_{RP}$ and PPID as the identity proof (step 4), and sends it back to the RP (step 5). Finally, the RP verifies the id token, extracts user identifier (step 6), and returns the authentication result to the user (step 7).
+at the beginning, user attempts to log in to an RP (step 1). Then RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes (step 2). If the user has not been authenticated yet, the IdP performs an authentication process (step 3). Following, IdP signs the $ID_{RP}$ and PPID as the identity proof (step 4), and sends it back to the RP (step 5). Finally, the RP verifies the id token, extracts user identifier (step 6), and returns the authentication result to the user (step 7).
 \begin{comment}
 \item[1] At the beginning, user attempts to log in to an RP.
 \item[2] RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes.
