@@ -62,7 +62,8 @@ This paper proposes UP-SSO,
 %Enhancing the User Privacy of SSO by Integrating PPID and SGX,
 the comprehensive protections against both the IdP and curious RPs.
 The key idea of UP-SSO is to shift the PPID generation from the IdP server to the user side,
-so that IdP server can issue the identity proof containing user's PPID (denoted as $PPID_U$), by only requiring an one-time transformed RP ID (e.g., encrypted RP ID, denoted as $PPID_{RP}$).
+so that the IdP issues the identity proofs binding the user's PPID (denoted as $PPID_U$),
+    while only requiring an one-time RP pseudo-identity (denoted as $PID_{RP}$).
 In UP-SSO system, the user client takes the responsibility for generating $PPID_U$ and transforming RP ID into $PPID_{RP}$,
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}).
 %For IdP,
