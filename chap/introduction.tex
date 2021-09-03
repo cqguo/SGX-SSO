@@ -36,15 +36,14 @@ More and more IdPs have adopted PPIDs to protect user privacy, such as Active Di
 NORDIC APIS and CURITY also suggest the adoption of PPIDs in SSO to protect user privacy.
 %~\cite{Nordic, Curity}.
 
-Although the PPID mechanism protects user from the RP-based identity linkage, the IdP-based identity linkage is not well prevented in SSO systems.
-There have been many works to protect user privacy in SSO systems; however, to the best of our knowledge, none of the existing solutions~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} offers the comprehensive protection of user privacy,
-    .
+Although the PPID mechanism effectively protects user from the RP-based identity linkage, the IdP-based identity linkage is not well prevented in SSO systems.
+There have been many works to protect user privacy in SSO systems; however, to the best of our knowledge, none of the existing solutions~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} offers the comprehensive protection of user privacy.
 %Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems.
-Here we give a brief introduction of existing solutions
+Here we give a brief introduction of existing solutions against the IdP-based login tracing
 % for privacy-preserving SSO
-and explain the flaws of these schemes.
+and explain the shortcomings of these schemes.
 \begin{itemize}
-\item {\noindent\textbf{Simply hiding RP ID from IdP. }}For example, SPRESSO~\cite{SPRESSO} were proposed to defend against IdP-based login tracing by hiding RP ID from IdP. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID.
+\item {\noindent\textbf{Hiding RP Identities from the IdP.}} SPRESSO~\cite{SPRESSO} was proposed to protect user privacy against the IdP by hiding RP identities. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID.
 However, PPID is not available in this type of solution, as IdP cannot offer an RP a constant PPID with one-time irrelevant RP ID.
 \item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP.
 However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
