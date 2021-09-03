@@ -43,8 +43,11 @@ Here we give a brief introduction of existing solutions against the IdP-based lo
 % for privacy-preserving SSO
 and explain the shortcomings of these schemes.
 \begin{itemize}
-\item {\noindent\textbf{Hiding RP Identities from the IdP.}} SPRESSO~\cite{SPRESSO} was proposed to protect user privacy against the IdP by hiding RP identities. It uses the encrypted RP ID instead, and IdP issues the identity proof for this one-time encrypted ID.
-However, PPID is not available in this type of solution, as IdP cannot offer an RP a constant PPID with one-time irrelevant RP ID.
+\item {\noindent\textbf{Hiding RP Identities from the IdP.}} SPRESSO~\cite{SPRESSO} and BrowserID~\cite{BrowserID} were proposed to protect user privacy against the IdP by hiding RP identities.
+An encrypted RP identity is bound in identity proofs by the SPRESSO IdP,
+    while the BrowserID IdP firstly binds the user identity and a key pair and the user will bind the RP identity by itself using the certified key pair.
+PPID cannot be integrated in this type of solutions,
+     as the IdP cannot assign the PPID based on an \emph{unknown} RP identity.
 \item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP.
 However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
 %However, it is not convenient for user's login on multiple devices. For security consideration, the $s$ must be too long for user to remember.  And the user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device.
@@ -55,10 +58,10 @@ However, whenever a user tries to visit RP at a new device, she must import  $s$
 %As discussed above, none of the existing SSO systems defend against both IdP-based login tracing and RP-based identity linkage, and provide the convenient SSO service on multiple devices at the same time.
 %We remark that the problems cannot be solved, such as simply combining existing solutions together. The challenge is that, there is not a simple way for IdP to provide PPID without knowing the RP's identity.
 
-In this paper, we propose UP-SSO,
+This paper proposes UP-SSO,
 %Enhancing the User Privacy of SSO by Integrating PPID and SGX,
-the comprehensive protection against both IdP-based login tracing and RP-based identity linkage.
-The key idea of UP-SSO is shifting PPID generation from server to user client,
+the comprehensive protections against both the IdP and curious RPs.
+The key idea of UP-SSO is to shift the PPID generation from the IdP server to the user side,
 so that IdP server can issue the identity proof containing user's PPID (denoted as $PPID_U$), by only requiring an one-time transformed RP ID (e.g., encrypted RP ID, denoted as $PPID_{RP}$).
 In UP-SSO system, the user client takes the responsibility for generating $PPID_U$ and transforming RP ID into $PPID_{RP}$,
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}).
