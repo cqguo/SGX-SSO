@@ -1,49 +1,49 @@
 \section{Threat Model}
 \label{sec:threatmodel}
-%UP-SSO is compatible with OIDC, consisted of a number of RPs, user agents(including browser and enclave application) and an IdP. 
-In this section, we describe the threat model and assumptions of these entities in UP-SSO.
+%UP-SSO is compatible with OIDC, consisted of a number of RPs, user agents(including browser and enclave application) and an IdP.
+In this section, we describe the threat model and assumptions of the entities in UP-SSO.
 
-\vspace{1mm}\noindent\textbf{Adversaries' Goal: }(1) The adversaries can impersonate a user to log in to an RP (\textbf{breaking security}); (2) the adversaries can track a user's login trace (\textbf{breaking privacy}).
+\vspace{1mm}\noindent\textbf{Adversary Goal: }(1) The adversaries can impersonate a user to log in to an RP (\textbf{breaking security}); (2) the adversaries can track a user's login trace (\textbf{breaking privacy}).
 \begin{comment}
 \item \noindent\textbf{Breaking the security. }The adversaries can impersonate an honest user to log in to the honest RP.
 \item \noindent\textbf{Breaking the privacy. }The adversaries can track a user's login trace on each RP.
-\end{comment} 
+\end{comment}
 
-\vspace{1mm}\noindent\textbf{Adversaries' Capacities: }
+\vspace{1mm}\noindent\textbf{Adversary Capacity: }
 \begin{itemize}
 \item \noindent\textbf{To break the security.}
-An adversary can act as the malicious user and malicious RP. 
-The adversary can control the software running outside the enclave, capturing and tempering the message transmission outside the enclave, decrypting and tempering the HTTPS flows, tempering the script code running on the browser. 
+An adversary can act as the malicious user and malicious RP.
+The adversary can control the software running outside the enclave, capturing and tempering the message transmission outside the enclave, decrypting and tempering the HTTPS flows, tempering the script code running on the browser.
 Moreover, the attacker may also act as the external attacker, who can collect all the network flows. The adversary can also lead the user to download the malicious script on her browser.
 
 \item \noindent\textbf{To break the privacy.}
-An adversary can act as the malicious RP and curious but honest IdP. 
+An adversary can act as the malicious RP and curious but honest IdP.
 The malicious RP may manipulate  all the messages generated and transmitted by RP.
 However, the honest IdP must process the requests of RP registration and identity proof correctly, provide honest script, and never collude with others.
 Both RP and IdP can store and analyze the received messages.
 
 %\item \noindent\textbf{An adversary can act as the malicious user.}
-%An adversary can act as the malicious user. 
-%The adversary can control the software running outside the enclave, capturing and tempering the message transmission between enclave application and another entities, decrypting and tempering the HTTPS flows, tempering the script code running on the browser. 
-%For example, a malicious user may try to temper the PPID sent to IdP to achieve an identity token representing an honest user. 
+%An adversary can act as the malicious user.
+%The adversary can control the software running outside the enclave, capturing and tempering the message transmission between enclave application and another entities, decrypting and tempering the HTTPS flows, tempering the script code running on the browser.
+%For example, a malicious user may try to temper the PPID sent to IdP to achieve an identity token representing an honest user.
 %\item \noindent\textbf{An adversary can act as the malicious RP. }
-%An adversary can act as the malicious RP. 
-%The adversary can lead the user to log in to the malicious RP. In this situation, the adversary can manipulate  all the messages transmitted through RP, and collect all the flows received from user to link the user identity. 
+%An adversary can act as the malicious RP.
+%The adversary can lead the user to log in to the malicious RP. In this situation, the adversary can manipulate  all the messages transmitted through RP, and collect all the flows received from user to link the user identity.
 %\item \noindent\textbf{An adversary can act as the curious but honest IdP. }
-%An adversary can act as the curious but honest IdP. 
+%An adversary can act as the curious but honest IdP.
 %The curious IdP can store and analyze the received messages.
-%, and perform the timing attacks, attempting to achieve the IdP-based linkage. 
+%, and perform the timing attacks, attempting to achieve the IdP-based linkage.
 %However, the honest IdP must process the requests of RP registration and identity proof correctly, provide honest script, and never collude with others.
 %\item \noindent\textbf{External attackers. }An adversary can collect all the network flows. The adversary can also lead the user to download the malicious script on her browser.
 \end{itemize}
 
 %\subsection{Assumptions}
-We assume the honest user's device is secure, for example, user would not install malicious application on her device. 
+We assume the honest user's device is secure, for example, user would not install malicious application on her device.
 The application and data inside the enclave are never tempered or leaked, even in the malicious user's device.
 Moreover, the enclave application always runs the processes same as IdP server expected, as it is guaranteed by remote attestation.
 
 %The TLS is also adopted and correctly implemented in the system, so that the communications among entities ensure confidentiality and integrity.
-%The cryptographic algorithms and building blocks used in UP-SSO are assumed to be secure and correctly implemented. 
+%The cryptographic algorithms and building blocks used in UP-SSO are assumed to be secure and correctly implemented.
 
 %Phishing attack is not considered in this paper.
 
