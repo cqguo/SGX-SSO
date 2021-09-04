@@ -56,7 +56,8 @@ NIST~\cite{NIST2017draft} suggests that PPIDs should be generated randomly and a
 \subsection{Intel SGX}
 Intel Software Guard Extensions (SGX)~\cite{costan2016intel}
  is the hardware-based security  mechanism provided by Intel processors.
-Enclaves~\cite{costan2016intel} and remote attestation~\cite{costan2016intel} mechanism are offered by Intel SGX.
+A task protected by SGX runs within an enclave,
+    and this enclave is able to attested its run-time integrity to remote entities.
 %It offers memory encryption that isolates specific application code and data in memory.
 %It allows user-level code to allocate private regions of memory, called enclaves~\cite{costan2016intel}, which guarantees the running codes are well protected from the adversary outside the enclave.
 
