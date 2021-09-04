@@ -44,17 +44,19 @@ The RP finally verifies this identity proof, extracts the user identity, and ret
 \vspace{1mm}\noindent\textbf{Pairwise Pseudonymous Identifier (PPID).}
 %PPID is the user identifier provided by IdP identifying a user.
 Different from the unique user identity at the IdP,
- a PPID is an RP-specific user ID.
-That is, while a user visits different RPs, the IdP will provide different but constant user IDs for these RPs.
-NIST~\cite{NIST2017draft} suggests that PPID should be either generated randomly and assigned to users by the IdP,
- or derived from other user's information if the derivation is done in an irreversible, unguessable manner.
+ a PPID is an RP-specific user identity.
+That is, while a user visits different RPs, the IdP will provide a different but constant user identity for each RP.
+NIST~\cite{NIST2017draft} suggests that PPIDs should be generated randomly and assigned by the IdP,
+ or derived from a user's information if the derivation is irreversible and unguessable.
 %that PPID should be used to prevent the user's account at the IdP from being easily linked at multiple RPs through use of a common identifier.
 %It also suggests that PPID should be either generated randomly and assigned to users by the IdP, or derived from other user's information if the derivation is done in an irreversible, unguessable manner (e.g., using a keyed hash function with a secret key).
 %For example, we have learned that, MITREid Connect, a popular open-source OIDC project, generates PPID using a secure random number generator, and stores the key-value map of corresponding RP and PPID.
 
 
 \subsection{Intel SGX}
-Intel Software Guard Extensions (Intel SGX)~\cite{costan2016intel} is the hardware-based security  mechanism provided by Intel processors.  Enclaves~\cite{costan2016intel} and remote attestation~\cite{costan2016intel} mechanism are offered by Intel SGX.
+Intel Software Guard Extensions (SGX)~\cite{costan2016intel}
+ is the hardware-based security  mechanism provided by Intel processors.
+Enclaves~\cite{costan2016intel} and remote attestation~\cite{costan2016intel} mechanism are offered by Intel SGX.
 %It offers memory encryption that isolates specific application code and data in memory.
 %It allows user-level code to allocate private regions of memory, called enclaves~\cite{costan2016intel}, which guarantees the running codes are well protected from the adversary outside the enclave.
 
