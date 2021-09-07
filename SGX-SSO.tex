@@ -105,25 +105,17 @@ ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany\\
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-Single sign-on (SSO) services are widely deployed in the Internet as the identity management and authentication infrastructure.
-In an SSO system, after authenticated by the identity provider (IdP),
- a user is allowed to log into relying parties (RPs) by presenting an identity proof.
-Meanwhile, SSO introduces the potential leakage of user privacy:
-    (\emph{a}) the curious IdP could track a user's all visits to any RP,
-     and (\emph{b}) collusive RPs could link the user's identities across different RPs, to learn the user's network activity profile.
-NIST suggests that pairwise pseudonymous identifiers (PPIDs) shall be adopted to prevent collusive RPs from linking a user,
-    as PPID mechanism enables a user to log in multiple RPs with different identities.
-However, the widely-adopted PPID mechanism cannot protect users from the IdP's tracking, as it still exposes RP identities to the IdP.
-
-In this paper, we propose an SSO system, named \emph{UP-SSO},
- providing the enhanced PPID mechanism to protect a user's profile of RP visits from both the curious IdP and the collusive RPs by integrating PPID and SGX.
-It separates the IdP's function into two parts, the server-side function and user-side part.
-The generation of PPIDs is shifted from the IdP server to the user client, so that the IdP server no longer needs to learn RP identities to issue identity proofs.
+Single sign-on (SSO) services are widely deployed in the Internet as the identity management and authentication infrastructure. In an SSO system, after authenticated by the identity providers (IdPs), a user is allowed to log into relying parties (RPs) by submitting an \emph{identity proof}.
+However, SSO introduces the potential leakage of user privacy, indicated by NIST.  That is (\emph{a}) a curious IdP could track a user's all visits to any RP and (\emph{b}) collusive RPs could link the user's identities across different RPs, to learn the user's activity profile.
+NIST suggests that the Pairwise Pseudonymous Identifier (PPID) should be adopted to prevent collusive RPs from linking the same user, as PPID mechanism enables an IdP to provide a user with multiple individual IDs for different RPs.  However, PPID mechanism cannot protect users from IdP's tracking, as it still exposes RP identity to IdP.
+In this paper, we propose an SSO system, named UP-SSO, providing the enhanced PPID mechanism to protect a user's profile of RP visits from both the curious IdP and the collusive RPs by integrating PPID and SGX.
+It separates an IdP service into two parts, the server-side service and user-side service. The generation of PPID is shifted from IdP server to user client, so that IdP server no longer needs to learn RP ID.
 %User client also transforms RP ID into a one-time encrypted ID, used by IdP for identity token generation, instead of RP's real ID.
-The integrity at the user side is verified by the IdP through the remote attestation of SGX.
+The integrity of user client can be verified by IdP through remote attestation.
 %The server-side service running on the IdP server still takes the responsibility of authenticating users, storing the private key, issuing the identity token, etc.
-The detailed design of UP-SSO is described, and we analyze its security and privacy protection.
-We implemented the prototype system of UP-SSO, and the evaluation shows the overhead is modest.
+The detailed design of UP-SSO is described in this paper, and the systemic analysis is provided to guarantee its security.
+We implemented the prototype system of UP-SSO, and the evaluation of the prototype system shows the overhead is modest.
+
 \end{abstract}
 %
 %

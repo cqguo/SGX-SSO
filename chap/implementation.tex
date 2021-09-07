@@ -18,9 +18,10 @@ which offers the APIs for cryptographic computations.%, under hardware-level pro
 
 \subsection{Evaluation}
 \noindent\textbf{Environment.}
-In the evaluation, we deploy the RP and IdP servers on the device with Intel i7-8700 CPU and 32GB RAM memory, running Windows 10 x64 system. The browser is Chrome v90.0.4430.212, deployed on the same device.   
+We deploy the IdP server on the device with Intel i7-8700 CPU and 32 GB RAM memory, running Windows 10 x64 system, and the RP server on the laptop with Intel i7-4700HQ CPU and 16 GB RAM memory, running Windows 10 x64 system. 
+The browser is chrome deployed on the IdP device.  The devices are connected through the 1Gbps network. 
 
 
 
 \vspace{1mm}\noindent\textbf{Result.}
-We have run SSO process on our prototype system 100 times, and the average time is 154 ms (from user visiting an RP to RP returning the authentication result). As the remote attestation overhead is only counted once the enclave application is initiated, the overhead is not included in the result (about xx ms). For comparison, we run MITREid Connect, a popular open-source OpenID Connect project. The time cost of  MITREid Connect is 113 ms. The overhead is modest.
+We have run SSO process on our prototype system 100 times, and the average time is 171 ms (from user visiting an RP to RP returning the authentication result). As the remote attestation overhead is only counted once the enclave application is initiated, the overhead is not included (about 1139 ms). For comparison, we run MITREid Connect, a popular open-source OpenID Connect project. The time cost of  MITREid Connect is 113 ms. The overhead is modest.

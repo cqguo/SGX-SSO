@@ -36,7 +36,7 @@ More and more IdPs have adopted PPIDs to protect user privacy, such as Active Di
 NORDIC APIS and CURITY also suggest the adoption of PPIDs in SSO to protect user privacy.
 %~\cite{Nordic, Curity}.
 
-Although the PPID mechanism effectively protects user from the RP-based identity linkage, the IdP-based identity linkage is not well prevented in SSO systems.
+Although the PPID mechanism effectively protects user from the RP-based identity linkage, the IdP-based login tracing is not well prevented in SSO systems.
 There have been many works to protect user privacy in SSO systems; however, to the best of our knowledge, none of the existing solutions~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} offers the comprehensive protection of user privacy.
 %Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems.
 Here we give a brief introduction of existing solutions against the IdP-based login tracing
@@ -49,6 +49,7 @@ An encrypted RP identity is bound in identity proofs by the SPRESSO IdP,
 PPID cannot be integrated in this type of solutions,
      as the IdP cannot assign the PPID based on an \emph{unknown} RP identity.
 \item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP.
+It can protect user from both IdP-based login tracing and RP-based identity linkage.
 However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
 %However, it is not convenient for user's login on multiple devices. For security consideration, the $s$ must be too long for user to remember.  And the user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device.
 %\item {\em Completely anonymous SSO system. }Anonymous SSO scheme is proposed to hide the user's identity to both the IdP and RPs in many manners. For example, the anonymous SSO~\cite{HanCSTW18} allows a user to visit the RP without exposing her identity to both IdP and RP based on zero-knowledge proof. However, it can only be applied to the anonymous services that do not identify the user, but not available in current personalized internet service.
