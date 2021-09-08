@@ -39,7 +39,7 @@ NORDIC APIS and CURITY also suggest the adoption of PPIDs in SSO to protect user
 Although the PPID mechanism effectively protects user from the RP-based identity linkage, the IdP-based login tracing is not well prevented in SSO systems.
 There have been many works to protect user privacy in SSO systems; however, to the best of our knowledge, none of the existing solutions~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} offers the comprehensive protection of user privacy.
 %Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems.
-Here we give a brief introduction of existing solutions against the IdP-based login tracing
+Here we give a brief introduction of existing solutions %against the IdP-based login tracing
 % for privacy-preserving SSO
 and explain the shortcomings of these schemes.
 \begin{itemize}
@@ -61,11 +61,11 @@ However, whenever a user tries to visit RP at a new device, she must import  $s$
 
 This paper proposes UP-SSO,
 %Enhancing the User Privacy of SSO by Integrating PPID and SGX,
-the comprehensive protections against both the IdP and curious RPs.
+the comprehensive protections against both the curious IdP and RPs.
 The key idea of UP-SSO is to shift the PPID generation from the IdP server to the user side,
 so that the IdP issues the identity proofs binding the user's PPID (denoted as $PPID_U$),
-    while only requiring an one-time RP pseudo-identity (denoted as $PID_{RP}$).
-In UP-SSO system, the client takes the responsibility to generate $PPID_U$ and transform the RP identity into $PID_{RP}$,
+    while only requiring an one-time RP pseudo-identity (denoted as $PPID_{RP}$).
+In UP-SSO system, the client takes the responsibility to generate $PPID_U$ and transform the RP identity into $PPID_{RP}$,
 %(as an identity proof must contain the RP ID to avoid misuse of token~\cite{YangLCZ18, WangZLG16, MainkaMS16, MainkaMSW17}).
 %For IdP,
 %it can only obtain an encrypted one-time RP ID,

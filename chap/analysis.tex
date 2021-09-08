@@ -13,7 +13,7 @@ We summarize the basic requirements of SSO systems based on existing theoretical
 \item
 \textbf{RP designation.} The designated RP is specified in identity proof,
     so that this identity proof is  only accepted by this RP.
-
+Otherwise, the adversary may act as an RP, and collect honest users' identity proofs to visit other RPs.
 
 \item
 \textbf{Integrity and confidentiality.}
@@ -79,7 +79,8 @@ The $PPID$ is generated based on $RPDomain$ and $UID$ (step 17). According to th
 Confidentiality of identity proof requires that the identity proof must be transmitted to RP correctly without being exposed to adversaries.
 %As IdP in UP-SSO system does not learn the target RP's identity, it cannot sends the identity token to RP through an HTTP 302 redirection, which is widely used in SSO systems, such as OIDC. 
 
-To guarantee the identity proof is securely transmitted, $postMessage$ restricted with an origin is adopted in UP-SSO system. That is, while the IdP script receives an identity proof from IdP server, it would invoke the $postMessage$ function provided by browser. And the target's origin is set as the value $RPDomain$ used in generating $PPID_{RP}$ and $PPID_U$. Browser guarantees that only the script belongs to the set origin can receive this identity proof.
+To guarantee the identity proof is securely transmitted, TLS is adopted to protect the transmissions between servers and user.
+Moreover, the $postMessage$ restricted with an origin is adopted to protect the transmissions between RP and IdP scripts. That is, while the IdP script receives an identity proof from IdP server, it would invoke the $postMessage$ function provided by browser. And the target's origin is set as the value of RP's domain used in generating $PPID_{RP}$ and $PPID_U$. Browser guarantees that only the script belongs to the given origin can receive this identity proof.
 
 %Even an adversary can work as a malicious script in user's browser and conduct malicious behaviour, such as man-in-the-middle attack, it cannot steal user's identity token. That is, while an adversary succeeds in tempering the RP's $Domain$ (at step 8 in Figure~\ref{fig:UP-SSO}), according to proof of RP designation, the identity token would not be accepted by an honest RP. Otherwise, while an adversary does not temper $Domain$, it cannot receive the identity token due to $postMessage$ mechanism.
 

@@ -28,7 +28,7 @@ It can be split into three phases, scripts downloading, PPIDs generation and ide
 
 \vspace{0.5mm}\noindent\textbf{Scripts downloading.} This phase is for the user’s browser to download the scripts from the RP and IdP. The SSO process is started with the user's visit to an RP at her browser, and the browser downloads the RP script (step 1). Then the RP script opens a new window targeting RP login endpoint (step 2, 3). After that the user is redirected to the IdP server (step 4). Finally, the user retrieves the IdP script (step 5).
 
-It must be noticed that, the user cannot visit IdP at step 2,3 directly. While the script in origin A opens a new window with origin B, the HTTP request to B's server will carry the key-value $Referer: A$. Thus, the RP's domain is exposed.% to IdP. 
+It must be noticed that, the user cannot visit IdP at step 2,3 directly. While the script in origin A opens a new window with origin B, the HTTP request to B's server will carry the key-value $Referer: A$ in the header. Thus, the RP's domain is exposed to IdP. 
 % The scripts work as part of the user agent role.
 \begin{comment}
 \item[1]The SSO process is started with the user's visit to an RP at her browser, and the browser downloads the RP script. 
@@ -79,7 +79,7 @@ The $PPID_U$ must be the encrypted hash of RP's domain and UID, instead of the p
 \vspace{0.5mm}\noindent\textbf{Identity proof issuing.} In this phase, IdP issues an identity proof containing the encrypted $PPID_{RP}$ and $PPID_U$. And the RP verifies the token.
 At the beginning user sends the encrypted $PPID_{RP}$ and $PPID_U$ to IdP for identity proof (step 19). 
 Then the IdP server derives the $PPID_{RP}$ and $PPID_U$, signs the $Token$ consisted of $PPID_{RP}$ and $PPID_U$ as the identity proof (step 20), and sends it to IdP script (step 21). 
-The IdP script then sends the $token$ and $s$ to the origin RP's $Domain$ through $postMessage$ (step 22), and  RP script uploads them to RP server (step 23). 
+The IdP script then sends the $oken$ and $s$ to the origin RP's $Domain$ through $postMessage$ (step 22), and  RP script uploads them to RP server (step 23). 
 The RP server verifies the signature with IdP's public key, compares the $PPID_{RP}$ carried with identity proof with self-generated one, and derives the constant user account from $PPID_U$ (step 24). 
 %generates the $PRPID$ with its domain and key $s$, and compared it with the one carried by $token$. If the two $PRPID$s are equaled, RP decrypts the user's account from $PPID$, and finds out the related user information in its database (step 24). 
 At the end, RP returns the login result back to user (step 25).
@@ -95,6 +95,8 @@ At the end, RP returns the login result back to user (step 25).
 \item[25]RP returns the login result back to user.
 \end{comment} 
 
-%The origin in step 22 is essential for secure identity token transmitting.
-%It guarantees that only the script running in the RP window can receive the $token$, that avoids the man-in-the-middle attack.
+%The origin required in step 22 
+%is essential for secure identity token transmitting.
+%It 
+%guarantees that only the script running in the RP window can receive the $Token$, that avoids the man-in-the-middle attack.
 

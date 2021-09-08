@@ -28,9 +28,9 @@ at the beginning, a user attempts to log into an RP (Step 1).
 The RP constructs a request for identity proofs,
  which is redirected by the user to the IdP.
 This request contains $ID_{RP}$ and other optional attributes (Step 2).
-If the user has not been authenticated, the IdP initiates an authentication process (Step 3).
+If the user is not authenticated, the IdP initiates an authentication process (Step 3).
 Then, the IdP signs $ID_{RP}$ and the user's unique identity (or PPID) into an identity proof, and sends it back to the RP (Steps 4 and 5).
-The RP finally verifies this identity proof, extracts the user identity, and returns the result.
+The RP finally verifies this identity proof, extracts the user identity, and returns the result (Steps 6 and 7).
 \begin{comment}
 \item[1] At the beginning, user attempts to log in to an RP.
 \item[2] RP constructs a request for identity proof, which is redirected by the user to the corresponding IdP. The request contains $ID_{RP}$, RP's endpoint other attributes.
