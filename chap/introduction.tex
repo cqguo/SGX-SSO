@@ -38,11 +38,13 @@ NORDIC APIS and CURITY also suggest the adoption of PPIDs in SSO to protect user
 
 Although the PPID mechanism effectively protects user from the RP-based identity linkage, the IdP-based login tracing is not well prevented in SSO systems.
 There have been many works to protect user privacy in SSO systems; however, to the best of our knowledge, none of the existing solutions~\cite{SPRESSO, BrowserID, ZhangKSZR21, IsaakidisHD16} offers the comprehensive protection of user privacy.
+%For example, the solutions hiding RP Identities from the IdP, such as SPRESSO~\cite{SPRESSO} and BrowserID~\cite{BrowserID}, cannot protect users from RP-based identity linkage. 
+%And the solutions proving user identity based on zero-knowledge proof, such as EL PASSO~\cite{ZhangKSZR21}, require the user to remember the large secret.
 %Beside of PPID mechanism, there have been many works on protecting user privacy in SSO systems.
-Here we give a brief introduction of existing solutions %against the IdP-based login tracing
+In section~\ref{sec:existingSolution},  we will give the detailed introduction of existing solutions %against the IdP-based login tracing
 % for privacy-preserving SSO
 and explain the shortcomings of these schemes.
-\begin{itemize}
+\begin{comment}
 \item {\noindent\textbf{Hiding RP Identities from the IdP.}} SPRESSO~\cite{SPRESSO} and BrowserID~\cite{BrowserID} were proposed to protect user privacy against the IdP by hiding RP identities.
 An encrypted RP identity is bound in identity proofs by the SPRESSO IdP,
     while the BrowserID IdP firstly binds the user identity and a key pair and the user will bind the RP identity by itself using the certified key pair.
@@ -53,7 +55,7 @@ It can protect user from both IdP-based login tracing and RP-based identity link
 However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
 %However, it is not convenient for user's login on multiple devices. For security consideration, the $s$ must be too long for user to remember.  And the user's identity is associated with the private $s$, therefore, if the user wants to log in to the RP on a new device, she must import the large $s$ into this device.
 %\item {\em Completely anonymous SSO system. }Anonymous SSO scheme is proposed to hide the user's identity to both the IdP and RPs in many manners. For example, the anonymous SSO~\cite{HanCSTW18} allows a user to visit the RP without exposing her identity to both IdP and RP based on zero-knowledge proof. However, it can only be applied to the anonymous services that do not identify the user, but not available in current personalized internet service.
-\end{itemize}
+\end{comment}
 
 
 %As discussed above, none of the existing SSO systems defend against both IdP-based login tracing and RP-based identity linkage, and provide the convenient SSO service on multiple devices at the same time.

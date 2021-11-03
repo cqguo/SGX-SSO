@@ -75,3 +75,43 @@ The SGX remote attestation allows a player to verify the application's identity,
 Moreover, with the remote attestation, the secure key exchange between the player and remote enclave application is also available.% even the application runs in a malicious environment.
 
 
+\subsection{Existing Privacy-Preserving Solutions for SSO}
+\label{sec:existingSolution}
+NIST~\cite{NIST2017draft} suggests that the SSO should prevent user's trace from being tracked by both RP and IdP.
+%The pairwise user identifier (e.g., PPID) is used in some SSO protocols, such as SAML~\cite{SAML} and OIDC~\cite{OpenIDConnect}.
+Some protocols simply hide the RP's identity from IdP, such as SPRESSO~\cite{SPRESSO} (using encrypted RP identifier) and BrowserID~\cite{BrowserID} (RP identifier is added by user). 
+An encrypted RP identity is bound in identity proofs by the SPRESSO IdP,
+    while the BrowserID IdP firstly binds the user identity and a key pair and the user will bind the RP identity by itself using the certified key pair.
+    However,  they are not defensive to RP-based identity linkage, and
+PPID cannot be integrated in this type of solutions,
+     as the IdP cannot assign the PPID based on an \emph{unknown} RP identity.
+%However,  they are not defensive to RP-based identity linkage, and cannot integrate PPID.
+%Moreover, an analysis on Persona found IdP-based login tracing could still succeed~\cite{FettKS14, BrowserID}.
+
+There is also another method that prevents both IdP and RP from knowing user's trace based on zero-knowledge algorithm, such as EL PASSO~\cite{ZhangKSZR21} and UnlimitID~\cite{IsaakidisHD16}. 
+In such systems, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP.
+It can protect user from both IdP-based login tracing and RP-based identity linkage.
+However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
+%However, this type of solution requires user should remember a secret representing his identity, which is not convenient for login on multiple devices.
+
+\subsection{Extended Related Works}
+\noindent\textbf{Security analysis of SSO systems.} Various attackers were found accessing the honest user's account at RP by multiple methods.
+Some attackers exploit the vulnerabilities of user's platforms to steal  identity proof (or cookie)~\cite{WangCW12,ArmandoCCCPS13}.
+Some other attackers temper the identity proof to impersonate an honest user, such as XSW~\cite{SomorovskyMSKJ12}, RP's incomplete verification~\cite{WangCW12,WangZLG16,MainkaMSW17}, and IdP spoofing~\cite{MainkaMS16,MainkaMSW17}.
+Some IdP services did not bind the identity proof with a corresponding RP (or the honest RP did not verify the binding), so that malicious RP can leverage the received identity proof to access to another RP~\cite{WangZLG16,MainkaMS16,MainkaMSW17}.
+The formal analysis is also used to guarantee the security of SSO protocols~\cite{FettKS16,FettKS17}.
+
+\vspace{1mm}\noindent\textbf{Authentication systems built based on Intel SGX.} Intel SGX has been used in enhancing the security and privacy of authentication systems. Rafael et al.~\cite{CondeMW18} offer the credential protection approach based on SGX, which prevents an adversary from stealing a user's credential at server side. P2A~\cite{SongWLOWL20} is proposed to protect user's privacy. It enables a user to generate an identity proof locally while the registration, update, freeze/thaw, and deletion of identities are managed in a blockchain. Therefore, a user can visit a service without exposing his real identity.
+
+
+
+\begin{comment}
+\item {\noindent\textbf{Hiding RP Identities from the IdP.}} SPRESSO~\cite{SPRESSO} and BrowserID~\cite{BrowserID} were proposed to protect user privacy against the IdP by hiding RP identities.
+An encrypted RP identity is bound in identity proofs by the SPRESSO IdP,
+    while the BrowserID IdP firstly binds the user identity and a key pair and the user will bind the RP identity by itself using the certified key pair.
+PPID cannot be integrated in this type of solutions,
+     as the IdP cannot assign the PPID based on an \emph{unknown} RP identity.
+\item {\noindent\textbf{Proving user identity based on zero-knowledge proof. }}In this type of solution, such as EL PASSO~\cite{ZhangKSZR21}, the user needs to keep a secret $s$ and requires IdP to generate an identity proof for blinded $s$. Then user has to prove that she is the owner of $s$ without exposing $s$ to RP.
+It can protect user from both IdP-based login tracing and RP-based identity linkage.
+However, whenever a user tries to visit RP at a new device, she must import  $s$ into this device. Thus, it is not convenient for user's login on multiple devices.
+\end{comment}
